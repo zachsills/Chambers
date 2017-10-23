@@ -7,6 +7,7 @@ import me.hulipvp.chambers.claim.ClaimManager;
 import me.hulipvp.chambers.game.GameManager;
 import me.hulipvp.chambers.profile.ProfileManager;
 import me.hulipvp.chambers.team.TeamManager;
+import me.hulipvp.chambers.util.commandapi.CommandFramework;
 
 @Getter
 public class Chambers extends JavaPlugin {
@@ -21,6 +22,9 @@ public class Chambers extends JavaPlugin {
 	private ProfileManager profileManager;
 	private TeamManager teamManager;
 	
+	/* Commands & Listeners */
+	private CommandFramework commandFramework;
+	
 	public void onEnable() {
 		
 		instance = this;
@@ -29,6 +33,8 @@ public class Chambers extends JavaPlugin {
 		gameManager = new GameManager();
 		profileManager = new ProfileManager();
 		teamManager = new TeamManager();
+		
+		commandFramework = new CommandFramework(this);
 		
 	}
 

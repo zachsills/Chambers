@@ -13,13 +13,15 @@ import me.hulipvp.chambers.team.structure.Team;
 public class Profile {
 	
 	private UUID id;
-	private ProfileStatus status;
+	private ProfileStatus profileStatus;
+	private ChatStatus chatStatus;
 	private Team team;
 	private int balance;
 	
-	public Profile(Player player, ProfileStatus status) {
+	public Profile(Player player, ProfileStatus profileStatus) {
 		this.id = player.getUniqueId();
-		this.status = status;
+		this.profileStatus = profileStatus;
+		this.chatStatus = ChatStatus.FACTION;
 		this.team = null;
 		this.balance = 100;
 	}

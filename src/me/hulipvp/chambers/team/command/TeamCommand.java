@@ -18,11 +18,25 @@ public class TeamCommand {
 	@Command(name = "faction", description = "The main command for Teams", aliases = { "f", "t", "s", "team", "squad" }, usage = "/<command> <args>")
 	public void onCommand(CommandArgs commandArgs) {
 		Player player = (Player) commandArgs.getSender();
-		showHelp(player, 1);
+		showHelp(player);
 	}
 	
-	public void showHelp(Player player, int page) {
-		
+	public void showHelp(Player player) {
+		player.sendMessage("&6&m-------------------------------------------------------------");
+	    player.sendMessage("&d&lFaction Help&7 - &fInformation on how to use faction commands");
+	    player.sendMessage("&6&m-------------------------------------------------------------");
+	    player.sendMessage("&9General Commands:");
+	    player.sendMessage("&e/f home &7- Teleport to your faction home");
+	    player.sendMessage(" ");
+	    player.sendMessage("&9Information Commands:");
+	    player.sendMessage("&e/f help &7- Displays this help menu");
+	    player.sendMessage("&e/f show [player|teamName]&7 - Display team information");
+	    player.sendMessage(" ");
+	    player.sendMessage("&9Chat Usage:");
+	    player.sendMessage("&e!<message> &7- Message in all chat");
+	    player.sendMessage("&e@<message> &7- Message in faction chat");
+	    player.sendMessage("&e/tl &7- Quickly send your coords to your teammates");
+	    player.sendMessage("&6&m--------------------------------------------------------------");
 	}
 
 }

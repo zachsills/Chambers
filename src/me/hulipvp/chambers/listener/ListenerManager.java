@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 
 import me.hulipvp.chambers.Chambers;
+import me.hulipvp.chambers.listener.listeners.EnderpearlListener;
 import me.hulipvp.chambers.listener.listeners.ProfileListener;
 
 public class ListenerManager {
@@ -24,6 +25,7 @@ public class ListenerManager {
 	
 	public void addListeners() {
 		listeners.add(new ProfileListener());
+		listeners.add(new EnderpearlListener());
 	}
 	
 	public void registerListeners() {

@@ -2,8 +2,10 @@ package me.hulipvp.chambers.team.structure;
 
 import org.bukkit.ChatColor;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@AllArgsConstructor
 @Getter
 public enum TeamType {
 	
@@ -17,9 +19,4 @@ public enum TeamType {
 	private ChatColor color;
 	private String name;
 	
-	TeamType(ChatColor color, String name) {
-		this.color = color;
-		this.name = name;
-	}
-
 }

@@ -1,7 +1,9 @@
 package me.hulipvp.chambers.game.structure;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@AllArgsConstructor
 @Getter
 public enum GameStatus {
 	
@@ -13,9 +15,4 @@ public enum GameStatus {
 	private int id;
 	private String motd;
 	
-	GameStatus(int id, String motd) {
-		this.id = id;
-		this.motd = motd;
-	}
-
 }

@@ -33,6 +33,7 @@ public class LobbyProvider implements ScoreboardProvider {
 			int count = 1;
 			for (UUID uuid : profile.getTeam().getMembers()) {
 				lines.add(Color.color(" &7" + count + ". &r" + Bukkit.getPlayer(uuid).getName()));
+				++count;
 			}
 		}
 		if (plugin.getGameManager().getGame().getStatus() == GameStatus.STARTING) {

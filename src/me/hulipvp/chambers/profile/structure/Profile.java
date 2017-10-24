@@ -16,7 +16,7 @@ public class Profile {
 	private ProfileStatus profileStatus;
 	private ChatStatus chatStatus;
 	private Team team;
-	private int balance;
+	private int balance, respawnTime;
 	
 	public Profile(Player player, ProfileStatus profileStatus) {
 		this.id = player.getUniqueId();
@@ -24,6 +24,7 @@ public class Profile {
 		this.chatStatus = ChatStatus.FACTION;
 		this.team = null;
 		this.balance = 100;
+		this.respawnTime = 0;
 	}
 
 }

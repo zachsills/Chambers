@@ -20,6 +20,7 @@ public class Team {
 	private String name;
 	private ChatColor color;
 	private Set<UUID> members;
+	private Set<String> offline;
 	private double dtr;
 	private Location home;
 	private Claim claim;
@@ -31,6 +32,7 @@ public class Team {
 		this.color = type.getColor();
 		this.claim = null;
 		this.members = new HashSet<>();
+		this.offline = new HashSet<>();
 		this.dtr = 1.0;
 		this.home = null;
 	}
@@ -42,6 +44,14 @@ public class Team {
 	public void addMember(Profile profile) {
 		profile.setTeam(this);
 		this.members.add(profile.getId());
+	}
+	
+	public int getSize() {
+		return this.members.size();
+	}
+	
+	public boolean isFull() {
+		return this.members.size() >= 5;
 	}
 	
 }

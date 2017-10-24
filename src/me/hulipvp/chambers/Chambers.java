@@ -6,6 +6,7 @@ import lombok.Getter;
 import me.hulipvp.chambers.claim.ClaimManager;
 import me.hulipvp.chambers.config.DataFile;
 import me.hulipvp.chambers.game.GameManager;
+import me.hulipvp.chambers.listener.ListenerManager;
 import me.hulipvp.chambers.profile.ProfileManager;
 import me.hulipvp.chambers.team.TeamManager;
 import me.hulipvp.chambers.util.commandapi.CommandFramework;
@@ -43,6 +44,7 @@ public class Chambers extends JavaPlugin {
 	private GameManager gameManager;
 	private ProfileManager profileManager;
 	private TeamManager teamManager;
+	private ListenerManager listenerManager;
 	
 	/* Commands & Listeners */
 	private CommandFramework commandFramework;
@@ -58,6 +60,7 @@ public class Chambers extends JavaPlugin {
 		gameManager = new GameManager();
 		profileManager = new ProfileManager();
 		teamManager = new TeamManager();
+		listenerManager = new ListenerManager();
 		
 		commandFramework = new CommandFramework(this);
 		

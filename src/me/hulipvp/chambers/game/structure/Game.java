@@ -21,5 +21,9 @@ public class Game {
 		this.invincibilityTime = 60;
 		this.offline = new HashSet<>();
 	}
+	
+	public boolean hasStarted() {
+		return this.status == GameStatus.STARTING || this.status == GameStatus.INGAME;
+	}
 
 }

@@ -71,14 +71,33 @@ public class TeamManager {
 	 * @return Team - a Team with the same name or with a matching member
 	 */
 	public Team getTeamByString(String string) {
-		Team returnTeam = null;
+		Team teamToReturn = null;
 		if (getTeamByName(string) != null) {
-			returnTeam = getTeamByName(string);
+			teamToReturn = getTeamByName(string);
 		}
-		if (Bukkit.getPlayer(string) != null && returnTeam == null) {
-			returnTeam = getTeamByMember(Bukkit.getPlayer(string).getUniqueId());
+		if (Bukkit.getPlayer(string) != null && teamToReturn == null) {
+			teamToReturn = getTeamByMember(Bukkit.getPlayer(string).getUniqueId());
 		}
-		return returnTeam;
+		return teamToReturn;
+	}
+	
+	/**
+	 * Get the smallest Team so that players can join the Teams in an
+	 * ordered sequence if you want it to be an ordered sequence
+	 * 
+	 * @return Team - the Team with the smallest size
+	 */
+	public Team getSmallestTeam() {
+		return getAllPlayerTeams().stream().min((teamOne, teamTwo) -> teamTwo.getSize() - teamOne.getSize()).orElseGet(null);
+	}
+	
+	/**
+	 * Get the size of the smallest team
+	 * 
+	 * @return int - the amount of members in the smallest team
+	 */
+	public int getSmallestTeamSize() {
+		return getSmallestTeam().getSize();
 	}
 
 }

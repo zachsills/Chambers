@@ -8,6 +8,8 @@ import me.hulipvp.chambers.config.DataFile;
 import me.hulipvp.chambers.game.GameManager;
 import me.hulipvp.chambers.listener.ListenerManager;
 import me.hulipvp.chambers.profile.ProfileManager;
+import me.hulipvp.chambers.scoreboard.ScoreboardWrapper;
+import me.hulipvp.chambers.scoreboard.provider.ProviderResolver;
 import me.hulipvp.chambers.team.TeamManager;
 import me.hulipvp.chambers.util.commandapi.CommandFramework;
 
@@ -46,6 +48,9 @@ public class Chambers extends JavaPlugin {
 	private TeamManager teamManager;
 	private ListenerManager listenerManager;
 	
+	/* Scoreboard */
+	private ScoreboardWrapper scoreboardWrapper;
+	
 	/* Commands & Listeners */
 	private CommandFramework commandFramework;
 	
@@ -61,6 +66,8 @@ public class Chambers extends JavaPlugin {
 		profileManager = new ProfileManager();
 		teamManager = new TeamManager();
 		listenerManager = new ListenerManager();
+		
+		scoreboardWrapper = new ScoreboardWrapper(this, new ProviderResolver());
 		
 		commandFramework = new CommandFramework(this);
 		

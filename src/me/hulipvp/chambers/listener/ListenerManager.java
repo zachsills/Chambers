@@ -21,6 +21,8 @@ public class ListenerManager {
 		
 		addListeners();
 		
+		registerListeners();
+		
 	}
 	
 	public void addListeners() {

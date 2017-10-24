@@ -69,4 +69,11 @@ public @interface Command {
 	 * @return
 	 */
 	public boolean playerOnly() default false;
+	
+	/**
+	 * Whether or not the command will be allowed only by players with a team
+	 * 
+	 * @return
+	 */
+	public boolean requiresTeam() default false;
 }

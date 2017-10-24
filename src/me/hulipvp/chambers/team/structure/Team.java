@@ -10,6 +10,7 @@ import org.bukkit.Location;
 import lombok.Getter;
 import lombok.Setter;
 import me.hulipvp.chambers.claim.structure.Claim;
+import me.hulipvp.chambers.profile.structure.Profile;
 
 @Getter
 @Setter
@@ -24,7 +25,6 @@ public class Team {
 	private Claim claim;
 	private boolean playerTeam;
 	
-	
 	public Team(TeamType type) {
 		this.type = type;
 		this.name = type.getName();
@@ -37,6 +37,11 @@ public class Team {
 	
 	public String getFormattedName() {
 		return this.type.getColor() + this.type.getName();
+	}
+	
+	public void addMember(Profile profile) {
+		profile.setTeam(this);
+		this.members.add(profile.getId());
 	}
 	
 }

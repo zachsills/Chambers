@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import lombok.Getter;
 import me.hulipvp.chambers.claim.ClaimManager;
+import me.hulipvp.chambers.config.DataFile;
 import me.hulipvp.chambers.game.GameManager;
 import me.hulipvp.chambers.profile.ProfileManager;
 import me.hulipvp.chambers.team.TeamManager;
@@ -25,6 +26,9 @@ public class Chambers extends JavaPlugin {
 	/* Commands & Listeners */
 	private CommandFramework commandFramework;
 	
+	/* Data Files */
+	private DataFile configFile;
+	
 	public void onEnable() {
 		
 		instance = this;
@@ -35,6 +39,8 @@ public class Chambers extends JavaPlugin {
 		teamManager = new TeamManager();
 		
 		commandFramework = new CommandFramework(this);
+		
+		configFile = new DataFile(this, "config");
 		
 	}
 

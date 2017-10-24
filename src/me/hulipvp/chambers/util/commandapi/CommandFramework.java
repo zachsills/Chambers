@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
@@ -23,6 +24,9 @@ import org.bukkit.help.HelpTopicComparator;
 import org.bukkit.help.IndexHelpTopic;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.SimplePluginManager;
+
+import me.hulipvp.chambers.Chambers;
+import me.hulipvp.chambers.profile.structure.Profile;
 
 /**
  * Command Framework - CommandFramework <br>
@@ -94,6 +98,13 @@ public class CommandFramework implements CommandExecutor {
 				if (command.playerOnly() && !(sender instanceof Player)) {
 					sender.sendMessage("This command is only performable in game");
 					return true;
+				}
+				if (command.playerOnly() && command.requiresTeam()) {
+					Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(((Player) sender).getUniqueId());
+					if (profile == null || (profile != null && profile.getTeam() == null)) {
+						sender.sendMessage(ChatColor.RED + "You cannot use this command without a Team.");
+						return true;
+					}
 				}
 				try {
 					method.invoke(methodObject, new CommandArgs(sender, cmd, label, args,

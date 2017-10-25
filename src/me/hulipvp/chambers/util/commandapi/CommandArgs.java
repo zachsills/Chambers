@@ -18,8 +18,7 @@ public class CommandArgs {
 	private String label;
 	private String[] args;
 
-	protected CommandArgs(CommandSender sender, org.bukkit.command.Command command, String label, String[] args,
-			int subCommand) {
+	protected CommandArgs(CommandSender sender, org.bukkit.command.Command command, String label, String[] args, int subCommand) {
 		String[] modArgs = new String[args.length - subCommand];
 		for (int i = 0; i < args.length - subCommand; i++) {
 			modArgs[i] = args[i + subCommand];
@@ -74,10 +73,12 @@ public class CommandArgs {
 	public String[] getArgs() {
 		return args;
 	}
-	
+
 	/**
 	 * Gets the argument at the specified index
-	 * @param index The index to get
+	 * 
+	 * @param index
+	 *            The index to get
 	 * @return The string at the specified index
 	 */
 	public String getArgs(int index) {
@@ -86,12 +87,13 @@ public class CommandArgs {
 
 	/**
 	 * Returns the length of the command arguments
+	 * 
 	 * @return int length of args
 	 */
 	public int length() {
 		return args.length;
 	}
-	
+
 	public boolean isPlayer() {
 		return sender instanceof Player;
 	}

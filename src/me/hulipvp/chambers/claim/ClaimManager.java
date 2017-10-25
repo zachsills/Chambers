@@ -9,20 +9,19 @@ import me.hulipvp.chambers.claim.structure.Claim;
 import me.hulipvp.chambers.team.structure.Team;
 
 public class ClaimManager {
-	
+
 	private Set<Claim> claims;
-	
+
 	/**
-	 * Just initializes all of the private fields so they're not null
-	 * Nothing surprising
-	 * Only one field so... heh
+	 * Just initializes all of the private fields so they're not null Nothing
+	 * surprising Only one field so... heh
 	 */
 	public ClaimManager() {
-		
+
 		claims = new HashSet<>();
-		
+
 	}
-	
+
 	/**
 	 * Will return <tt>null</tt> if no Claim is found at that certain Location
 	 * provided
@@ -34,10 +33,12 @@ public class ClaimManager {
 	public Claim getClaimAt(Location location) {
 		return claims.stream().filter(claim -> claim.isInsideClaim(location)).findFirst().orElse(null);
 	}
-	
+
 	/**
-	 * Attempts to find a claim with the same owner Faction as the provided Faction<br>
-	 * Will return <tt>null</tt> if no Claim with the same owner Faction is not found
+	 * Attempts to find a claim with the same owner Faction as the provided
+	 * Faction<br>
+	 * Will return <tt>null</tt> if no Claim with the same owner Faction is not
+	 * found
 	 * 
 	 * @param owner - the Team you wish to see has a claim
 	 * @return Claim - A claim with the same owner Faction as the one provided
@@ -46,16 +47,18 @@ public class ClaimManager {
 	public Claim getClaimByTeam(Team owner) {
 		return claims.stream().filter(claim -> claim.getOwner() == owner).findFirst().orElse(null);
 	}
-	
+
 	/**
-	 * Adds a Claim to the <tt>Set</tt> of claims if the Claim is already created
+	 * Adds a Claim to the <tt>Set</tt> of claims if the Claim is already
+	 * created
 	 * 
-	 * @param claim - the Claim you wish to store
+	 * @param claim
+	 *            - the Claim you wish to store
 	 */
 	public void addClaim(Claim claim) {
 		claims.add(claim);
 	}
-	
+
 	/**
 	 * Instantiates a new claim and then stores it to the <tt>Set</tt>
 	 * 
@@ -66,8 +69,7 @@ public class ClaimManager {
 	public void addClaim(Location cornerOne, Location cornerTwo, Team owner) {
 		claims.add(new Claim(cornerOne, cornerTwo, owner));
 	}
-	
-	
+
 	/**
 	 * Simply removes a claim stores in the Set
 	 * 

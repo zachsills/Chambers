@@ -10,12 +10,12 @@ import me.hulipvp.chambers.util.commandapi.Command;
 import me.hulipvp.chambers.util.commandapi.CommandArgs;
 
 public class GameCommand extends ChambersCommand {
-	
+
 	@Command(name = "game", description = "The main command to manage the Game", aliases = { "managegame" }, usage = "/<command> <args>", requiresTeam = false)
 	public void onCommand(CommandArgs commandArgs) {
 		Game game = plugin.getGameManager().getGame();
 		if (game == null) {
-			commandArgs.getSender().sendMessage(ChatColor.RED + "There is no game to manage. Please restart this server as an error had occured while enabling the plugin.");
+			commandArgs.getSender().sendMessage(ChatColor.RED+ "There is no game to manage. Please restart this server as an error had occured while enabling the plugin.");
 			return;
 		}
 		if (commandArgs.length() < 1) {
@@ -39,7 +39,8 @@ public class GameCommand extends ChambersCommand {
 			Bukkit.broadcast("chambers.staff", ChatColor.GREEN + commandArgs.getSender().getName() + ChatColor.YELLOW + " has forcefully stopped the game.");
 		} else if (arg.equalsIgnoreCase("setcountdowntime")) {
 			if (commandArgs.length() != 2) {
-				commandArgs.getSender().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " setcountdowntime <value>");
+				commandArgs.getSender()
+						.sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " setcountdowntime <value>");
 				return;
 			}
 			if (game.hasStarted()) {

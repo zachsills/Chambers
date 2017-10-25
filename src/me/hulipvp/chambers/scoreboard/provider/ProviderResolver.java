@@ -16,21 +16,21 @@ import me.hulipvp.chambers.scoreboard.ScoreboardProvider;
 import me.hulipvp.chambers.util.Color;
 
 public class ProviderResolver implements ScoreboardProvider {
-	
+
 	private Chambers plugin;
 	private Map<GameStatus, ScoreboardProvider> providers;
-	
+
 	public ProviderResolver() {
-		
+
 		plugin = Chambers.getInstance();
 		providers = new HashMap<>();
-		
+
 		LobbyProvider lobbyProvider = new LobbyProvider();
 		providers.put(GameStatus.LOBBY, lobbyProvider);
 		providers.put(GameStatus.STARTING, lobbyProvider);
 		providers.put(GameStatus.INGAME, new IngameProvider());
 		providers.put(GameStatus.OVER, new EndProvider());
-		
+
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class ProviderResolver implements ScoreboardProvider {
 
 	@Override
 	public List<String> getLines(Player player) {
-		
+
 		List<String> lines = new ArrayList<>();
 
 		Profile profile = plugin.getProfileManager().getProfileByUuid(player.getUniqueId());
@@ -51,12 +51,12 @@ public class ProviderResolver implements ScoreboardProvider {
 		if (this.providers.containsKey(plugin.getGameManager().getGame().getStatus())) {
 			lines.addAll(this.providers.get(plugin.getGameManager().getGame().getStatus()).getLines(player));
 		}
-		
+
 		if (!lines.isEmpty()) {
 			lines.add(0, Color.color("&7&m------------------"));
 			lines.add(Color.color("&7&m------------------"));
 		}
-		
+
 		return lines;
 	}
 

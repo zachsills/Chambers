@@ -1,10 +1,8 @@
 package me.hulipvp.chambers.listener;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.stream.Stream;
 
 import org.bukkit.Bukkit;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 
 import me.hulipvp.chambers.Chambers;
@@ -12,27 +10,19 @@ import me.hulipvp.chambers.listener.listeners.EnderpearlListener;
 import me.hulipvp.chambers.listener.listeners.ProfileListener;
 
 public class ListenerManager {
-	
-	private Set<Listener> listeners;
-	
+
 	public ListenerManager() {
-		
-		listeners = new HashSet<>();
-		
-		addListeners();
-		
+
 		registerListeners();
-		
+
 	}
-	
-	public void addListeners() {
-		listeners.add(new ProfileListener());
-		listeners.add(new EnderpearlListener());
-	}
-	
+
 	public void registerListeners() {
 		PluginManager pluginManager = Bukkit.getServer().getPluginManager();
-		listeners.stream().forEach(listener -> pluginManager.registerEvents(listener, Chambers.getInstance()));
+		Stream.of(
+				new ProfileListener(), 
+				new EnderpearlListener()
+				).forEach(listener -> pluginManager.registerEvents(listener, Chambers.getInstance()));
 	}
 
 }

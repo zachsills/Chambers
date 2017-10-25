@@ -17,7 +17,7 @@ public class CountdownTask extends BukkitRunnable {
 			Chambers.getInstance().getGameManager().finallyStart();
 			cancel();
 		} else if (game.getCountdownTime() % 5 == 0 || game.getCountdownTime() <= 5) {
-			Bukkit.broadcastMessage(ChatColor.YELLOW + "Game starting in " + ChatColor.GREEN +  game.getCountdownTime() + ChatColor.YELLOW + (game.getCountdownTime() == 1 ? "second" : "seconds") + ".");
+			Bukkit.broadcastMessage(ChatColor.YELLOW + "Game starting in " + ChatColor.GREEN + game.getCountdownTime() + ChatColor.YELLOW + (game.getCountdownTime() == 1 ? "second" : "seconds") + ".");
 		}
 	}
 

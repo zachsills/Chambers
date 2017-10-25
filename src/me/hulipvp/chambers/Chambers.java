@@ -23,8 +23,8 @@ import me.hulipvp.chambers.util.commandapi.CommandFramework;
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  * 
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -36,43 +36,43 @@ import me.hulipvp.chambers.util.commandapi.CommandFramework;
  */
 @Getter
 public class Chambers extends JavaPlugin {
-	
+
 	/* SINGLE, like me, plugin instance */
 	@Getter
 	private static Chambers instance;
-	
+
 	/* Game Managers */
 	private ClaimManager claimManager;
 	private GameManager gameManager;
 	private ProfileManager profileManager;
 	private TeamManager teamManager;
 	private ListenerManager listenerManager;
-	
+
 	/* Scoreboard */
 	private ScoreboardWrapper scoreboardWrapper;
-	
+
 	/* Commands & Listeners */
 	private CommandFramework commandFramework;
-	
+
 	/* Data Files */
 	private DataFile configFile;
-	
+
 	public void onEnable() {
-		
+
 		instance = this;
-		
+
 		claimManager = new ClaimManager();
 		gameManager = new GameManager();
 		profileManager = new ProfileManager();
 		teamManager = new TeamManager();
 		listenerManager = new ListenerManager();
-		
+
 		scoreboardWrapper = new ScoreboardWrapper(this, new ProviderResolver());
-		
+
 		commandFramework = new CommandFramework(this);
-		
-		configFile = new DataFile(this, "config");
-		
+
+		configFile = new DataFile(this, "data");
+
 	}
 
 }

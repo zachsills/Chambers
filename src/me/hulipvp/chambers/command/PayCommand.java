@@ -11,7 +11,7 @@ import me.hulipvp.chambers.util.commandapi.Command;
 import me.hulipvp.chambers.util.commandapi.CommandArgs;
 
 public class PayCommand extends ChambersCommand {
-	
+
 	@Command(name = "pay", description = "Send a player some money", aliases = { "sendmoney", "givemoney" }, usage = "/<command>", playerOnly = true, requiresTeam = true)
 	public void onCommand(CommandArgs commandArgs) {
 		Profile profile = plugin.getProfileManager().getProfileByUuid(commandArgs.getPlayer().getUniqueId());

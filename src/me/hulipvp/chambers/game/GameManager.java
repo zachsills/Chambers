@@ -19,15 +19,15 @@ import me.hulipvp.chambers.team.structure.Team;
 
 @Getter
 public class GameManager {
-	
+
 	private Game game;
-	
+
 	public GameManager() {
-		
+
 		game = new Game(GameStatus.LOBBY);
-		
+
 	}
-	
+
 	/**
 	 * Starts the Game
 	 */
@@ -36,7 +36,7 @@ public class GameManager {
 		new CountdownTask().runTaskTimerAsynchronously(Chambers.getInstance(), 0L, 20L);
 		Bukkit.broadcastMessage(ChatColor.YELLOW + "The countdown is now starting");
 	}
-	
+
 	/**
 	 * Stops the Game
 	 */
@@ -67,7 +67,8 @@ public class GameManager {
 			if (time == -2) {
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "restart");
 			} else if (time == 0) {
-				Arrays.stream(Bukkit.getOnlinePlayers()).forEach(player -> player.kickPlayer("Thanks for playing Chambers beta, join back soon!"));
+				Arrays.stream(Bukkit.getOnlinePlayers())
+						.forEach(player -> player.kickPlayer("Thanks for playing Chambers beta, join back soon!"));
 			} else if (time % 2 == 0) {
 				Bukkit.broadcastMessage(ChatColor.YELLOW + (winner == null ? "The game was forcefully stopped." : "The team " + winner.getFormattedName() + ChatColor.YELLOW + "has won the game!"));
 			}
@@ -87,8 +88,8 @@ public class GameManager {
 	/**
 	 * Finally starts the game after the countdown
 	 * 
-	 * You have to load the chunk because the player could probably spawn in the ground if
-	 * the chunk is not loaded when the player is teleported
+	 * You have to load the chunk because the player could probably spawn in the
+	 * ground if the chunk is not loaded when the player is teleported
 	 */
 	public void finallyStart() {
 		game.setStatus(GameStatus.INGAME);
@@ -110,11 +111,12 @@ public class GameManager {
 		Bukkit.broadcastMessage(ChatColor.YELLOW + "The game has now started! Good luck!");
 		Bukkit.broadcastMessage(" ");
 	}
-	
+
 	/**
 	 * Give a player their starting items
 	 * 
-	 * @param player - the Player you wish to give the items to
+	 * @param player
+	 *            - the Player you wish to give the items to
 	 */
 	public static void giveStartingItems(Player player) {
 		player.getInventory().clear();
@@ -123,5 +125,5 @@ public class GameManager {
 		player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 16));
 		player.getInventory().addItem(new ItemStack(Material.IRON_AXE, 1));
 	}
-	
+
 }

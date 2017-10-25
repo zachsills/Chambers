@@ -34,19 +34,19 @@ public class ProfileListener implements Listener {
 			plugin.getProfileManager().addProfile(profile);
 		}
 	}
-	
+
 	@EventHandler
 	public void onLeave(PlayerQuitEvent event) {
 		removeProfile(event);
 		event.setQuitMessage(null);
 	}
-	
+
 	@EventHandler
 	public void onKick(PlayerKickEvent event) {
 		removeProfile(event);
 		event.setLeaveMessage(null);
 	}
-	
+
 	public void removeProfile(PlayerEvent event) {
 		Player player = event.getPlayer();
 		Profile profile = plugin.getProfileManager().getProfileByUuid(player.getUniqueId());
@@ -56,5 +56,5 @@ public class ProfileListener implements Listener {
 		}
 		plugin.getProfileManager().removeProfile(profile);
 	}
-	
+
 }

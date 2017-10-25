@@ -15,7 +15,7 @@ import me.hulipvp.chambers.profile.structure.Profile;
 @Getter
 @Setter
 public class Team {
-	
+
 	private TeamType type;
 	private String name;
 	private ChatColor color;
@@ -25,7 +25,7 @@ public class Team {
 	private Location home;
 	private Claim claim;
 	private boolean playerTeam;
-	
+
 	public Team(TeamType type) {
 		this.type = type;
 		this.name = type.getName();
@@ -36,22 +36,22 @@ public class Team {
 		this.dtr = 1.0;
 		this.home = null;
 	}
-	
+
 	public String getFormattedName() {
 		return this.type.getColor() + this.type.getName();
 	}
-	
+
 	public void addMember(Profile profile) {
 		profile.setTeam(this);
 		this.members.add(profile.getId());
 	}
-	
+
 	public int getSize() {
 		return this.members.size();
 	}
-	
+
 	public boolean isFull() {
 		return this.members.size() >= 5;
 	}
-	
+
 }

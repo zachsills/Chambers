@@ -68,15 +68,19 @@ public class CommandFramework implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
 		return handleCommand(sender, cmd, label, args);
 	}
-	
+
 	/**
 	 * Handles commands. Used in the onCommand method in your JavaPlugin class
 	 * 
-	 * @param sender The {@link org.bukkit.command.CommandSender} parsed from
+	 * @param sender
+	 *            The {@link org.bukkit.command.CommandSender} parsed from
 	 *            onCommand
-	 * @param cmd The {@link org.bukkit.command.Command} parsed from onCommand
-	 * @param label The label parsed from onCommand
-	 * @param args The arguments parsed from onCommand
+	 * @param cmd
+	 *            The {@link org.bukkit.command.Command} parsed from onCommand
+	 * @param label
+	 *            The label parsed from onCommand
+	 * @param args
+	 *            The arguments parsed from onCommand
 	 * @return Always returns true for simplicity's sake in onCommand
 	 */
 	public boolean handleCommand(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
@@ -107,8 +111,7 @@ public class CommandFramework implements CommandExecutor {
 					}
 				}
 				try {
-					method.invoke(methodObject, new CommandArgs(sender, cmd, label, args,
-							cmdLabel.split("\\.").length - 1));
+					method.invoke(methodObject, new CommandArgs(sender, cmd, label, args, cmdLabel.split("\\.").length - 1));
 				} catch (IllegalArgumentException e) {
 					e.printStackTrace();
 				} catch (IllegalAccessException e) {
@@ -127,7 +130,8 @@ public class CommandFramework implements CommandExecutor {
 	 * Registers all command and completer methods inside of the object. Similar
 	 * to Bukkit's registerEvents method.
 	 * 
-	 * @param obj The object to register the commands of
+	 * @param obj
+	 *            The object to register the commands of
 	 */
 	public void registerCommands(Object obj) {
 		for (Method m : obj.getClass().getMethods()) {
@@ -143,10 +147,9 @@ public class CommandFramework implements CommandExecutor {
 				}
 			} else if (m.getAnnotation(Completer.class) != null) {
 				Completer comp = m.getAnnotation(Completer.class);
-				if (m.getParameterTypes().length > 1 || m.getParameterTypes().length == 0
-						|| m.getParameterTypes()[0] != CommandArgs.class) {
-					System.out.println("Unable to register tab completer " + m.getName()
-							+ ". Unexpected method arguments");
+				if (m.getParameterTypes().length > 1 || m.getParameterTypes().length == 0 || m.getParameterTypes()[0] != CommandArgs.class) {
+					System.out.println(
+							"Unable to register tab completer " + m.getName() + ". Unexpected method arguments");
 					continue;
 				}
 				if (m.getReturnType() != List.class) {
@@ -173,8 +176,7 @@ public class CommandFramework implements CommandExecutor {
 				help.add(topic);
 			}
 		}
-		IndexHelpTopic topic = new IndexHelpTopic(plugin.getName(), "All commands for " + plugin.getName(), null, help,
-				"Below is a list of all " + plugin.getName() + " commands:");
+		IndexHelpTopic topic = new IndexHelpTopic(plugin.getName(), "All commands for " + plugin.getName(), null, help, "Below is a list of all " + plugin.getName() + " commands:");
 		Bukkit.getServer().getHelpMap().addTopic(topic);
 	}
 
@@ -219,8 +221,7 @@ public class CommandFramework implements CommandExecutor {
 					BukkitCompleter completer = (BukkitCompleter) field.get(command);
 					completer.addCompleter(label, m, obj);
 				} else {
-					System.out.println("Unable to register tab completer " + m.getName()
-							+ ". A tab completer is already registered for that command!");
+					System.out.println("Unable to register tab completer " + m.getName() + ". A tab completer is already registered for that command!");
 				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -231,5 +232,5 @@ public class CommandFramework implements CommandExecutor {
 	private void defaultCommand(CommandArgs args) {
 		args.getSender().sendMessage(args.getLabel() + " is not handled! Oh noes!");
 	}
-	
+
 }

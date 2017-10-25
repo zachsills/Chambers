@@ -13,14 +13,14 @@ import me.hulipvp.chambers.team.structure.Team;
 @Getter
 @Setter
 public class Profile {
-	
+
 	private UUID id;
 	private ProfileStatus profileStatus;
 	private ChatStatus chatStatus;
 	private Team team;
 	private int balance, respawnTime;
 	private boolean hidingScoreboard;
-	
+
 	public Profile(Player player, ProfileStatus profileStatus) {
 		this.id = player.getUniqueId();
 		this.profileStatus = profileStatus;
@@ -30,29 +30,32 @@ public class Profile {
 		this.respawnTime = 0;
 		this.hidingScoreboard = false;
 	}
-	
+
 	/**
 	 * Deposit money into the profile's balance
 	 * 
-	 * @param amount - the amount you wish to add to the profile
+	 * @param amount
+	 *            - the amount you wish to add to the profile
 	 */
 	public void deposit(int amount) {
 		this.setBalance(this.getBalance() + amount);
 	}
-	
+
 	/**
 	 * Withdraw money from the profile's balance
 	 * 
-	 * @param amount - the amount you wish to take away from the profile
+	 * @param amount
+	 *            - the amount you wish to take away from the profile
 	 */
 	public void withdraw(int amount) {
 		this.setBalance(this.getBalance() - amount);
 	}
-	
+
 	/**
 	 * Send a player a message
 	 * 
-	 * @param message - the message you wish to send the player
+	 * @param message
+	 *            - the message you wish to send the player
 	 */
 	public void sendMessage(String message) {
 		Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.translateAlternateColorCodes('&', message));

@@ -1,8 +1,8 @@
 package me.hulipvp.chambers.profile.structure;
 
 public enum ChatStatus {
-	
-	FACTION,
+
+	FACTION, 
 	PUBLIC;
 
 }

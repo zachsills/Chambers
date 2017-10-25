@@ -28,9 +28,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.google.common.collect.Sets;
+
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.util.Color;
-import net.minecraft.util.com.google.common.collect.Sets;
 
 public class EnderpearlListener implements Listener {
 	private int enderpearlCooldownTime;

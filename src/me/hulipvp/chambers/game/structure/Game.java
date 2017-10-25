@@ -10,12 +10,12 @@ import me.hulipvp.chambers.team.structure.Team;
 @Getter
 @Setter
 public class Game {
-	
+
 	private GameStatus status;
 	private int totalTime, countdownTime, invincibilityTime;
 	private Set<String> offline;
 	private Team winner;
-	
+
 	public Game(GameStatus status) {
 		this.status = status;
 		this.totalTime = 0;
@@ -24,7 +24,7 @@ public class Game {
 		this.offline = new HashSet<>();
 		this.winner = null;
 	}
-	
+
 	public boolean hasStarted() {
 		return this.status == GameStatus.STARTING || this.status == GameStatus.INGAME;
 	}

@@ -15,7 +15,7 @@ public class TeamCommand {
 		plugin.getCommandFramework().registerHelp();
 	}
 	
-	@Command(name = "faction", description = "The main command for Teams", aliases = { "f", "t", "s", "team", "squad" }, usage = "/<command> <args>")
+	@Command(name = "faction", description = "The main command for Teams", aliases = { "f", "t", "s", "team", "squad" }, usage = "/<command> <args>", requiresTeam = false)
 	public void onCommand(CommandArgs commandArgs) {
 		Player player = (Player) commandArgs.getSender();
 		showHelp(player);
@@ -27,6 +27,7 @@ public class TeamCommand {
 	    player.sendMessage("&6&m-------------------------------------------------------------");
 	    player.sendMessage("&9General Commands:");
 	    player.sendMessage("&e/f home &7- Teleport to your faction home");
+	    player.sendMessage("&e/f chat <type> &7- Displays this help menu");
 	    player.sendMessage(" ");
 	    player.sendMessage("&9Information Commands:");
 	    player.sendMessage("&e/f help &7- Displays this help menu");

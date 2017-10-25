@@ -56,23 +56,17 @@ public class Chambers extends JavaPlugin {
 	
 	/* Data Files */
 	private DataFile configFile;
-	
+
+	@Override
 	public void onEnable() {
-		
 		instance = this;
-		
 		claimManager = new ClaimManager();
 		gameManager = new GameManager();
 		profileManager = new ProfileManager();
 		teamManager = new TeamManager();
 		listenerManager = new ListenerManager();
-		
 		scoreboardWrapper = new ScoreboardWrapper(this, new ProviderResolver());
-		
 		commandFramework = new CommandFramework(this);
-		
 		configFile = new DataFile(this, "config");
-		
 	}
-
 }

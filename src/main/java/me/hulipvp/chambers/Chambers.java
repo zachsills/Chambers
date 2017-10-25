@@ -64,9 +64,12 @@ public class Chambers extends JavaPlugin {
 		gameManager = new GameManager();
 		profileManager = new ProfileManager();
 		teamManager = new TeamManager();
-		listenerManager = new ListenerManager();
+		listenerManager = new ListenerManager(instance);
 		scoreboardWrapper = new ScoreboardWrapper(this, new ProviderResolver());
 		commandFramework = new CommandFramework(this);
 		configFile = new DataFile(this, "config");
+
+		System.out.println("Registering listeners!");
+		getListenerManager().registerListeners();
 	}
 }

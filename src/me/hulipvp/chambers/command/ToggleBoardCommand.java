@@ -13,7 +13,7 @@ public class ToggleBoardCommand extends ChambersCommand {
 	public void onCommand(CommandArgs commandArgs) {
 		Profile profile = plugin.getProfileManager().getProfileByUuid(commandArgs.getPlayer().getUniqueId());
 		profile.setHidingScoreboard(profile.isHidingScoreboard() ? false : true);
-		commandArgs.getPlayer().sendMessage(ChatColor.YELLOW + "Scoreboard has been " + (profile.isHidingScoreboard() ? ChatColor.RED + "disabled": ChatColor.GREEN + "enabled") + ChatColor.YELLOW + ".");
+		profile.sendMessage(ChatColor.YELLOW + "Scoreboard has been " + (profile.isHidingScoreboard() ? ChatColor.RED + "disabled": ChatColor.GREEN + "enabled") + ChatColor.YELLOW + ".");
 	}
 
 }

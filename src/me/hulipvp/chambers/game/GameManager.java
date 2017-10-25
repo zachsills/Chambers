@@ -69,7 +69,7 @@ public class GameManager {
 			} else if (time == 0) {
 				Arrays.stream(Bukkit.getOnlinePlayers()).forEach(player -> player.kickPlayer("Thanks for playing Chambers beta, join back soon!"));
 			} else if (time % 2 == 0) {
-				Bukkit.broadcastMessage(ChatColor.YELLOW + (winner == null ? "The game was force stopped" : "The team " + winner.getFormattedName() + ChatColor.YELLOW + "has won the game!"));
+				Bukkit.broadcastMessage(ChatColor.YELLOW + (winner == null ? "The game was forcefully stopped." : "The team " + winner.getFormattedName() + ChatColor.YELLOW + "has won the game!"));
 			}
 			time--;
 		}, 0, 20L);
@@ -106,7 +106,9 @@ public class GameManager {
 			});
 		});
 		new GameTask().runTaskTimerAsynchronously(Chambers.getInstance(), 0L, 20L);
-		Bukkit.broadcastMessage(ChatColor.YELLOW + "The game has now started!");
+		Bukkit.broadcastMessage(" ");
+		Bukkit.broadcastMessage(ChatColor.YELLOW + "The game has now started! Good luck!");
+		Bukkit.broadcastMessage(" ");
 	}
 	
 	/**

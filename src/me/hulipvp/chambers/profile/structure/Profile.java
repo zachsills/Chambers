@@ -2,6 +2,8 @@ package me.hulipvp.chambers.profile.structure;
 
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import lombok.Getter;
@@ -24,9 +26,36 @@ public class Profile {
 		this.profileStatus = profileStatus;
 		this.chatStatus = ChatStatus.FACTION;
 		this.team = null;
-		this.balance = 100;
+		this.balance = 500;
 		this.respawnTime = 0;
 		this.hidingScoreboard = false;
+	}
+	
+	/**
+	 * Deposit money into the profile's balance
+	 * 
+	 * @param amount - the amount you wish to add to the profile
+	 */
+	public void deposit(int amount) {
+		this.setBalance(this.getBalance() + amount);
+	}
+	
+	/**
+	 * Withdraw money from the profile's balance
+	 * 
+	 * @param amount - the amount you wish to take away from the profile
+	 */
+	public void withdraw(int amount) {
+		this.setBalance(this.getBalance() - amount);
+	}
+	
+	/**
+	 * Send a player a message
+	 * 
+	 * @param message - the message you wish to send the player
+	 */
+	public void sendMessage(String message) {
+		Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.translateAlternateColorCodes('&', message));
 	}
 
 }

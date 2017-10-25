@@ -1,82 +1,26 @@
-###########################################################
-# Big thanks to colinmcdonald22 for the .gitignore format #
-###########################################################
+# maven
+/build.xml
 
-###########
-# Eclipse #
-###########
+# more maven
+/target
+/dependency-reduced-pom.xml
+*/target
+*/dependency-reduced-pom.xml
 
-.classpath
-.project
-.settings/
+# vim
+.*.sw[a-p]
 
-############
-# IntelliJ #
-############
+# various other potential build files
+/build
+/bin
+/dist
+/manifest.mf
 
-.idea/
+# Mac filesystem dust
+/.DS_Store
+
+# intellij
 *.iml
+*.ipr
 *.iws
-
-#######
-# Mac #
-#######
-
-.DS_Store
-
-
-#########
-# Maven #
-#########
-
-log/
-target/
-
-###################
-# Compiled source #
-###################
-
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
-############
-# Packages #
-############
-
-*.7z
-*.dmg
-*.gz
-*.iso
-*.rar
-*.tar
-*.zip
-
-######################
-# Logs and databases #
-######################
-
-*.log
-*.sql
-*.sqlite
-
-######################
-# OS generated files #
-######################
-
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-bin/*.yml
-
-.classpath
-
-.project
+.idea/

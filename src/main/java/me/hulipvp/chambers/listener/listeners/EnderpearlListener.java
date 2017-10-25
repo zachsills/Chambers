@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.common.collect.Sets;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -30,7 +31,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.util.Color;
-import net.minecraft.util.com.google.common.collect.Sets;
 
 public class EnderpearlListener implements Listener {
 	private int enderpearlCooldownTime;

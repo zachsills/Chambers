@@ -45,5 +45,5 @@ public class ProfileManager {
 	public void removeProfile(Profile profile) {
 		profiles.remove(profile);
 	}
-
+	
 }

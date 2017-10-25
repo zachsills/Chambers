@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 import me.hulipvp.chambers.game.structure.Game;
+import me.hulipvp.chambers.util.MathUtil;
 import me.hulipvp.chambers.util.commandapi.ChambersCommand;
 import me.hulipvp.chambers.util.commandapi.Command;
 import me.hulipvp.chambers.util.commandapi.CommandArgs;
@@ -24,14 +25,29 @@ public class GameCommand extends ChambersCommand {
 				return;
 			}
 			plugin.getGameManager().start();
-			Bukkit.broadcast("chambers.staff", ChatColor.GREEN + commandArgs.getSender().getName() + ChatColor.YELLOW + " has force started the game.");
+			Bukkit.broadcast("chambers.staff", ChatColor.GREEN + commandArgs.getSender().getName() + ChatColor.YELLOW + " has force started the countdown.");
 		} else if (arg.equalsIgnoreCase("stop")) {
 			if (!game.hasStarted()) {
 				commandArgs.getPlayer().sendMessage(ChatColor.RED + "The game has not started yet.");
 				return;
 			}
-			plugin.getGameManager().stop();;
+			plugin.getGameManager().stop(null);
 			Bukkit.broadcast("chambers.staff", ChatColor.GREEN + commandArgs.getSender().getName() + ChatColor.YELLOW + " has force stopped the game.");
+		} else if (arg.equalsIgnoreCase("setcountdowntime")) {
+			if (commandArgs.length() != 2) {
+				commandArgs.getSender().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " setcountdowntime <value>");
+				return;
+			}
+			if (game.hasStarted()) {
+				commandArgs.getPlayer().sendMessage(ChatColor.RED + "The game has already started.");
+				return;
+			}
+			if (!MathUtil.isInt(commandArgs.getArgs(1))) {
+				commandArgs.getSender().sendMessage(ChatColor.RED + "Please enter a valid integer.");
+				return;
+			}
+			game.setCountdownTime(Integer.valueOf(commandArgs.getArgs(1)));
+			Bukkit.broadcast("chambers.staff", ChatColor.GREEN + commandArgs.getSender().getName() + ChatColor.YELLOW + " has set the countdown time to " + commandArgs.getArgs(1) + ".");
 		}
 	}
 

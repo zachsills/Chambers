@@ -28,8 +28,8 @@ public class LobbyProvider implements ScoreboardProvider {
 		lines.add(Color.color("&6Map&7: &aClassic"));
 		Profile profile = plugin.getProfileManager().getProfileByUuid(player.getUniqueId());
 		if (profile != null && profile.getTeam() != null) {
-			lines.add(Color.color("&6&lTeam: " + profile.getTeam().getFormattedName()));
-			lines.add(Color.color("&6&lMembers:"));
+			lines.add(Color.color("&6Team: " + profile.getTeam().getFormattedName()));
+			lines.add(Color.color("&6Members:"));
 			int count = 1;
 			for (UUID uuid : profile.getTeam().getMembers()) {
 				lines.add(Color.color(" &7" + count + ". &r" + Bukkit.getPlayer(uuid).getName()));
@@ -38,7 +38,7 @@ public class LobbyProvider implements ScoreboardProvider {
 		}
 		if (plugin.getGameManager().getGame().getStatus() == GameStatus.STARTING) {
 			lines.add(" ");
-			lines.add(Color.color("&6Countdown&7:&r " + 60));
+			lines.add(Color.color("&6Starting in&7:&r " + plugin.getGameManager().getGame().getCountdownTime()));
 		}
 
 		return lines;

@@ -39,8 +39,7 @@ public class GameCommand extends ChambersCommand {
 			Bukkit.broadcast("chambers.staff", ChatColor.GREEN + commandArgs.getSender().getName() + ChatColor.YELLOW + " has forcefully stopped the game.");
 		} else if (arg.equalsIgnoreCase("setcountdowntime")) {
 			if (commandArgs.length() != 2) {
-				commandArgs.getSender()
-						.sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " setcountdowntime <value>");
+				commandArgs.getSender().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " setcountdowntime <value>");
 				return;
 			}
 			if (game.hasStarted()) {

@@ -34,8 +34,7 @@ public class Profile {
 	/**
 	 * Deposit money into the profile's balance
 	 * 
-	 * @param amount
-	 *            - the amount you wish to add to the profile
+	 * @param amount - the amount you wish to add to the profile
 	 */
 	public void deposit(int amount) {
 		this.setBalance(this.getBalance() + amount);
@@ -44,8 +43,7 @@ public class Profile {
 	/**
 	 * Withdraw money from the profile's balance
 	 * 
-	 * @param amount
-	 *            - the amount you wish to take away from the profile
+	 * @param amount - the amount you wish to take away from the profile
 	 */
 	public void withdraw(int amount) {
 		this.setBalance(this.getBalance() - amount);
@@ -54,8 +52,7 @@ public class Profile {
 	/**
 	 * Send a player a message
 	 * 
-	 * @param message
-	 *            - the message you wish to send the player
+	 * @param message - the message you wish to send the player
 	 */
 	public void sendMessage(String message) {
 		Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.translateAlternateColorCodes('&', message));

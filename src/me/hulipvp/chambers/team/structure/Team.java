@@ -1,11 +1,15 @@
 package me.hulipvp.chambers.team.structure;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -34,6 +38,12 @@ public class Team {
 		this.offline = new HashSet<>();
 		this.dtr = 1.0;
 		this.home = null;
+	}
+	
+	public List<Player> getOnlinePlayers() {
+		List<Player> onlinePlayers = new ArrayList<>();
+		this.members.stream().forEach(uuid -> onlinePlayers.add(Bukkit.getPlayer(uuid)));
+		return onlinePlayers;
 	}
 
 	public String getFormattedName() {
@@ -64,6 +74,10 @@ public class Team {
 	
 	public boolean isPlayerTeam() {
 		return this.type.isPlayerTeam();
+	}
+	
+	public void sendMessage(String message) {
+		this.getOnlinePlayers().stream().forEach(player -> player.sendMessage(message));
 	}
 
 }

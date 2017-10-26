@@ -51,8 +51,7 @@ public class BukkitCommand extends org.bukkit.command.Command {
 		try {
 			success = executor.onCommand(sender, this, commandLabel, args);
 		} catch (Throwable ex) {
-			throw new CommandException("Unhandled exception executing command '" + commandLabel + "' in plugin "
-					+ owningPlugin.getDescription().getFullName(), ex);
+			throw new CommandException("Unhandled exception executing command '" + commandLabel + "' in plugin " + owningPlugin.getDescription().getFullName(), ex);
 		}
 
 		if (!success && usageMessage.length() > 0) {

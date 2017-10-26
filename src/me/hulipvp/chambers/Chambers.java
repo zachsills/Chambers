@@ -55,7 +55,7 @@ public class Chambers extends JavaPlugin {
 	private CommandFramework commandFramework;
 
 	/* Data Files */
-	private DataFile configFile;
+	private DataFile dataFile;
 
 	public void onEnable() {
 
@@ -71,8 +71,8 @@ public class Chambers extends JavaPlugin {
 
 		commandFramework = new CommandFramework(this);
 
-		configFile = new DataFile(this, "data");
+		dataFile = new DataFile(this, "data");
 
 	}
-
+	
 }

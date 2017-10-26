@@ -110,6 +110,10 @@ public class CommandFramework implements CommandExecutor {
 						return true;
 					}
 				}
+				if (command.adminsOnly() && !sender.hasPermission("chambers.staff")) {
+					sender.sendMessage(command.noPerm());
+					return true;
+				}
 				try {
 					method.invoke(methodObject, new CommandArgs(sender, cmd, label, args, cmdLabel.split("\\.").length - 1));
 				} catch (IllegalArgumentException e) {

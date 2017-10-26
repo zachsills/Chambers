@@ -41,8 +41,7 @@ public class TeamManager {
 	 * Get a Team by it's name, ignoring it's case<br>
 	 * Will return <tt>null</tt> if no Team with the same name is found
 	 * 
-	 * @param name
-	 *            - the name of the Team that you're trying to find
+	 * @param name - the name of the Team that you're trying to find
 	 * @return Team - a Team with the matching name
 	 */
 	public Team getTeamByName(String name) {
@@ -53,8 +52,7 @@ public class TeamManager {
 	 * Get a Team by checking if the Member set contains the provided UUID<br>
 	 * Will return <tt>null</tt> if no Team with that member is found
 	 * 
-	 * @param uuid
-	 *            - the UUID of the member you wish to find
+	 * @param uuid - the UUID of the member you wish to find
 	 * @return Team - a Team with a member that has the same UUID as the one
 	 *         provided
 	 */
@@ -67,9 +65,7 @@ public class TeamManager {
 	 * attempt to get a Team by a member's UUID<br>
 	 * If all of that fails, then it will return <tt>null</tt>
 	 * 
-	 * @param string
-	 *            - the name Team or the name of the Member you're trying to
-	 *            find
+	 * @param string- the name Team or the name of the Member you're trying to find
 	 * @return Team - a Team with the same name or with a matching member
 	 */
 	public Team getTeamByString(String string) {

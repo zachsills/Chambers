@@ -9,14 +9,15 @@ import lombok.Getter;
 @Getter
 public enum TeamType {
 
-	KOTH(ChatColor.AQUA, "KoTH"), 
-	WILDERNESS(ChatColor.GRAY, "Wilderness"), 
-	RED(ChatColor.RED, "Red"), 
-	BLUE(ChatColor.BLUE, "Blue"), 
-	GREEN(ChatColor.GREEN, "Green"), 
-	YELLOW(ChatColor.YELLOW, "Yellow");
+	KOTH(ChatColor.AQUA, "KoTH", false), 
+	WILDERNESS(ChatColor.GRAY, "Wilderness", false), 
+	RED(ChatColor.RED, "Red", true), 
+	BLUE(ChatColor.BLUE, "Blue", true), 
+	GREEN(ChatColor.GREEN, "Green", true), 
+	YELLOW(ChatColor.YELLOW, "Yellow", true);
 
 	private ChatColor color;
 	private String name;
+	private boolean playerTeam;
 
 }

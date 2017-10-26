@@ -76,4 +76,11 @@ public @interface Command {
 	 * @return
 	 */
 	public boolean requiresTeam() default false;
+	
+	/**
+	 * Whether or not the command can be used by admins only
+	 * 
+	 * @return
+	 */
+	public boolean adminsOnly() default false;
 }

@@ -24,7 +24,6 @@ public class Team {
 	private double dtr;
 	private Location home;
 	private Claim claim;
-	private boolean playerTeam;
 
 	public Team(TeamType type) {
 		this.type = type;
@@ -45,6 +44,11 @@ public class Team {
 		profile.setTeam(this);
 		this.members.add(profile.getId());
 	}
+	
+	public void removeMember(Profile profile) {
+		profile.setTeam(null);
+		this.members.remove(profile.getId());
+	}
 
 	public int getSize() {
 		return this.members.size();
@@ -52,6 +56,14 @@ public class Team {
 
 	public boolean isFull() {
 		return this.members.size() >= 5;
+	}
+	
+	public boolean isRaidable() {
+		return this.dtr <= 0;
+	}
+	
+	public boolean isPlayerTeam() {
+		return this.type.isPlayerTeam();
 	}
 
 }

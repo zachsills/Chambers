@@ -33,6 +33,7 @@ public class GameManager {
 	 */
 	public void start() {
 		game.setStatus(GameStatus.STARTING);
+		Arrays.stream(Bukkit.getOnlinePlayers()).forEach(player -> player.getInventory().clear());
 		new CountdownTask().runTaskTimerAsynchronously(Chambers.getInstance(), 0L, 20L);
 		Bukkit.broadcastMessage(ChatColor.YELLOW + "The countdown is now starting");
 	}
@@ -67,8 +68,7 @@ public class GameManager {
 			if (time == -2) {
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "restart");
 			} else if (time == 0) {
-				Arrays.stream(Bukkit.getOnlinePlayers())
-						.forEach(player -> player.kickPlayer("Thanks for playing Chambers beta, join back soon!"));
+				Arrays.stream(Bukkit.getOnlinePlayers()).forEach(player -> player.kickPlayer("Thanks for playing Chambers beta, join back soon!"));
 			} else if (time % 2 == 0) {
 				Bukkit.broadcastMessage(ChatColor.YELLOW + (winner == null ? "The game was forcefully stopped." : "The team " + winner.getFormattedName() + ChatColor.YELLOW + "has won the game!"));
 			}
@@ -115,8 +115,7 @@ public class GameManager {
 	/**
 	 * Give a player their starting items
 	 * 
-	 * @param player
-	 *            - the Player you wish to give the items to
+	 * @param player - the Player you wish to give the items to
 	 */
 	public static void giveStartingItems(Player player) {
 		player.getInventory().clear();

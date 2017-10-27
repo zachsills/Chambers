@@ -51,6 +51,9 @@ public class Team {
 	}
 
 	public void addMember(Profile profile) {
+		if (profile.getTeam() != null) {
+			profile.getTeam().removeMember(profile);
+		}
 		profile.setTeam(this);
 		this.members.add(profile.getId());
 	}

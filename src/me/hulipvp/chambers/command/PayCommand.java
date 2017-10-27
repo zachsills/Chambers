@@ -34,6 +34,10 @@ public class PayCommand extends ChambersCommand {
 			return;
 		}
 		int amount = Integer.valueOf(commandArgs.getArgs(1));
+		if (profile.getBalance() < amount) {
+			profile.sendMessage(ChatColor.RED + "You only have: $" + profile.getBalance());
+			return;
+		}
 		profile.withdraw(amount);
 		targetProfile.deposit(amount);
 		profile.sendMessage(ChatColor.YELLOW + "You have sent " + ChatColor.RED + "$" + amount + ChatColor.YELLOW + " to " + ChatColor.GREEN + commandArgs.getArgs(1) + ChatColor.YELLOW + ".");

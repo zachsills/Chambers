@@ -50,6 +50,10 @@ public class GameCommand extends ChambersCommand {
 				commandArgs.getSender().sendMessage(ChatColor.RED + "Please enter a valid integer.");
 				return;
 			}
+			int time = Math.abs(Integer.valueOf(commandArgs.getArgs(1)));
+			if (time == 0 || time > 120) {
+				commandArgs.getSender().sendMessage(ChatColor.RED + "Please enter a time less than 120 and greater than 0.");
+			}
 			game.setCountdownTime(Integer.valueOf(commandArgs.getArgs(1)));
 			Bukkit.broadcast("chambers.staff", ChatColor.GREEN + commandArgs.getSender().getName() + ChatColor.YELLOW + " has set the countdown time to " + commandArgs.getArgs(1) + ".");
 		}

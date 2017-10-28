@@ -31,7 +31,6 @@ public class TeamForcePlaceCommand extends TeamCommand {
 		}
 		Profile profile = plugin.getProfileManager().getProfileByUuid(target.getUniqueId());
 		team.addMember(profile);
-		profile.sendMessage(ChatColor.GRAY + "You have forcecully placed  " +  ChatColor.DARK_AQUA + targetName + " on the team " + team.getFormattedName() + ChatColor.GRAY + ".");
 		profile.sendMessage(ChatColor.GRAY + "You have forcecully placed " +  ChatColor.DARK_AQUA + targetName + " on the team " + team.getFormattedName() + ChatColor.GRAY + ".");
 	}
 

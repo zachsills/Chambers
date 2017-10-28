@@ -1,7 +1,5 @@
 package me.hulipvp.chambers.game;
 
-import java.util.Arrays;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -33,7 +31,7 @@ public class GameManager {
 	 */
 	public void start() {
 		game.setStatus(GameStatus.STARTING);
-		Arrays.stream(Bukkit.getOnlinePlayers()).forEach(player -> player.getInventory().clear());
+		Bukkit.getOnlinePlayers().stream().forEach(player -> player.getInventory().clear());
 		new CountdownTask().runTaskTimerAsynchronously(Chambers.getInstance(), 0L, 20L);
 		Bukkit.broadcastMessage(ChatColor.YELLOW + "The countdown is now starting");
 	}
@@ -43,8 +41,8 @@ public class GameManager {
 	 */
 	public void stop(Team winner) {
 		game.setStatus(GameStatus.OVER);
-		Arrays.stream(Bukkit.getOnlinePlayers()).forEach(player -> {
-			Arrays.stream(Bukkit.getOnlinePlayers()).forEach(other -> {
+		Bukkit.getOnlinePlayers().stream().forEach(player -> {
+			Bukkit.getOnlinePlayers().stream().forEach(other -> {
 				player.showPlayer(other);
 				other.showPlayer(player);
 			});
@@ -68,7 +66,7 @@ public class GameManager {
 			if (time == -2) {
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "restart");
 			} else if (time == 0) {
-				Arrays.stream(Bukkit.getOnlinePlayers()).forEach(player -> player.kickPlayer("Thanks for playing Chambers beta, join back soon!"));
+				Bukkit.getOnlinePlayers().stream().forEach(player -> player.kickPlayer("Thanks for playing Chambers beta, join back soon!"));
 			} else if (time % 2 == 0) {
 				Bukkit.broadcastMessage(ChatColor.YELLOW + (winner == null ? "The game was forcefully stopped." : "The team " + winner.getFormattedName() + ChatColor.YELLOW + "has won the game!"));
 			}
@@ -80,7 +78,7 @@ public class GameManager {
 	 * Attempts to start the Game
 	 */
 	public void tryStart() {
-		if (Bukkit.getOnlinePlayers().length == 20) {
+		if (Bukkit.getOnlinePlayers().size() == 20) {
 			start();
 		}
 	}

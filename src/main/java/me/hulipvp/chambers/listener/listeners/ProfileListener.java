@@ -28,7 +28,7 @@ public class ProfileListener implements Listener {
 		} else {
 			profile = new Profile(player, ProfileStatus.PLAYING);
 			plugin.getGameManager().tryStart();
-			event.setJoinMessage(player.getName() + ChatColor.YELLOW + " has joined." + ChatColor.RED + "(" + Math.abs(20 - Bukkit.getOnlinePlayers().length) + "/20)");
+			event.setJoinMessage(player.getName() + ChatColor.YELLOW + " has joined." + ChatColor.RED + "(" + Math.abs(20 - Bukkit.getOnlinePlayers().size()) + "/20)");
 		}
 		if (profile != null) {
 			plugin.getProfileManager().addProfile(profile);

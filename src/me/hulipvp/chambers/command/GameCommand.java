@@ -56,6 +56,16 @@ public class GameCommand extends ChambersCommand {
 			}
 			game.setCountdownTime(Integer.valueOf(commandArgs.getArgs(1)));
 			Bukkit.broadcast("chambers.staff", ChatColor.GREEN + commandArgs.getSender().getName() + ChatColor.YELLOW + " has set the countdown time to " + commandArgs.getArgs(1) + ".");
+		} else if (arg.equalsIgnoreCase("setmapname")) {
+			if (commandArgs.length() != 2) {
+				commandArgs.getSender().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " setmapname <name>");
+				return;
+			}
+			String mapName = commandArgs.getArgs(1);
+			plugin.getDataFile().getConfiguration().set("MAP_NAME", mapName);
+			plugin.getDataFile().save();
+			plugin.getDataFile().load();
+			commandArgs.getSender().sendMessage(ChatColor.YELLOW + "The map name has been set to " + ChatColor.GREEN + mapName + ChatColor.YELLOW + ".");
 		}
 	}
 

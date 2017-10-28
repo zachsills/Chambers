@@ -25,7 +25,7 @@ public class LobbyProvider implements ScoreboardProvider {
 		List<String> lines = new ArrayList<>();
 
 		lines.add(Color.color("&6Game State&7: &rLobby"));
-		lines.add(Color.color("&6Map&7: &aClassic"));
+		lines.add(Color.color("&6Map&7: &a" + plugin.getDataFile().getString("MAP_NAME")));
 		Profile profile = plugin.getProfileManager().getProfileByUuid(player.getUniqueId());
 		if (profile != null && profile.getTeam() != null) {
 			lines.add(Color.color("&6Team: " + profile.getTeam().getFormattedName()));
@@ -35,6 +35,8 @@ public class LobbyProvider implements ScoreboardProvider {
 				lines.add(Color.color(" &7" + count + ". &r" + Bukkit.getPlayer(uuid).getName()));
 				++count;
 			}
+		} else {
+			lines.add(Color.color("&6Team: &7Please choose..."));
 		}
 		if (plugin.getGameManager().getGame().getStatus() == GameStatus.STARTING) {
 			lines.add(" ");

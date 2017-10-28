@@ -20,7 +20,7 @@ public class EndProvider implements ScoreboardProvider {
 
 		List<String> lines = new ArrayList<>();
 
-		lines.add(Color.color("&6&lMap:&7 Classic"));
+		lines.add(Color.color("&6&lMap:&7 " + plugin.getDataFile().getString("MAP_NAME")));
 		lines.add(Color.color("&6&lWinner:&r " + plugin.getGameManager().getGame().getWinner() == null ? "Forced Win" : plugin.getGameManager().getGame().getWinner().getFormattedName()));
 
 		return lines;

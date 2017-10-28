@@ -97,8 +97,7 @@ public class GameManager {
 			if (!team.getHome().getChunk().isLoaded()) {
 				team.getHome().getChunk().load();
 			}
-			team.getMembers().stream().forEach(uuid -> {
-				Player player = Bukkit.getPlayer(uuid);
+			team.getOnlinePlayers().stream().forEach(player -> {
 				giveStartingItems(player);
 				player.setGameMode(GameMode.SURVIVAL);
 				player.setAllowFlight(false);

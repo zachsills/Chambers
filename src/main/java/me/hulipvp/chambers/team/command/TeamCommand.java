@@ -15,7 +15,7 @@ public class TeamCommand {
 		plugin.getCommandFramework().registerHelp();
 	}
 
-	@Command(name = "faction", description = "The main command for Teams", aliases = { "f", "t", "s", "team", "squad" }, usage = "/<command> <args>", requiresTeam = false)
+	@Command(name = "faction", description = "The main command for Teams", aliases = { "f", "t", "s", "team", "squad" }, usage = "/<command>", requiresTeam = false)
 	public void onCommand(CommandArgs commandArgs) {
 		Player player = (Player) commandArgs.getSender();
 		showHelp(player);

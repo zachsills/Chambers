@@ -6,11 +6,14 @@ import java.util.Set;
 import org.bukkit.Location;
 
 import me.hulipvp.chambers.claim.structure.Claim;
+import me.hulipvp.chambers.claim.structure.ClaimProfile;
+import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.team.structure.Team;
 
 public class ClaimManager {
 
 	private Set<Claim> claims;
+	private Set<ClaimProfile> claimers;
 
 	/**
 	 * Just initializes all of the private fields so they're not null Nothing
@@ -19,6 +22,7 @@ public class ClaimManager {
 	public ClaimManager() {
 
 		claims = new HashSet<>();
+		claimers = new HashSet<>();
 
 	}
 
@@ -78,5 +82,45 @@ public class ClaimManager {
 	public void removeClaim(Claim claim) {
 		claims.remove(claim);
 	}
-
+	
+	/**
+	 * Get a ClaimProfile of a Profile to see whether has initiated a Claim sequence or not<br>
+	 * Will return <tt>null</tt> if no ClaimProfile was found with the provided Profile
+	 * 
+	 * @param profile - the Profile of the ClaimProfile you wish to find
+	 * @return ClaimProfile - a ClaimProfile with a matching Profile as the one provided
+	 */
+	public ClaimProfile getClaimProfile(Profile profile) {
+		return claimers.stream().filter(claimProfile -> claimProfile.getProfile() == profile).findFirst().orElse(null);
+	}
+	
+	/**
+	 * Check to see whether a player is claiming or not
+	 * 
+	 * @param profile - the Profile of the player that you wish to see has initiated a claim sequence
+	 * @return boolean - Returns <tt>true</tt> if the ClaimProfile is not null, however returns <tt>false</tt> if no ClaimProfile was found
+	 */
+	public boolean isClaiming(Profile profile) {
+		return getClaimProfile(profile) != null;
+	}
+	
+	/**
+	 * Add a new ClaimProfile and then store it to manage it
+	 * 
+	 * @param profile - the Profile you wish to store in the ClaimProfile
+	 */
+	public void addClaimProfile(Profile profile) {
+		claimers.add(new ClaimProfile(profile));
+	}
+	
+	/**
+	 * Removes a ClaimProfile from the Set of ClaimProfiles... obviously
+	 * 
+	 * @param profile - the Profile of the ClaimProfile you wish to remove
+	 */
+	public void removeClaimProfile(Profile profile) {
+		ClaimProfile claimProfile = getClaimProfile(profile);
+		claimers.remove(claimProfile);
+	}
+	
 }

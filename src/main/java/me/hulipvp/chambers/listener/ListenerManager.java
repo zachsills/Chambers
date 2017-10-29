@@ -7,6 +7,7 @@ import org.bukkit.plugin.PluginManager;
 
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.claim.listener.ClaimMoveListener;
+import me.hulipvp.chambers.claim.listener.ClaimProfileListener;
 import me.hulipvp.chambers.game.listener.GameDamageListener;
 import me.hulipvp.chambers.game.listener.GameProtectionListener;
 import me.hulipvp.chambers.listener.listeners.ChatListener;
@@ -28,6 +29,7 @@ public class ListenerManager {
 		PluginManager pluginManager = Bukkit.getServer().getPluginManager();
 		Stream.of(
 				new ClaimMoveListener(),
+				new ClaimProfileListener(),
 				new GameDamageListener(),
 				new GameProtectionListener(),
 				new TeamBlockListener(),

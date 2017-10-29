@@ -30,6 +30,15 @@ public class Profile {
 		this.respawnTime = 0;
 		this.hidingScoreboard = false;
 	}
+	
+	/**
+	 * Get the Player object of the Profile
+	 * 
+	 * @return Player - the Player object of the Profile
+	 */
+	public Player getPlayer() {
+		return Bukkit.getPlayer(this.getId());
+	}
 
 	/**
 	 * Deposit money into the profile's balance
@@ -55,7 +64,7 @@ public class Profile {
 	 * @param message - the message you wish to send the player
 	 */
 	public void sendMessage(String message) {
-		Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+		this.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', message));
 	}
 
 }

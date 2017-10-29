@@ -1,5 +1,6 @@
 package me.hulipvp.chambers.team;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -8,6 +9,7 @@ import java.util.stream.Collectors;
 import org.bukkit.Bukkit;
 
 import me.hulipvp.chambers.team.structure.Team;
+import me.hulipvp.chambers.team.structure.TeamType;
 
 public class TeamManager {
 
@@ -17,6 +19,8 @@ public class TeamManager {
 
 		teams = new HashSet<>();
 
+		registerAllTeamTypes();
+		
 	}
 
 	/**
@@ -96,6 +100,16 @@ public class TeamManager {
 	 */
 	public int getSmallestTeamSize() {
 		return getSmallestTeam().getSize();
+	}
+	
+	/**
+	 * Register all of the Teams on the server
+	 */
+	public void registerAllTeamTypes() {
+		teams.clear();
+		Arrays.stream(TeamType.values()).forEach(teamType -> {
+			teams.add(new Team(teamType));
+		});
 	}
 
 }

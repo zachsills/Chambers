@@ -96,7 +96,7 @@ public class CommandFramework implements CommandExecutor {
 				Object methodObject = commandMap.get(cmdLabel).getValue();
 				Command command = method.getAnnotation(Command.class);
 				if (command.permission() != "" && !sender.hasPermission(command.permission())) {
-					sender.sendMessage(command.noPerm());
+					sender.sendMessage(ChatColor.RED + command.noPerm());
 					return true;
 				}
 				if (command.playerOnly() && !(sender instanceof Player)) {
@@ -111,7 +111,7 @@ public class CommandFramework implements CommandExecutor {
 					}
 				}
 				if (command.adminsOnly() && !sender.hasPermission("chambers.staff")) {
-					sender.sendMessage(command.noPerm());
+					sender.sendMessage(ChatColor.RED + command.noPerm());
 					return true;
 				}
 				try {

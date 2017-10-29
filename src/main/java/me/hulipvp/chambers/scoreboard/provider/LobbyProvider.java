@@ -28,15 +28,15 @@ public class LobbyProvider implements ScoreboardProvider {
 		lines.add(Color.color("&6Map&7: &a" + plugin.getDataFile().getString("MAP_NAME")));
 		Profile profile = plugin.getProfileManager().getProfileByUuid(player.getUniqueId());
 		if (profile != null && profile.getTeam() != null) {
-			lines.add(Color.color("&6Team: " + profile.getTeam().getFormattedName()));
-			lines.add(Color.color("&6Members:"));
+			lines.add(Color.color("&6Team&7: " + profile.getTeam().getFormattedName()));
+			lines.add(Color.color("&6Members&7:"));
 			int count = 1;
 			for (UUID uuid : profile.getTeam().getMembers()) {
 				lines.add(Color.color(" &7" + count + ". &r" + Bukkit.getPlayer(uuid).getName()));
 				++count;
 			}
 		} else {
-			lines.add(Color.color("&6Team: &7Please choose..."));
+			lines.add(Color.color("&6Team&7: &7Please choose..."));
 		}
 		if (plugin.getGameManager().getGame().getStatus() == GameStatus.STARTING) {
 			lines.add(" ");

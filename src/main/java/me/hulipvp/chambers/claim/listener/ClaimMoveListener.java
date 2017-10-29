@@ -9,6 +9,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.game.structure.Game;
+import me.hulipvp.chambers.game.structure.GameStatus;
 import me.hulipvp.chambers.team.structure.Team;
 
 public class ClaimMoveListener implements Listener {
@@ -16,7 +17,7 @@ public class ClaimMoveListener implements Listener {
 	@EventHandler
 	public void onMove(PlayerMoveEvent event) {
 		Game game = Chambers.getInstance().getGameManager().getGame();
-		if (!game.hasStarted()) {
+		if (game.getStatus() != GameStatus.INGAME) {
 			return;
 		}
 		Location to = event.getTo();

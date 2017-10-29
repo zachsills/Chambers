@@ -13,8 +13,10 @@ import org.bukkit.entity.Player;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.claim.structure.Claim;
 import me.hulipvp.chambers.profile.structure.Profile;
+import me.hulipvp.chambers.util.LocationUtil;
 
 @Getter
 @Setter
@@ -37,7 +39,7 @@ public class Team {
 		this.members = new HashSet<>();
 		this.offline = new HashSet<>();
 		this.dtr = 1.0;
-		this.home = null;
+		this.home = LocationUtil.deserializeLocation(Chambers.getInstance().getDataFile().getString("TEAMS." + type.name() + ".HOME"));
 	}
 	
 	public List<Player> getOnlinePlayers() {

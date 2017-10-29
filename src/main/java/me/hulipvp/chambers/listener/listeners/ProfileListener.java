@@ -11,6 +11,7 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import me.hulipvp.chambers.Chambers;
+import me.hulipvp.chambers.game.structure.Game;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.profile.structure.ProfileStatus;
 
@@ -28,7 +29,7 @@ public class ProfileListener implements Listener {
 		} else {
 			profile = new Profile(player, ProfileStatus.PLAYING);
 			plugin.getGameManager().tryStart();
-			event.setJoinMessage(player.getName() + ChatColor.YELLOW + " has joined." + ChatColor.RED + "(" + Math.abs(20 - Bukkit.getOnlinePlayers().size()) + "/20)");
+			event.setJoinMessage(player.getName() + ChatColor.YELLOW + " has joined. " + ChatColor.RED + "(" + Bukkit.getOnlinePlayers().size() + "/20)");
 		}
 		if (profile != null) {
 			plugin.getProfileManager().addProfile(profile);
@@ -49,10 +50,14 @@ public class ProfileListener implements Listener {
 
 	public void removeProfile(PlayerEvent event) {
 		Player player = event.getPlayer();
+		Game game = plugin.getGameManager().getGame();
 		Profile profile = plugin.getProfileManager().getProfileByUuid(player.getUniqueId());
 		if (profile != null && profile.getTeam() != null) {
-			plugin.getGameManager().getGame().getOffline().add(player.getName());
-			profile.getTeam().getOffline().add(player.getName());
+			if (game.hasStarted()) {
+				plugin.getGameManager().getGame().getOffline().add(player.getName());
+				profile.getTeam().getOffline().add(player.getName());
+			}
+			profile.getTeam().removeMember(profile);
 		}
 		plugin.getProfileManager().removeProfile(profile);
 	}

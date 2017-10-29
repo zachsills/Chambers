@@ -24,6 +24,7 @@ public class TeamSetHomeCommand extends TeamCommand {
 		team.setHome(commandArgs.getPlayer().getLocation());
 		plugin.getDataFile().getConfiguration().set("TEAMS." + team.getType().name() + ".HOME", LocationUtil.serializeLocation(team.getHome()));
 		plugin.getDataFile().save();
+		plugin.getDataFile().load();
 		commandArgs.getPlayer().sendMessage(ChatColor.GRAY + "Set the Team home for " + team.getFormattedName() + ChatColor.GRAY + ".");
 	}
 

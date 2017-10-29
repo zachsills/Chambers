@@ -3,6 +3,7 @@ package me.hulipvp.chambers.profile;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import me.hulipvp.chambers.profile.structure.Profile;
 
@@ -14,6 +15,15 @@ public class ProfileManager {
 
 		profiles = new HashSet<>();
 
+	}
+	
+	/**
+	 * Get all of the Profiles of the Players that are currently playing the Game
+	 * 
+	 * @return Set - a Set of Profiles of the Players that have a Team
+	 */
+	public Set<Profile> getAllPlayingProfiles() {
+		return profiles.stream().filter(profile -> profile.getTeam() != null).collect(Collectors.toSet());
 	}
 
 	/**
@@ -45,5 +55,5 @@ public class ProfileManager {
 	public void removeProfile(Profile profile) {
 		profiles.remove(profile);
 	}
-
+	
 }

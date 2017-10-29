@@ -4,6 +4,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import lombok.Getter;
 import me.hulipvp.chambers.claim.ClaimManager;
+import me.hulipvp.chambers.command.GameCommand;
+import me.hulipvp.chambers.command.PayCommand;
+import me.hulipvp.chambers.command.ToggleBoardCommand;
 import me.hulipvp.chambers.config.DataFile;
 import me.hulipvp.chambers.game.GameManager;
 import me.hulipvp.chambers.listener.ListenerManager;
@@ -11,6 +14,16 @@ import me.hulipvp.chambers.profile.ProfileManager;
 import me.hulipvp.chambers.scoreboard.ScoreboardWrapper;
 import me.hulipvp.chambers.scoreboard.provider.ProviderResolver;
 import me.hulipvp.chambers.team.TeamManager;
+import me.hulipvp.chambers.team.command.TeamCommand;
+import me.hulipvp.chambers.team.command.admin.TeamClaimCommand;
+import me.hulipvp.chambers.team.command.admin.TeamForceJoinCommand;
+import me.hulipvp.chambers.team.command.admin.TeamForceLeaveCommand;
+import me.hulipvp.chambers.team.command.admin.TeamForcePlaceCommand;
+import me.hulipvp.chambers.team.command.admin.TeamSetDtrCommand;
+import me.hulipvp.chambers.team.command.admin.TeamSetHomeCommand;
+import me.hulipvp.chambers.team.command.normal.TeamChatCommand;
+import me.hulipvp.chambers.team.command.normal.TeamHelpCommand;
+import me.hulipvp.chambers.team.command.normal.TeamLocationCommand;
 import me.hulipvp.chambers.util.commandapi.CommandFramework;
 
 /**
@@ -61,6 +74,8 @@ public class Chambers extends JavaPlugin {
 
 		instance = this;
 
+		dataFile = new DataFile(this, "data");
+		
 		claimManager = new ClaimManager();
 		gameManager = new GameManager();
 		profileManager = new ProfileManager();
@@ -71,8 +86,24 @@ public class Chambers extends JavaPlugin {
 
 		commandFramework = new CommandFramework(this);
 
-		dataFile = new DataFile(this, "data");
-
+		registerAllCommands();
+		
+	}
+	
+	private void registerAllCommands() {
+		new GameCommand();
+		new PayCommand();
+		new ToggleBoardCommand();
+		new TeamCommand();
+		new TeamClaimCommand();
+		new TeamForceJoinCommand();
+		new TeamForceLeaveCommand();
+		new TeamForcePlaceCommand();
+		new TeamSetDtrCommand();
+		new TeamSetHomeCommand();
+		new TeamChatCommand();
+		new TeamHelpCommand();
+		new TeamLocationCommand();
 	}
 	
 }

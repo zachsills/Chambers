@@ -19,6 +19,9 @@ public class GameTask extends BukkitRunnable {
 		} else if (game.getInvincibilityTime() == 0) {
 			Bukkit.broadcastMessage(ChatColor.RED + "Invincibility is now disabled and PvP has now been enabled!");
 		}
+		if (game.getTotalTime() % 3 == 0 && game.getTotalTime() != 0) {
+			Chambers.getInstance().getProfileManager().getAllPlayingProfiles().forEach(profile -> profile.setBalance(profile.getBalance() + 3));
+		}
 	}
 
 }

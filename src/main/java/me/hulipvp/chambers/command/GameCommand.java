@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 import me.hulipvp.chambers.game.structure.Game;
+import me.hulipvp.chambers.game.structure.GameStatus;
 import me.hulipvp.chambers.util.MathUtil;
 import me.hulipvp.chambers.util.commandapi.ChambersCommand;
 import me.hulipvp.chambers.util.commandapi.Command;
@@ -42,8 +43,8 @@ public class GameCommand extends ChambersCommand {
 				commandArgs.getSender().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " setcountdowntime <value>");
 				return;
 			}
-			if (game.hasStarted()) {
-				commandArgs.getPlayer().sendMessage(ChatColor.RED + "The game has already started.");
+			if (game.getStatus() != GameStatus.STARTING) {
+				commandArgs.getPlayer().sendMessage(ChatColor.RED + "The countdown has already started.");
 				return;
 			}
 			if (!MathUtil.isInt(commandArgs.getArgs(1))) {

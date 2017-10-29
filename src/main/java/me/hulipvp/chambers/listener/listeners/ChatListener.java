@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import me.hulipvp.chambers.Chambers;
+import me.hulipvp.chambers.game.structure.Game;
 import me.hulipvp.chambers.profile.structure.ChatStatus;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.profile.structure.ProfileStatus;
@@ -15,8 +16,18 @@ public class ChatListener implements Listener {
 	
 	@EventHandler
 	public void onChat(AsyncPlayerChatEvent event) {
+		Game game = Chambers.getInstance().getGameManager().getGame();
 		Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(event.getPlayer().getUniqueId());
 		String message = event.getMessage();
+		
+		if (!game.hasStarted()) {
+			if (profile.getTeam() == null) {
+				event.setFormat(ChatColor.WHITE + event.getPlayer().getName() + ": " + event.getMessage());
+			} else {
+				event.setFormat(getGlobalFormat(event.getPlayer(), profile, message.substring(1)));
+			}
+			return;
+		}
 		
 		if (profile.getTeam() == null) {
 			event.setFormat(getSpectatorFormat(event.getPlayer(), message.substring(1)));
@@ -36,11 +47,11 @@ public class ChatListener implements Listener {
 		
 		if (profile.getChatStatus() == ChatStatus.FACTION) {
 			if (profile.getTeam() != null) {
-				profile.getTeam().sendMessage(getTeamMessageFormat(event.getPlayer(), message.substring(1)));
+				profile.getTeam().sendMessage(getTeamMessageFormat(event.getPlayer(), message));
 			} else {
 				profile.setChatStatus(ChatStatus.PUBLIC);
 				profile.setTeam(null);
-				event.setFormat(getSpectatorFormat(event.getPlayer(), message.substring(1)));
+				event.setFormat(getSpectatorFormat(event.getPlayer(), message));
 			}
 			return;
 		} else {

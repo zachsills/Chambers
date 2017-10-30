@@ -55,7 +55,7 @@ public class GameCommand extends ChambersCommand {
 			if (time == 0 || time > 120) {
 				commandArgs.getSender().sendMessage(ChatColor.RED + "Please enter a time less than 120 and greater than 0.");
 			}
-			game.setCountdownTime(Integer.valueOf(commandArgs.getArgs(1)));
+			game.setCountdownTime(time);
 			Bukkit.broadcast("chambers.staff", ChatColor.GREEN + commandArgs.getSender().getName() + ChatColor.YELLOW + " has set the countdown time to " + commandArgs.getArgs(1) + ".");
 		} else if (arg.equalsIgnoreCase("setmapname")) {
 			if (commandArgs.length() != 2) {
@@ -63,6 +63,7 @@ public class GameCommand extends ChambersCommand {
 				return;
 			}
 			String mapName = commandArgs.getArgs(1);
+			game.setMapName(mapName);
 			plugin.getDataFile().getConfiguration().set("MAP_NAME", mapName);
 			plugin.getDataFile().save();
 			plugin.getDataFile().load();

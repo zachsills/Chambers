@@ -22,7 +22,6 @@ public class IngameProvider implements ScoreboardProvider {
 	// TODO: ADD KOTH TO SCOREBOARD
 	@Override
 	public List<String> getLines(Player player) {
-
 		List<String> lines = new ArrayList<>();
 
 		Profile profile = plugin.getProfileManager().getProfileByUuid(player.getUniqueId());

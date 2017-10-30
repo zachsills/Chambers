@@ -69,8 +69,7 @@ public class DataFile {
 	 * Retrieve a double from the file<br>
 	 * Will return as <tt>0.0</tt> if no double by the path name was found
 	 * 
-	 * @param path
-	 *            - the path of the double you're looking for
+	 * @param path - the path of the double you're looking for
 	 * @return double - the double which is found in the provided path
 	 */
 	public double getDouble(String path) {
@@ -84,8 +83,7 @@ public class DataFile {
 	 * Get an int from the file<br>
 	 * Will returin as <tt>0</tt> is no int was found in the provided path
 	 * 
-	 * @param path
-	 *            - the path of the integer value that you're looking for
+	 * @param path - the path of the integer value that you're looking for
 	 * @return int - the int which was found in the provided path
 	 */
 	public int getInt(String path) {
@@ -100,8 +98,7 @@ public class DataFile {
 	 * Will return as a default value of <tt>false</tt> if there was nothing
 	 * found in the provided path
 	 * 
-	 * @param path
-	 *            - the path of the boolean that you're looking for
+	 * @param path - the path of the boolean that you're looking for
 	 * @return boolean - the boolean which was found in the provided path
 	 */
 	public boolean getBoolean(String path) {
@@ -116,8 +113,7 @@ public class DataFile {
 	 * Will return an empty String if there was no String found in the provided
 	 * path
 	 * 
-	 * @param path
-	 *            - the path of the String you're looking for
+	 * @param path - the path of the String you're looking for
 	 * @return String - the String which was found in the provided path
 	 */
 	public String getString(String path) {
@@ -132,8 +128,7 @@ public class DataFile {
 	 * Will return a list saying the path is invalid is no String List is found
 	 * in the provided path
 	 * 
-	 * @param path
-	 *            - the path you wish to find a String list at
+	 * @param path - the path you wish to find a String list at
 	 * @return strings - a List of Strings which was found in the provided path
 	 */
 	public List<String> getStringList(String path) {
@@ -150,8 +145,7 @@ public class DataFile {
 	 * Simply reverses a String list<br>
 	 * I'm not really sure why this is needed, but okay
 	 * 
-	 * @param path
-	 *            - the path you wish to find a String list at
+	 * @param path - the path you wish to find a String list at
 	 * @return list - a List of Strings that are in reversed order from which it
 	 *         was found
 	 */

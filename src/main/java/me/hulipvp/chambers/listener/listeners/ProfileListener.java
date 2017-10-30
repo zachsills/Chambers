@@ -2,6 +2,7 @@ package me.hulipvp.chambers.listener.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,6 +10,8 @@ import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.game.structure.Game;
@@ -29,6 +32,14 @@ public class ProfileListener implements Listener {
 		} else {
 			profile = new Profile(player, ProfileStatus.PLAYING);
 			plugin.getGameManager().tryStart();
+			Inventory inventory = player.getInventory();
+			inventory.clear();
+			inventory.setItem(2, new ItemStack(Material.REDSTONE));
+			inventory.setItem(3, new ItemStack(Material.DIAMOND));
+			inventory.setItem(4, new ItemStack(Material.NETHER_STAR));
+			inventory.setItem(5, new ItemStack(Material.EMERALD));
+			inventory.setItem(6, new ItemStack(Material.GOLD_INGOT));
+			player.updateInventory();
 			event.setJoinMessage(player.getName() + ChatColor.YELLOW + " has joined. " + ChatColor.RED + "(" + Bukkit.getOnlinePlayers().size() + "/20)");
 		}
 		if (profile != null) {

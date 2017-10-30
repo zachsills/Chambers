@@ -103,6 +103,15 @@ public class TeamManager {
 	}
 	
 	/**
+	 * Get a Random Player team for a Player to join
+	 * 
+	 * @return Team - a Team that was randomly chosen from the Set
+	 */
+	public Team getRandomTeam() {
+		return getAllPlayerTeams().stream().filter(team -> !team.isFull()).findAny().orElse(getSmallestTeam());
+	}
+	
+	/**
 	 * Register all of the Teams on the server
 	 */
 	public void registerAllTeamTypes() {

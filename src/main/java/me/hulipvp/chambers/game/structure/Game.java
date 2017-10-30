@@ -5,6 +5,7 @@ import java.util.Set;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.team.structure.Team;
 
 @Getter
@@ -15,6 +16,7 @@ public class Game {
 	private int totalTime, countdownTime, invincibilityTime;
 	private Set<String> offline;
 	private Team winner;
+	private String mapName;
 
 	public Game(GameStatus status) {
 		this.status = status;
@@ -23,6 +25,7 @@ public class Game {
 		this.invincibilityTime = 60;
 		this.offline = new HashSet<>();
 		this.winner = null;
+		this.mapName = Chambers.getInstance().getDataFile().getString("MAP_NAME");
 	}
 
 	public boolean hasStarted() {

@@ -54,6 +54,10 @@ public class Team {
 
 	public void addMember(Profile profile) {
 		if (profile.getTeam() != null) {
+			if (profile.getTeam() == this) {
+				profile.sendMessage(ChatColor.GRAY + "You are already on the " + this.getFormattedName() + ChatColor.GRAY + " team.");
+				return;
+			}
 			profile.getTeam().removeMember(profile);
 		}
 		profile.setTeam(this);

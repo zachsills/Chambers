@@ -21,11 +21,10 @@ public class LobbyProvider implements ScoreboardProvider {
 
 	@Override
 	public List<String> getLines(Player player) {
-
 		List<String> lines = new ArrayList<>();
 
 		lines.add(Color.color("&6Game State&7: &rLobby"));
-		lines.add(Color.color("&6Map&7: &a" + plugin.getDataFile().getString("MAP_NAME")));
+		lines.add(Color.color("&6Map&7: &a" + plugin.getGameManager().getGame().getMapName()));
 		Profile profile = plugin.getProfileManager().getProfileByUuid(player.getUniqueId());
 		if (profile != null && profile.getTeam() != null) {
 			lines.add(Color.color("&6Team&7: " + profile.getTeam().getFormattedName()));

@@ -10,7 +10,7 @@ import me.hulipvp.chambers.util.commandapi.CommandArgs;
 
 public class TeamSetHomeCommand extends TeamCommand {
 	
-	@Command(name = "faction.sethome", description = "Set the home for a Team", aliases = { "f.sethome", "t.sethome", "s.sethome", "team.sethome", "squad.sethome" }, usage = "/<command> <args>", requiresTeam = false, adminsOnly = true)
+	@Command(name = "faction.sethome", description = "Set the home for a Team", aliases = { "f.sethome", "t.sethome", "s.sethome", "team.sethome", "squad.sethome" }, usage = "/<command> <args>", playerOnly = true, requiresTeam = false, adminsOnly = true)
 	public void onCommand(CommandArgs commandArgs) {
 		if (commandArgs.length() != 1) {
 			commandArgs.getPlayer().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " <team>");

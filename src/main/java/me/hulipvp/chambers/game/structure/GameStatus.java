@@ -7,12 +7,11 @@ import lombok.Getter;
 @Getter
 public enum GameStatus {
 
-	LOBBY(0, "Lobby"), 
-	STARTING(1, "Starting"), 
-	INGAME(2, "Ingame"), 
-	OVER(3, "Over");
+	LOBBY("Lobby"), 
+	STARTING("Starting"), 
+	INGAME("Ingame"), 
+	OVER("Over");
 
-	private int id;
 	private String motd;
 
 }

@@ -24,6 +24,7 @@ import me.hulipvp.chambers.team.command.admin.TeamSetHomeCommand;
 import me.hulipvp.chambers.team.command.normal.TeamChatCommand;
 import me.hulipvp.chambers.team.command.normal.TeamHelpCommand;
 import me.hulipvp.chambers.team.command.normal.TeamLocationCommand;
+import me.hulipvp.chambers.team.command.normal.TeamShowCommand;
 import me.hulipvp.chambers.util.commandapi.CommandFramework;
 
 /**
@@ -104,6 +105,7 @@ public class Chambers extends JavaPlugin {
 		new TeamChatCommand();
 		new TeamHelpCommand();
 		new TeamLocationCommand();
+		new TeamShowCommand();
 	}
 	
 }

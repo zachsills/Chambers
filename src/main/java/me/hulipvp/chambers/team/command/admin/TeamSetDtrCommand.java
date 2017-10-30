@@ -27,7 +27,7 @@ public class TeamSetDtrCommand extends TeamCommand {
 		}
 		double dtr = Double.parseDouble(commandArgs.getArgs(1));
 		if (Math.abs(dtr) > 6) {
-			commandArgs.getPlayer().sendMessage(ChatColor.RED + "Please enter an amount that 6 away from zero.");
+			commandArgs.getPlayer().sendMessage(ChatColor.RED + "Please enter an amount that is 6 away from zero.");
 			return;
 		}
 		team.setDtr(dtr);

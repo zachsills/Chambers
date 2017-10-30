@@ -21,7 +21,7 @@ public class Game {
 	public Game(GameStatus status) {
 		this.status = status;
 		this.totalTime = 0;
-		this.countdownTime = 60;
+		this.countdownTime = 45;
 		this.invincibilityTime = 60;
 		this.offline = new HashSet<>();
 		this.winner = null;

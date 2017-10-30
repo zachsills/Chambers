@@ -120,7 +120,7 @@ public class DataFile {
 		if (configuration.contains(path)) {
 			return ChatColor.translateAlternateColorCodes('&', configuration.getString(path));
 		}
-		return "";
+		return null;
 	}
 
 	/**

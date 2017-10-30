@@ -28,10 +28,11 @@ public class ProfileListener implements Listener {
 		Profile profile = null;
 		if (plugin.getGameManager().getGame().hasStarted()) {
 			profile = new Profile(player, ProfileStatus.SPECTATING);
+			player.teleport(plugin.getGameManager().getGame().getSpawnLocation());
 			event.setJoinMessage(null);
 		} else {
 			profile = new Profile(player, ProfileStatus.PLAYING);
-			plugin.getGameManager().tryStart();
+			player.teleport(plugin.getGameManager().getGame().getSpawnLocation());
 			Inventory inventory = player.getInventory();
 			inventory.clear();
 			inventory.setItem(2, new ItemStack(Material.REDSTONE));
@@ -41,6 +42,7 @@ public class ProfileListener implements Listener {
 			inventory.setItem(6, new ItemStack(Material.GOLD_INGOT));
 			player.updateInventory();
 			event.setJoinMessage(player.getName() + ChatColor.YELLOW + " has joined. " + ChatColor.RED + "(" + Bukkit.getOnlinePlayers().size() + "/20)");
+			plugin.getGameManager().tryStart();
 		}
 		if (profile != null) {
 			plugin.getProfileManager().addProfile(profile);

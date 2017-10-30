@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 
 import me.hulipvp.chambers.game.structure.Game;
 import me.hulipvp.chambers.game.structure.GameStatus;
+import me.hulipvp.chambers.util.LocationUtil;
 import me.hulipvp.chambers.util.MathUtil;
 import me.hulipvp.chambers.util.commandapi.ChambersCommand;
 import me.hulipvp.chambers.util.commandapi.Command;
@@ -68,6 +69,12 @@ public class GameCommand extends ChambersCommand {
 			plugin.getDataFile().save();
 			plugin.getDataFile().load();
 			commandArgs.getSender().sendMessage(ChatColor.YELLOW + "The map name has been set to " + ChatColor.GREEN + mapName + ChatColor.YELLOW + ".");
+		} else if (arg.equalsIgnoreCase("setlobbyspawn")) {
+			game.setSpawnLocation(commandArgs.getPlayer().getLocation());
+			plugin.getDataFile().getConfiguration().set("SPAWN_LOCATION", LocationUtil.serializeLocation(commandArgs.getPlayer().getLocation()));
+			plugin.getDataFile().save();
+			plugin.getDataFile().load();
+			commandArgs.getSender().sendMessage(ChatColor.YELLOW + "You have set the Lobby spawn to: " + ChatColor.GREEN + LocationUtil.serializeLocation(commandArgs.getPlayer().getLocation()));
 		}
 	}
 

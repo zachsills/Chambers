@@ -1,6 +1,7 @@
 package me.hulipvp.chambers.team.command.admin;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.team.command.TeamCommand;
@@ -16,7 +17,15 @@ public class TeamClaimCommand extends TeamCommand {
 			profile.sendMessage(ChatColor.RED + "You cannot claim for the Wilderness.");
 			return;
 		}
-		
+		Player player = commandArgs.getPlayer();
+		if (plugin.getClaimManager().isClaiming(profile)) {
+			player.getInventory().remove(plugin.getClaimManager().getClaimingWand());
+			plugin.getClaimManager().removeClaimProfile(profile);
+		} else {
+			player.getInventory().addItem(plugin.getClaimManager().getClaimingWand());
+			plugin.getClaimManager().addClaimProfile(profile);
+		}
+		player.sendMessage(ChatColor.GRAY + "You have " + (plugin.getClaimManager().isClaiming(profile) ? ChatColor.GREEN + "enabled" : ChatColor.RED + "disabled") + ChatColor.GRAY + " your claiming sequence.");
 	}
 
 }

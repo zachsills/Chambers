@@ -1,9 +1,12 @@
 package me.hulipvp.chambers.claim;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.claim.structure.Claim;
@@ -11,6 +14,8 @@ import me.hulipvp.chambers.claim.structure.ClaimProfile;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.team.structure.Team;
 import me.hulipvp.chambers.team.structure.TeamType;
+import me.hulipvp.chambers.util.ItemUtil;
+import net.md_5.bungee.api.ChatColor;
 
 public class ClaimManager {
 
@@ -135,6 +140,20 @@ public class ClaimManager {
 	public void removeClaimProfile(Profile profile) {
 		ClaimProfile claimProfile = getClaimProfile(profile);
 		claimers.remove(claimProfile);
+	}
+	
+	/**
+	 * Get the Claiming wand Item to be able to claim Team territories
+	 * 
+	 * @return ItemStack - the Claiming Wand 
+	 */
+	public ItemStack getClaimingWand() {
+		return new ItemUtil(Material.GOLD_HOE).name(ChatColor.GREEN + "Claiming Wand")
+				.lore(Arrays.asList(ChatColor.YELLOW + "Right Click for Corner 1",
+						ChatColor.YELLOW + "Left Click Block for Corner 2",
+						ChatColor.YELLOW + "Shift + Left Click Air to Cancel selection",
+						ChatColor.YELLOW + "Shift + Right Click Air to Claim selection"))
+				.build();
 	}
 	
 }

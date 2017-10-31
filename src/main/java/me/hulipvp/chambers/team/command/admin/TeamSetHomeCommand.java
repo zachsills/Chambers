@@ -21,6 +21,11 @@ public class TeamSetHomeCommand extends TeamCommand {
 			commandArgs.getPlayer().sendMessage(ChatColor.RED + "That team is invalid.");
 			return;
 		}
+		Team teamAtLocation = plugin.getClaimManager().getTeamAt(commandArgs.getPlayer().getLocation());
+		if (team != teamAtLocation) {
+			commandArgs.getPlayer().sendMessage(ChatColor.RED + "You are in the wrong territory.");
+			return;
+		}
 		team.setHome(commandArgs.getPlayer().getLocation());
 		plugin.getDataFile().getConfiguration().set("TEAMS." + team.getType().name() + ".HOME", LocationUtil.serializeLocation(team.getHome()));
 		plugin.getDataFile().save();

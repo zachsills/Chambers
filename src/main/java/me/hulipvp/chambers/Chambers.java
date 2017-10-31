@@ -21,6 +21,7 @@ import me.hulipvp.chambers.team.command.admin.TeamForceLeaveCommand;
 import me.hulipvp.chambers.team.command.admin.TeamForcePlaceCommand;
 import me.hulipvp.chambers.team.command.admin.TeamSetDtrCommand;
 import me.hulipvp.chambers.team.command.admin.TeamSetHomeCommand;
+import me.hulipvp.chambers.team.command.admin.TeamSetVillagerCommand;
 import me.hulipvp.chambers.team.command.normal.TeamChatCommand;
 import me.hulipvp.chambers.team.command.normal.TeamHelpCommand;
 import me.hulipvp.chambers.team.command.normal.TeamLocationCommand;
@@ -102,6 +103,7 @@ public class Chambers extends JavaPlugin {
 		new TeamForcePlaceCommand();
 		new TeamSetDtrCommand();
 		new TeamSetHomeCommand();
+		new TeamSetVillagerCommand();
 		new TeamChatCommand();
 		new TeamHelpCommand();
 		new TeamLocationCommand();

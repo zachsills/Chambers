@@ -7,12 +7,14 @@ import me.hulipvp.chambers.claim.ClaimManager;
 import me.hulipvp.chambers.command.GameCommand;
 import me.hulipvp.chambers.command.PayCommand;
 import me.hulipvp.chambers.command.ToggleBoardCommand;
+import me.hulipvp.chambers.command.VillagerCommand;
 import me.hulipvp.chambers.config.DataFile;
 import me.hulipvp.chambers.game.GameManager;
 import me.hulipvp.chambers.listener.ListenerManager;
 import me.hulipvp.chambers.profile.ProfileManager;
 import me.hulipvp.chambers.scoreboard.ScoreboardWrapper;
 import me.hulipvp.chambers.scoreboard.provider.ProviderResolver;
+import me.hulipvp.chambers.shop.VillagerManager;
 import me.hulipvp.chambers.team.TeamManager;
 import me.hulipvp.chambers.team.command.TeamCommand;
 import me.hulipvp.chambers.team.command.admin.TeamClaimCommand;
@@ -62,6 +64,7 @@ public class Chambers extends JavaPlugin {
 	private ProfileManager profileManager;
 	private TeamManager teamManager;
 	private ListenerManager listenerManager;
+	private VillagerManager villagerManager;
 
 	/* Scoreboard */
 	private ScoreboardWrapper scoreboardWrapper;
@@ -83,6 +86,7 @@ public class Chambers extends JavaPlugin {
 		profileManager = new ProfileManager();
 		teamManager = new TeamManager();
 		listenerManager = new ListenerManager();
+		villagerManager = new VillagerManager();
 
 		scoreboardWrapper = new ScoreboardWrapper(this, new ProviderResolver());
 
@@ -92,10 +96,15 @@ public class Chambers extends JavaPlugin {
 		
 	}
 	
+	public void onDisable() {
+		gameManager.clearAllMobs();
+	}
+	
 	private void registerAllCommands() {
 		new GameCommand();
 		new PayCommand();
 		new ToggleBoardCommand();
+		new VillagerCommand();
 		new TeamCommand();
 		new TeamClaimCommand();
 		new TeamForceJoinCommand();

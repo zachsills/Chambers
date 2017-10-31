@@ -4,6 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -41,6 +44,7 @@ public class GameManager {
 	 */
 	public void stop(Team winner) {
 		game.setStatus(GameStatus.OVER);
+		clearAllMobs();
 		Bukkit.getOnlinePlayers().stream().forEach(player -> {
 			Bukkit.getOnlinePlayers().stream().forEach(other -> {
 				player.showPlayer(other);
@@ -114,12 +118,28 @@ public class GameManager {
 	 * 
 	 * @param player - the Player you wish to give the items to
 	 */
-	public static void giveStartingItems(Player player) {
+	public void giveStartingItems(Player player) {
 		player.getInventory().clear();
 		player.getInventory().setArmorContents(null);
 		player.getInventory().addItem(new ItemStack(Material.IRON_PICKAXE, 1));
 		player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 16));
 		player.getInventory().addItem(new ItemStack(Material.IRON_AXE, 1));
+	}
+	
+	/**
+	 * Remove all of the Mobs on the server
+	 */
+	public void clearAllMobs() {
+		for (World world : Bukkit.getServer().getWorlds()) {
+			for (Entity entity : world.getEntities()) {
+				if (!(entity instanceof Player)) {
+					entity.remove();
+				}
+				if (entity.getType() == EntityType.VILLAGER) {
+					entity.remove();
+				}
+			}
+		}
 	}
 
 }

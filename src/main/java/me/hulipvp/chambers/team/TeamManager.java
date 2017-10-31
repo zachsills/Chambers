@@ -22,7 +22,7 @@ public class TeamManager {
 		registerAllTeamTypes();
 		
 	}
-
+	
 	/**
 	 * Get a Set of all the non-System teams that are loaded onto the server
 	 * 

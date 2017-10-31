@@ -13,7 +13,7 @@ import me.hulipvp.chambers.util.commandapi.CommandArgs;
 
 public class GameCommand extends ChambersCommand {
 
-	@Command(name = "game", description = "The main command to manage the Game", aliases = { "managegame" }, usage = "/<command> <args>", requiresTeam = false)
+	@Command(name = "game", description = "The main command to manage the Game", aliases = { "managegame" }, usage = "/<command> <args>", requiresTeam = false, adminsOnly = true)
 	public void onCommand(CommandArgs commandArgs) {
 		Game game = plugin.getGameManager().getGame();
 		if (game == null) {

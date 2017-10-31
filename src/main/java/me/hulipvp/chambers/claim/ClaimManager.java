@@ -5,10 +5,12 @@ import java.util.Set;
 
 import org.bukkit.Location;
 
+import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.claim.structure.Claim;
 import me.hulipvp.chambers.claim.structure.ClaimProfile;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.team.structure.Team;
+import me.hulipvp.chambers.team.structure.TeamType;
 
 public class ClaimManager {
 
@@ -50,6 +52,18 @@ public class ClaimManager {
 	 */
 	public Claim getClaimByTeam(Team owner) {
 		return claims.stream().filter(claim -> claim.getOwner() == owner).findFirst().orElse(null);
+	}
+	
+	/**
+	 * Return the Team at a certain Location<br>
+	 * Will return the Team Wilderness if no claim is found at the provided Location
+	 * 
+	 * @param location - the Location at which you wish to find the Claim of a Team at
+	 * @return Team - the Team that has a claim at that Location
+	 */
+	public Team getTeamAt(Location location) {
+		Claim claim = getClaimAt(location);
+		return claim == null ? Chambers.getInstance().getTeamManager().getTeamByType(TeamType.WILDERNESS) : claim.getOwner();
 	}
 
 	/**

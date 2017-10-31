@@ -51,7 +51,19 @@ public class TeamManager {
 	public Team getTeamByName(String name) {
 		return teams.stream().filter(team -> team.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 	}
-
+	
+	/**
+	 * Get a Team by checking if it's Team type is equal to the one provided<br>
+	 * Will return <tt>null</tt> if none if found, which shouldn't happen unless you input
+	 * null 
+	 * 
+	 * @param teamType - the TeamType of the Team you wish to find
+	 * @return Team - a Team with the matching type as the one provided
+	 */
+	public Team getTeamByType(TeamType teamType) {
+		return teams.stream().filter(team -> team.getType() == teamType).findFirst().orElse(null);
+	}
+	
 	/**
 	 * Get a Team by checking if the Member set contains the provided UUID<br>
 	 * Will return <tt>null</tt> if no Team with that member is found
@@ -61,7 +73,7 @@ public class TeamManager {
 	 *         provided
 	 */
 	public Team getTeamByMember(UUID uuid) {
-		return teams.stream().filter(team -> team.getMembers().contains(uuid)).findFirst().orElse(null);
+		return getAllPlayerTeams().stream().filter(team -> team.getMembers().contains(uuid)).findFirst().orElse(null);
 	}
 
 	/**

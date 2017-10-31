@@ -8,7 +8,6 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 
 import me.hulipvp.chambers.Chambers;
-import me.hulipvp.chambers.claim.structure.Claim;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.team.structure.Team;
 
@@ -25,8 +24,7 @@ public class TeamBlockListener implements Listener {
 			event.setCancelled(true);
 			return;
 		}
-		Claim claim = Chambers.getInstance().getClaimManager().getClaimAt(location);
-		Team team = claim == null ? Chambers.getInstance().getTeamManager().getTeamByName("Wilderness") : claim.getOwner();
+		Team team = Chambers.getInstance().getClaimManager().getTeamAt(location);
 		if (team.isRaidable()) {
 			event.setCancelled(false);
 			return;
@@ -48,8 +46,7 @@ public class TeamBlockListener implements Listener {
 			event.setCancelled(true);
 			return;
 		}
-		Claim claim = Chambers.getInstance().getClaimManager().getClaimAt(location);
-		Team team = claim == null ? Chambers.getInstance().getTeamManager().getTeamByName("Wilderness") : claim.getOwner();
+		Team team = Chambers.getInstance().getClaimManager().getTeamAt(location);
 		if (team.isRaidable()) {
 			event.setCancelled(false);
 			return;

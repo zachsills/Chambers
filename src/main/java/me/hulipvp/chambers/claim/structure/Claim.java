@@ -44,5 +44,5 @@ public class Claim {
 	public boolean isInsideClaim(Player player) {
 		return isInsideClaim(player.getLocation());
 	}
-
+	
 }

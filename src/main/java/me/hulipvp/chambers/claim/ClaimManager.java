@@ -139,6 +139,7 @@ public class ClaimManager {
 	 */
 	public void removeClaimProfile(Profile profile) {
 		ClaimProfile claimProfile = getClaimProfile(profile);
+		claimProfile.clearPillars();
 		claimers.remove(claimProfile);
 	}
 	

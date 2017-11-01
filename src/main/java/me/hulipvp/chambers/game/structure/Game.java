@@ -3,6 +3,7 @@ package me.hulipvp.chambers.game.structure;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 import lombok.Getter;
@@ -30,7 +31,7 @@ public class Game {
 		this.offline = new HashSet<>();
 		this.winner = null;
 		this.mapName = Chambers.getInstance().getDataFile().getString("MAP_NAME");
-		this.spawnLocation = Chambers.getInstance().getDataFile().getString("SPAWN_LOCATION") == null ? null : LocationUtil.deserializeLocation(Chambers.getInstance().getDataFile().getString("SPAWN_LOCATION"));
+		this.spawnLocation = Chambers.getInstance().getDataFile().getString("SPAWN_LOCATION") == null ? Bukkit.getWorlds().get(0).getSpawnLocation() : LocationUtil.deserializeLocation(Chambers.getInstance().getDataFile().getString("SPAWN_LOCATION"));
 	}
 
 	public boolean hasStarted() {

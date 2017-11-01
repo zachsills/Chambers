@@ -8,6 +8,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 
 import me.hulipvp.chambers.Chambers;
+import me.hulipvp.chambers.game.structure.Game;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.team.structure.Team;
 
@@ -15,7 +16,8 @@ public class TeamBlockListener implements Listener {
 	
 	@EventHandler
 	public void onBreak(BlockBreakEvent event) {
-		if (event.isCancelled()) {
+		Game game = Chambers.getInstance().getGameManager().getGame();
+		if (!game.hasStarted()) {
 			return;
 		}
 		Location location = event.getBlock().getLocation();
@@ -37,7 +39,8 @@ public class TeamBlockListener implements Listener {
 	
 	@EventHandler
 	public void onPlace(BlockPlaceEvent event) {
-		if (event.isCancelled()) {
+		Game game = Chambers.getInstance().getGameManager().getGame();
+		if (!game.hasStarted()) {
 			return;
 		}
 		Location location = event.getBlock().getLocation();

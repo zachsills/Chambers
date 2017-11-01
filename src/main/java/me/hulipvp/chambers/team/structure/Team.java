@@ -39,7 +39,11 @@ public class Team {
 		this.members = new HashSet<>();
 		this.offline = new HashSet<>();
 		this.dtr = 1.0;
-		this.home = LocationUtil.deserializeLocation(Chambers.getInstance().getDataFile().getString("TEAMS." + type.name() + ".HOME"));
+		this.home = Chambers.getInstance().getDataFile().getString("TEAMS." + type.name() + ".HOME") != null ? LocationUtil.deserializeLocation(Chambers.getInstance().getDataFile().getString("TEAMS." + type.name() + ".HOME")) : null;
+		if (Chambers.getInstance().getDataFile().getString("TEAMS." + type.name() + ".CORNERONE") != null && Chambers.getInstance().getDataFile().getString("TEAMS." + type.name() + ".CORNERTWO") != null) {
+			this.claim = new Claim(LocationUtil.deserializeLocation(Chambers.getInstance().getDataFile().getString("TEAMS." + type.name() + ".CORNERONE")), LocationUtil.deserializeLocation(Chambers.getInstance().getDataFile().getString("TEAMS." + type.name() + ".CORNERTWO")), this);
+			Chambers.getInstance().getClaimManager().addClaim(this.claim);
+		}
 	}
 	
 	public List<Player> getOnlinePlayers() {

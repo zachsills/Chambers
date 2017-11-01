@@ -33,7 +33,7 @@ public class IngameProvider implements ScoreboardProvider {
 			lines.add(Color.color("&e&lTeam:&r " + profile.getTeam().getFormattedName()));
 			lines.add(Color.color("&4&lDTR:&c " + profile.getTeam().getDtr()));
 			lines.add(Color.color("&a&lBalance:&c $" + profile.getBalance()));
-			if (plugin.getGameManager().getGame().getInvincibilityTime() >= 0) {
+			if (plugin.getGameManager().getGame().getInvincibilityTime() > 0) {
 				lines.add(Color.color("&9&lInvincibility:&c " + formatIntToTime(plugin.getGameManager().getGame().getInvincibilityTime())));
 			}
 			if (EnderpearlListener.hasCooldown(player)) {

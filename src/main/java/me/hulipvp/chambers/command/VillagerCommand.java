@@ -13,7 +13,7 @@ public class VillagerCommand extends ChambersCommand {
 	
 	@Command(name = "villager", description = "Spawn in Shop Villagers", aliases = { "spawnvillager" }, usage = "/<command> <args>", playerOnly = true, requiresTeam = false, adminsOnly = true)
 	public void onCommand(CommandArgs commandArgs) {
-		if (commandArgs.length() != 2) {
+		if (commandArgs.length() != 1) {
 			commandArgs.getPlayer().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " <all|type>");
 			return;
 		}
@@ -22,7 +22,7 @@ public class VillagerCommand extends ChambersCommand {
 			plugin.getVillagerManager().spawnAllVillagers();
 			commandArgs.getPlayer().sendMessage(ChatColor.GREEN + "All Villagers have been spawned.");
 		} else {
-			VillagerType villagerType = VillagerType.getTypeFromString(commandArgs.getArgs(1));
+			VillagerType villagerType = VillagerType.getTypeFromString(commandArgs.getArgs(0));
 			if (villagerType == null) {
 				commandArgs.getPlayer().sendMessage(ChatColor.RED + "Invalid Villager type. Use one the following:");
 				Arrays.stream(VillagerType.values()).forEach(type -> commandArgs.getPlayer().sendMessage(type.getFormattedName()));

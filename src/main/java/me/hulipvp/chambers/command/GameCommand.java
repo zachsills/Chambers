@@ -21,7 +21,7 @@ public class GameCommand extends ChambersCommand {
 			return;
 		}
 		if (commandArgs.length() < 1) {
-			commandArgs.getSender().sendMessage(ChatColor.RED + "/game <start|stop|setcountdowntime>");
+			commandArgs.getSender().sendMessage(ChatColor.RED + "/game <start|stop|setcountdowntime|setlobbyspawn>");
 			return;
 		}
 		String arg = commandArgs.getArgs(0);

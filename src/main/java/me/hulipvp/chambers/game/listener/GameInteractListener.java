@@ -36,15 +36,11 @@ public class GameInteractListener implements Listener {
 	
 	@EventHandler
 	public void onInteract(PlayerInteractEvent event) {
-		if (event.isCancelled()) {
-			return;
-		}
 		if (!event.getAction().name().contains("RIGHT")) {
 			return;
 		}
 		Game game = plugin.getGameManager().getGame();
-		if (!game.hasStarted()) {
-			event.setCancelled(true);
+		if (game.hasStarted()) {
 			return;
 		}
 		Player player = event.getPlayer();
@@ -56,13 +52,16 @@ public class GameInteractListener implements Listener {
 		}
 		Material material = item.getType();
 		if (!teamMap.containsKey(material)) {
-			event.setCancelled(true);
 			return;
 		}
 		Team team = teamMap.get(material);
 		if (team == null) {
 			plugin.getTeamManager().getRandomTeam().addMember(profile);
 		} else {
+			if (profile.getTeam() != null && profile.getTeam() == team) {
+				event.setCancelled(true);
+				return;
+			}
 			if (team.isFull()) {
 				player.sendMessage(ChatColor.RED + "That team is currently full. Please join another team.");
 				return;
@@ -70,9 +69,7 @@ public class GameInteractListener implements Listener {
 			team.addMember(profile);
 		}
 		if (profile.getTeam() != null) {
-			if (profile.getTeam() == team) {
-				return;
-			}
+			event.setCancelled(true);
 			profile.sendMessage(ChatColor.GRAY + "You have joined team " + profile.getTeam().getFormattedName() + ChatColor.GRAY + "." + ChatColor.RED + " (" + profile.getTeam().getSize() + "/5)");
 		}
 	}

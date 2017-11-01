@@ -1,7 +1,5 @@
 package me.hulipvp.chambers.claim.structure;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 import org.bukkit.Location;
@@ -16,15 +14,33 @@ public class ClaimProfile {
 	
 	private UUID uuid;
 	private Profile profile;
-	private Set<Pillar> pillars;
 	private Location cornerOne, cornerTwo;
+	private Pillar pillarOne, pillarTwo;
 	
 	public ClaimProfile(Profile profile) {
 		this.uuid = profile.getId();
 		this.profile = profile;
-		this.pillars = new HashSet<>();
 		this.cornerOne = null;
 		this.cornerTwo = null;
+		this.pillarOne = null;
+		this.pillarTwo = null;
 	}
-
+	
+	public void updatePillars() {
+		if (this.cornerOne != null && this.cornerTwo != null) {
+			
+		}
+	}
+	
+	public void clearPillars() {
+		if (this.pillarOne != null) {
+			this.pillarOne.remove();
+			this.setPillarOne(null);
+		}
+		if (this.pillarTwo != null) {
+			this.pillarTwo.remove();
+			this.setPillarTwo(null);
+		}
+	}
+	
 }

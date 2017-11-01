@@ -29,6 +29,8 @@ public class ProfileListener implements Listener {
 		if (plugin.getGameManager().getGame().hasStarted()) {
 			profile = new Profile(player, ProfileStatus.SPECTATING);
 			player.teleport(plugin.getGameManager().getGame().getSpawnLocation());
+			Inventory inventory = player.getInventory();
+			inventory.clear();
 			event.setJoinMessage(null);
 		} else {
 			profile = new Profile(player, ProfileStatus.PLAYING);

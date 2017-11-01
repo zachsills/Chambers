@@ -2,6 +2,8 @@ package me.hulipvp.chambers.team;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -120,7 +122,8 @@ public class TeamManager {
 	 * @return Team - a Team that was randomly chosen from the Set
 	 */
 	public Team getRandomTeam() {
-		return getAllPlayerTeams().stream().filter(team -> !team.isFull()).findAny().orElse(getSmallestTeam());
+		List<Team> playerTeams = getAllPlayerTeams().stream().filter(team -> !team.isFull()).collect(Collectors.toList());
+		return playerTeams.get(new Random().nextInt(playerTeams.size()));
 	}
 	
 	/**

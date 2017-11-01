@@ -6,6 +6,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.game.structure.Game;
+import me.hulipvp.chambers.game.structure.GameStatus;
 
 public class GameTask extends BukkitRunnable {
 
@@ -21,6 +22,9 @@ public class GameTask extends BukkitRunnable {
 		}
 		if (game.getTotalTime() % 3 == 0 && game.getTotalTime() != 0) {
 			Chambers.getInstance().getProfileManager().getAllPlayingProfiles().forEach(profile -> profile.setBalance(profile.getBalance() + 3));
+		}
+		if (game.getStatus() == GameStatus.OVER) {
+			cancel();
 		}
 	}
 

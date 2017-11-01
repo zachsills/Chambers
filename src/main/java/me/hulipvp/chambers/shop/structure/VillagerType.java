@@ -11,7 +11,7 @@ import lombok.Getter;
 @Getter
 public enum VillagerType {
 	
-	COMBAT(ChatColor.RED, "Combat Shops"),
+	COMBAT(ChatColor.RED, "Combat Shop"),
 	SELLER(ChatColor.RED, "Sell Shop"),
 	TOOLS(ChatColor.RED, "Tools Shop"),
 	ENCHANTER(ChatColor.GREEN, "Tim the Enchanter");

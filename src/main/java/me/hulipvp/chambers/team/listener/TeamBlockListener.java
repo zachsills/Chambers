@@ -33,7 +33,7 @@ public class TeamBlockListener implements Listener {
 		}
 		if (team != profile.getTeam()) {
 			event.setCancelled(true);
-			profile.sendMessage(ChatColor.YELLOW + "You cannot do that in territory of " + team.getFormattedName() + ChatColor.YELLOW + ".");
+			profile.sendMessage(ChatColor.YELLOW + "You cannot do that in the territory of " + team.getFormattedName() + ChatColor.YELLOW + ".");
 		}
  	}
 	
@@ -56,7 +56,7 @@ public class TeamBlockListener implements Listener {
 		}
 		if (team != profile.getTeam()) {
 			event.setCancelled(true);
-			profile.sendMessage(ChatColor.YELLOW + "You cannot do that in territory of " + team.getFormattedName() + ChatColor.YELLOW + ".");
+			profile.sendMessage(ChatColor.YELLOW + "You cannot do that in the territory of " + team.getFormattedName() + ChatColor.YELLOW + ".");
 		}
  	}
 

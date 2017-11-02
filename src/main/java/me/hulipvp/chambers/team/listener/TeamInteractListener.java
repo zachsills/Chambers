@@ -27,6 +27,10 @@ public class TeamInteractListener implements Listener {
 		Material material = event.getClickedBlock().getType();
 		Location location = event.getClickedBlock().getLocation();
 		Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(event.getPlayer().getUniqueId());
+		if (profile.isBypassMode()) {
+			event.setCancelled(false);
+			return;
+		}
 		if (profile.getTeam() == null) {
 			event.setCancelled(true);
 			return;

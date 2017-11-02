@@ -17,6 +17,7 @@ import me.hulipvp.chambers.scoreboard.provider.ProviderResolver;
 import me.hulipvp.chambers.shop.VillagerManager;
 import me.hulipvp.chambers.team.TeamManager;
 import me.hulipvp.chambers.team.command.TeamCommand;
+import me.hulipvp.chambers.team.command.admin.TeamBypassCommand;
 import me.hulipvp.chambers.team.command.admin.TeamClaimCommand;
 import me.hulipvp.chambers.team.command.admin.TeamForceJoinCommand;
 import me.hulipvp.chambers.team.command.admin.TeamForceLeaveCommand;
@@ -106,6 +107,7 @@ public class Chambers extends JavaPlugin {
 		new ToggleBoardCommand();
 		new VillagerCommand();
 		new TeamCommand();
+		new TeamBypassCommand();
 		new TeamClaimCommand();
 		new TeamForceJoinCommand();
 		new TeamForceLeaveCommand();

@@ -19,7 +19,7 @@ public class Profile {
 	private ChatStatus chatStatus;
 	private Team team;
 	private int balance, respawnTime;
-	private boolean hidingScoreboard;
+	private boolean hidingScoreboard, bypassMode;
 
 	public Profile(Player player, ProfileStatus profileStatus) {
 		this.id = player.getUniqueId();
@@ -29,6 +29,7 @@ public class Profile {
 		this.balance = 500;
 		this.respawnTime = 0;
 		this.hidingScoreboard = false;
+		this.bypassMode = false;
 	}
 	
 	/**

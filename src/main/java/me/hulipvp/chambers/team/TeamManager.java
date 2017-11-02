@@ -99,7 +99,7 @@ public class TeamManager {
 
 	/**
 	 * Get the smallest Team so that players can join the Teams in an ordered
-	 * sequence if you want it to be an ordered sequence
+	 * sequence if you want it to be a balanced sequence
 	 * 
 	 * @return Team - the Team with the smallest size
 	 */
@@ -124,6 +124,15 @@ public class TeamManager {
 	public Team getRandomTeam() {
 		List<Team> playerTeams = getAllPlayerTeams().stream().filter(team -> !team.isFull()).collect(Collectors.toList());
 		return playerTeams.get(new Random().nextInt(playerTeams.size()));
+	}
+	
+	/**
+	 * Get a Team if you wish to have players join in an orderes sequence
+	 * 
+	 * @return Team - a Team that is next in the ordered sequence
+	 */
+	public Team getOrderedTeam() {
+		return getAllPlayerTeams().stream().filter(team -> !team.isFull()).collect(Collectors.toList()).get(0);
 	}
 	
 	/**

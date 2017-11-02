@@ -22,6 +22,10 @@ public class TeamBlockListener implements Listener {
 		}
 		Location location = event.getBlock().getLocation();
 		Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(event.getPlayer().getUniqueId());
+		if (profile.isBypassMode()) {
+			event.setCancelled(false);
+			return;
+		}
 		if (profile.getTeam() == null) {
 			event.setCancelled(true);
 			return;
@@ -45,6 +49,10 @@ public class TeamBlockListener implements Listener {
 		}
 		Location location = event.getBlock().getLocation();
 		Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(event.getPlayer().getUniqueId());
+		if (profile.isBypassMode()) {
+			event.setCancelled(false);
+			return;
+		}
 		if (profile.getTeam() == null) {
 			event.setCancelled(true);
 			return;

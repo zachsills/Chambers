@@ -1,10 +1,10 @@
 package me.hulipvp.chambers.team.structure;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -47,9 +47,7 @@ public class Team {
 	}
 	
 	public List<Player> getOnlinePlayers() {
-		List<Player> onlinePlayers = new ArrayList<>();
-		this.members.stream().forEach(uuid -> onlinePlayers.add(Bukkit.getPlayer(uuid)));
-		return onlinePlayers;
+		return this.members.stream().map(uuid -> Bukkit.getPlayer(uuid)).collect(Collectors.toList());
 	}
 
 	public String getFormattedName() {

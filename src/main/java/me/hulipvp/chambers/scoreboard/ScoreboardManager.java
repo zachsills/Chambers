@@ -62,6 +62,7 @@ public class ScoreboardManager implements Listener {
 		public void run() {
 			scoreboards.forEach((uuid, scoreboard) -> {
 				scoreboard.update();
+				scoreboard.updateTeams(Bukkit.getOnlinePlayers());
 			});
 		}
 

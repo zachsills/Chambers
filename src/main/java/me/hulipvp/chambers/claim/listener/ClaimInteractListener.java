@@ -44,6 +44,7 @@ public class ClaimInteractListener implements Listener {
 			Pillar pillar = new Pillar(event.getPlayer(), event.getClickedBlock().getLocation(), profile.getTeam().getType().getClaimMaterial());
 			claimProfile.setPillarOne(pillar);
 			pillar.display();
+			profile.sendMessage(ChatColor.GRAY + "Selected corner 1 for " + profile.getTeam().getFormattedName() + ChatColor.GRAY + ".");
 			break;
 		}
 		case LEFT_CLICK_BLOCK: {
@@ -55,6 +56,7 @@ public class ClaimInteractListener implements Listener {
 			Pillar pillar = new Pillar(event.getPlayer(), event.getClickedBlock().getLocation(), profile.getTeam().getType().getClaimMaterial());
 			claimProfile.setPillarTwo(pillar);
 			pillar.display();
+			profile.sendMessage(ChatColor.GRAY + "Selected corner 2 for " + profile.getTeam().getFormattedName() + ChatColor.GRAY + ".");
 			break;
 		}
 		case LEFT_CLICK_AIR: {
@@ -78,7 +80,7 @@ public class ClaimInteractListener implements Listener {
 				Chambers.getInstance().getDataFile().load();
 				Chambers.getInstance().getClaimManager().removeClaimProfile(profile);
 				player.getInventory().removeItem(Chambers.getInstance().getClaimManager().getClaimingWand());
-				player.sendMessage(ChatColor.GRAY + "Selection claimed for " + profile.getTeam().getFormattedName());
+				player.sendMessage(ChatColor.GRAY + "Selection claimed for " + profile.getTeam().getFormattedName() + ChatColor.GRAY + ".");
 			}
 			break;
 		}

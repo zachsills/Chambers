@@ -27,8 +27,7 @@ public class ScoreboardManager implements Listener {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			scoreboards.putIfAbsent(player.getUniqueId(), new PlayerScoreboard(player));
 		}
-		this.updateTask = Bukkit.getScheduler().runTaskTimerAsynchronously(Chambers.getInstance(),
-				new ScoreboardUpdateTask(), 2l, 2l);
+		this.updateTask = Bukkit.getScheduler().runTaskTimerAsynchronously(Chambers.getInstance(), new ScoreboardUpdateTask(), 2l, 2l);
 	}
 
 	@EventHandler
@@ -67,5 +66,5 @@ public class ScoreboardManager implements Listener {
 		}
 
 	}
-
+	
 }

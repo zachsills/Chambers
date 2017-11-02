@@ -77,5 +77,5 @@ public class GameCommand extends ChambersCommand {
 			commandArgs.getSender().sendMessage(ChatColor.YELLOW + "You have set the Lobby spawn to: " + ChatColor.GREEN + LocationUtil.serializeLocation(commandArgs.getPlayer().getLocation()));
 		}
 	}
-
+	
 }

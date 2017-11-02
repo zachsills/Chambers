@@ -146,14 +146,14 @@ public class ClaimManager {
 	/**
 	 * Get the Claiming wand Item to be able to claim Team territories
 	 * 
-	 * @return ItemStack - the Claiming Wand 
+	 * @return ItemStack - the Claiming Wand
 	 */
 	public ItemStack getClaimingWand() {
-		return new ItemUtil(Material.GOLD_HOE).name(ChatColor.GREEN + "Claiming Wand")
-				.lore(Arrays.asList(ChatColor.YELLOW + "Right Click for Corner 1",
-						ChatColor.YELLOW + "Left Click Block for Corner 2",
-						ChatColor.YELLOW + "Shift + Left Click Air to Cancel selection",
-						ChatColor.YELLOW + "Shift + Right Click Air to Claim selection"))
+		return new ItemUtil(Material.GOLD_HOE).name(ChatColor.GREEN + "Claiming Wand").lore(Arrays.asList(
+				ChatColor.GREEN + "Right Click " + ChatColor.BLUE + "Block " + ChatColor.YELLOW + "to select Corner 1", " ",
+				ChatColor.GREEN + "Left Click " + ChatColor.BLUE + "Block " + ChatColor.YELLOW + "to select Corner 2", " ",
+				ChatColor.GREEN + "Shift + Left Click " + ChatColor.BLUE + "Air " + ChatColor.YELLOW + "to Cancel selection", " ", 
+				ChatColor.GREEN + "Shift + Right Click " + ChatColor.BLUE + "Air " + ChatColor.YELLOW + "to Claim selection"))
 				.build();
 	}
 	

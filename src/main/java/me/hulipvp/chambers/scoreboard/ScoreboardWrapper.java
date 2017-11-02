@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * ScoreboardWrapper is happily provided by Deathstreams View here:
+ * ScoreboardWrapper is happily provided by Deathstreams - View here:
  * https://github.com/Deathstreams/ScoreboardWrapper
  * 
  * @author Deathstreams

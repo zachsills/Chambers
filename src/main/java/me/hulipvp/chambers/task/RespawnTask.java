@@ -8,6 +8,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import me.hulipvp.chambers.profile.structure.Profile;
+import me.hulipvp.chambers.profile.structure.ProfileStatus;
 import net.md_5.bungee.api.ChatColor;
 
 @AllArgsConstructor
@@ -31,6 +32,7 @@ public class RespawnTask extends BukkitRunnable {
 		if (this.profile.getRespawnTime() > 0) {
 			this.profile.setRespawnTime(this.profile.getRespawnTime() - 1);
 		} else {
+			this.profile.setProfileStatus(ProfileStatus.PLAYING);
 			this.player.spigot().respawn();
 			this.player.teleport(this.profile.getTeam().getHome());
 			Bukkit.getOnlinePlayers().forEach(other -> other.showPlayer(this.player));

@@ -28,6 +28,10 @@ public class IngameProvider implements ScoreboardProvider {
 		if (profile.getProfileStatus() == ProfileStatus.SPECTATING) {
 			lines.add(Color.color("&7You are a spectator."));
 			lines.add(Color.color("&6&lGame Time:&c " + formatIntToTime(plugin.getGameManager().getGame().getTotalTime())));
+		} else if (profile.getProfileStatus() == ProfileStatus.RESPAWNING) {
+			lines.add(Color.color("&7You are respawning."));
+			lines.add(Color.color("&6&lGame Time:&c " + formatIntToTime(plugin.getGameManager().getGame().getTotalTime())));
+			lines.add(Color.color("&6&lRespawning in:&7 " + profile.getRespawnTime()));
 		} else if (profile.getProfileStatus() == ProfileStatus.PLAYING) {
 			lines.add(Color.color("&6&lGame Time:&c " + formatIntToTime(plugin.getGameManager().getGame().getTotalTime())));
 			lines.add(Color.color("&e&lTeam:&r " + profile.getTeam().getFormattedName()));

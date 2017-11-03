@@ -9,6 +9,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.profile.structure.Profile;
+import me.hulipvp.chambers.profile.structure.ProfileStatus;
 import me.hulipvp.chambers.task.RespawnTask;
 
 public class PlayerDeathListener implements Listener {
@@ -18,6 +19,19 @@ public class PlayerDeathListener implements Listener {
 		Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(event.getEntity().getUniqueId());
 		if (profile.getTeam() != null) {
 			Player player = event.getEntity();
+			if (profile.getTeam().isRaidable()) {
+				profile.setProfileStatus(ProfileStatus.SPECTATING);
+				Bukkit.getOnlinePlayers().stream().filter(other -> other != player).forEach(other -> other.hidePlayer(player));
+				player.setGameMode(GameMode.CREATIVE);
+		        player.setHealth(20.0);
+		        player.setFoodLevel(20);
+		        player.getActivePotionEffects().forEach(potionEffect -> player.removePotionEffect(potionEffect.getType()));
+		        player.setAllowFlight(true);
+		        player.setFlying(true);
+		        player.getInventory().clear();
+		        player.getInventory().setArmorContents(null);
+				return;
+			}
 			Bukkit.getOnlinePlayers().stream().filter(other -> other != player).forEach(other -> other.hidePlayer(player));
 			player.setGameMode(GameMode.CREATIVE);
 	        player.setHealth(20.0);
@@ -29,6 +43,7 @@ public class PlayerDeathListener implements Listener {
 	        player.getInventory().clear();
 	        player.getInventory().setArmorContents(null);
 			profile.setRespawnTime(30);
+			profile.setProfileStatus(ProfileStatus.RESPAWNING);
 			new RespawnTask(profile, player).runTaskAsynchronously(Chambers.getInstance());
 		}
 	}

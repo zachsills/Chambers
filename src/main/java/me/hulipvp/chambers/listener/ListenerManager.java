@@ -14,9 +14,12 @@ import me.hulipvp.chambers.game.listener.GameInteractListener;
 import me.hulipvp.chambers.game.listener.GameProtectionListener;
 import me.hulipvp.chambers.listener.listeners.ChatListener;
 import me.hulipvp.chambers.listener.listeners.EnderpearlListener;
+import me.hulipvp.chambers.listener.listeners.PlayerDeathListener;
+import me.hulipvp.chambers.listener.listeners.PlayerRespawnListener;
 import me.hulipvp.chambers.listener.listeners.ProfileListener;
 import me.hulipvp.chambers.team.listener.TeamBlockListener;
 import me.hulipvp.chambers.team.listener.TeamDamageListener;
+import me.hulipvp.chambers.team.listener.TeamDeathListener;
 import me.hulipvp.chambers.team.listener.TeamInteractListener;
 
 public class ListenerManager {
@@ -38,9 +41,12 @@ public class ListenerManager {
 				new GameProtectionListener(),
 				new TeamBlockListener(),
 				new TeamDamageListener(),
+				new TeamDeathListener(),
 				new TeamInteractListener(),
 				new ChatListener(),
-				new ProfileListener(), 
+				new PlayerDeathListener(),
+				new PlayerRespawnListener(),
+				new ProfileListener(),
 				new EnderpearlListener()
 		).forEach(listener -> pluginManager.registerEvents(listener, Chambers.getInstance()));
 	}

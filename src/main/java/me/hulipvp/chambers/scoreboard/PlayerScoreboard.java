@@ -28,7 +28,7 @@ final class PlayerScoreboard {
 
 	PlayerScoreboard(Player player) {
 		this.player = player;
-		this.scoreboard = player.getScoreboard() == Bukkit.getScoreboardManager() ? Bukkit.getScoreboardManager().getNewScoreboard() : player.getScoreboard();
+		this.scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
 		this.objective = scoreboard.getObjective("SidebarWrapper") == null ? scoreboard.registerNewObjective("SidebarWrapper", "dummy") : scoreboard.getObjective("SidebarWrapper");
 		this.objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 		this.objective.setDisplayName("");

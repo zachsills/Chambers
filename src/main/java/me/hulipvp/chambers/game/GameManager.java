@@ -9,6 +9,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import lombok.Getter;
 import me.hulipvp.chambers.Chambers;
@@ -43,7 +44,9 @@ public class GameManager {
 	 * Stops the Game
 	 */
 	public void stop(Team winner) {
+		game.setWinner(winner);
 		game.setStatus(GameStatus.OVER);
+		game.setTotalTime(0);
 		clearAllMobs();
 		Bukkit.getOnlinePlayers().stream().forEach(player -> {
 			Bukkit.getOnlinePlayers().stream().forEach(other -> {
@@ -63,18 +66,19 @@ public class GameManager {
 			player.setFlying(true);
 			player.getActivePotionEffects().stream().forEach(effect -> player.removePotionEffect(effect.getType()));
 		});
-		game.setTotalTime(0);
-		game.setWinner(winner);
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(Chambers.getInstance(), () -> {
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(Chambers.getInstance(), new BukkitRunnable() {
 			int time = 15;
-			if (time == -2) {
-				Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "restart");
-			} else if (time == 0) {
-				Bukkit.getOnlinePlayers().stream().forEach(player -> player.kickPlayer("Thanks for playing Chambers beta, join back soon!"));
-			} else if (time % 2 == 0) {
-				Bukkit.broadcastMessage(ChatColor.YELLOW + (winner == null ? "The game was forcefully stopped." : "The team " + winner.getFormattedName() + ChatColor.YELLOW + "has won the game!"));
+			@Override
+			public void run() {
+				if (time == -2) {
+					Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "restart");
+				} else if (time == 0) {
+					Bukkit.getOnlinePlayers().stream().forEach(player -> player.kickPlayer("Thanks for playing Chambers beta, join back soon!"));
+				} else if (time % 2 == 0) {
+					Bukkit.broadcastMessage(ChatColor.YELLOW + (winner == null ? "The game was forcefully stopped." : "The team " + winner.getFormattedName() + ChatColor.YELLOW + "has won the game!"));
+				}
+				time--;
 			}
-			time--;
 		}, 0, 20L);
 	}
 

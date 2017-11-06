@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import lombok.Getter;
 import me.hulipvp.chambers.claim.ClaimManager;
+import me.hulipvp.chambers.command.BalanceCommand;
 import me.hulipvp.chambers.command.GameCommand;
 import me.hulipvp.chambers.command.PayCommand;
 import me.hulipvp.chambers.command.ToggleBoardCommand;
@@ -102,6 +103,7 @@ public class Chambers extends JavaPlugin {
 	}
 	
 	private void registerAllCommands() {
+		new BalanceCommand();
 		new GameCommand();
 		new PayCommand();
 		new ToggleBoardCommand();

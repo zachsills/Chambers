@@ -134,8 +134,7 @@ public class DataFile {
 	public List<String> getStringList(String path) {
 		if (configuration.contains(path)) {
 			List<String> strings = new ArrayList<>();
-			configuration.getStringList(path).stream()
-					.forEach(string -> strings.add(ChatColor.translateAlternateColorCodes('&', string)));
+			configuration.getStringList(path).stream().forEach(string -> strings.add(ChatColor.translateAlternateColorCodes('&', string)));
 			return strings;
 		}
 		return Arrays.asList("Invalid path.");

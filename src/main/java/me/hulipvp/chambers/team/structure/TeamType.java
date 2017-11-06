@@ -10,8 +10,12 @@ import lombok.Getter;
 @Getter
 public enum TeamType {
 
-	KOTH(ChatColor.AQUA, "KoTH", false, Material.BEACON), 
+	/* System Teams */
+	KOTH(ChatColor.AQUA, "KoTH", false, Material.FENCE),
+	KOTH_CAP(ChatColor.LIGHT_PURPLE, "CaptureZone", false, Material.NETHER_FENCE),
 	WILDERNESS(ChatColor.GRAY, "Wilderness", false, null), 
+	
+	/* Player Teams */
 	RED(ChatColor.RED, "Red", true, Material.REDSTONE_BLOCK), 
 	BLUE(ChatColor.BLUE, "Blue", true, Material.DIAMOND_BLOCK), 
 	GREEN(ChatColor.GREEN, "Green", true, Material.EMERALD_BLOCK), 

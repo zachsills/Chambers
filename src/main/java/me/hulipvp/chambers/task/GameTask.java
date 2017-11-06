@@ -7,6 +7,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.game.structure.Game;
 import me.hulipvp.chambers.game.structure.GameStatus;
+import me.hulipvp.chambers.koth.structure.Koth;
 
 public class GameTask extends BukkitRunnable {
 
@@ -19,6 +20,11 @@ public class GameTask extends BukkitRunnable {
 			game.setInvincibilityTime(game.getInvincibilityTime() - 1);
 		} else if (game.getInvincibilityTime() == 0 && game.getTotalTime() == 60) {
 			Bukkit.broadcastMessage(ChatColor.RED + "Invincibility is now disabled and PvP has now been enabled!");
+		}
+		if (game.getTotalTime() == 30) {
+			Koth koth = new Koth("Castle", 480);
+			Chambers.getInstance().getKothManager().setKoth(koth);
+			Chambers.getInstance().getKothManager().broadcastMessage("The " + ChatColor.BLUE + koth.getName() + ChatColor.YELLOW + " can now be contested.");
 		}
 		if (game.getTotalTime() % 3 == 0 && game.getTotalTime() != 0) {
 			Chambers.getInstance().getProfileManager().getAllPlayingProfiles().forEach(profile -> profile.setBalance(profile.getBalance() + 3));

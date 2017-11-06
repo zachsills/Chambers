@@ -8,7 +8,6 @@ import org.bukkit.ChatColor;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.team.command.TeamCommand;
 import me.hulipvp.chambers.team.structure.Team;
-import me.hulipvp.chambers.team.structure.TeamType;
 import me.hulipvp.chambers.util.commandapi.Command;
 import me.hulipvp.chambers.util.commandapi.CommandArgs;
 
@@ -37,7 +36,7 @@ public class TeamShowCommand extends TeamCommand {
 		List<String> lines = new ArrayList<>();
 		
 		if (!team.isPlayerTeam()) {
-			if (team.getType() == TeamType.KOTH) {
+			if (team.getType().name().contains("KOTH")) {
 				lines.add("&eLocation:&7 0, 0");
 				lines.add(" ");
 				lines.add("&eCome to the center of the map to cap the KoTH.");

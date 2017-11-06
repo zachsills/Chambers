@@ -11,6 +11,7 @@ import me.hulipvp.chambers.command.ToggleBoardCommand;
 import me.hulipvp.chambers.command.VillagerCommand;
 import me.hulipvp.chambers.config.DataFile;
 import me.hulipvp.chambers.game.GameManager;
+import me.hulipvp.chambers.koth.KothManager;
 import me.hulipvp.chambers.listener.ListenerManager;
 import me.hulipvp.chambers.profile.ProfileManager;
 import me.hulipvp.chambers.scoreboard.ScoreboardWrapper;
@@ -63,6 +64,7 @@ public class Chambers extends JavaPlugin {
 	/* Game Managers */
 	private ClaimManager claimManager;
 	private GameManager gameManager;
+	private KothManager kothManager;
 	private ProfileManager profileManager;
 	private TeamManager teamManager;
 	private ListenerManager listenerManager;
@@ -85,6 +87,7 @@ public class Chambers extends JavaPlugin {
 		
 		claimManager = new ClaimManager();
 		gameManager = new GameManager();
+		kothManager = new KothManager();
 		profileManager = new ProfileManager();
 		teamManager = new TeamManager();
 		listenerManager = new ListenerManager();

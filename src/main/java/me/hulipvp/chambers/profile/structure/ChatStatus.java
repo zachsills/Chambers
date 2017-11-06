@@ -19,7 +19,7 @@ public enum ChatStatus {
 	private List<String> aliases;
 	
 	public static ChatStatus getStatusFromString(String string) {
-		return Arrays.stream(ChatStatus.values()).filter(status -> status.getAliases().contains(string)).findFirst().orElse(null);
+		return Arrays.stream(ChatStatus.values()).filter(status -> status.getAliases().contains(string.toLowerCase())).findFirst().orElse(null);
 	}
 
 }

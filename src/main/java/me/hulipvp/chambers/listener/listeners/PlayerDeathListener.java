@@ -20,32 +20,28 @@ public class PlayerDeathListener implements Listener {
 		if (profile.getTeam() != null) {
 			Player player = event.getEntity();
 			if (profile.getTeam().isRaidable()) {
+				reset(player);
 				profile.setProfileStatus(ProfileStatus.SPECTATING);
-				Bukkit.getOnlinePlayers().stream().filter(other -> other != player).forEach(other -> other.hidePlayer(player));
-				player.setGameMode(GameMode.CREATIVE);
-		        player.setHealth(20.0);
-		        player.setFoodLevel(20);
-		        player.getActivePotionEffects().forEach(potionEffect -> player.removePotionEffect(potionEffect.getType()));
-		        player.setAllowFlight(true);
-		        player.setFlying(true);
-		        player.getInventory().clear();
-		        player.getInventory().setArmorContents(null);
 				return;
 			}
-			Bukkit.getOnlinePlayers().stream().filter(other -> other != player).forEach(other -> other.hidePlayer(player));
-			player.setGameMode(GameMode.CREATIVE);
-	        player.setHealth(20.0);
-	        player.setFoodLevel(20);
-	        player.getActivePotionEffects().forEach(potionEffect -> player.removePotionEffect(potionEffect.getType()));
-	        player.setAllowFlight(true);
-	        player.setFlying(true);
-	        player.setVelocity(player.getVelocity().setY(1.1));
-	        player.getInventory().clear();
-	        player.getInventory().setArmorContents(null);
+			reset(player);
 			profile.setRespawnTime(30);
 			profile.setProfileStatus(ProfileStatus.RESPAWNING);
-			new RespawnTask(profile, player).runTaskAsynchronously(Chambers.getInstance());
+			new RespawnTask(profile, player, player.getLocation()).runTaskAsynchronously(Chambers.getInstance());
 		}
+	}
+	
+	private void reset(Player player) {
+		Bukkit.getOnlinePlayers().stream().filter(other -> other != player).forEach(other -> other.hidePlayer(player));
+		player.setGameMode(GameMode.CREATIVE);
+        player.setHealth(20.0);
+        player.setFoodLevel(20);
+        player.getActivePotionEffects().forEach(potionEffect -> player.removePotionEffect(potionEffect.getType()));
+        player.setAllowFlight(true);
+        player.setFlying(true);
+        player.setVelocity(player.getVelocity().setY(1.1));
+        player.getInventory().clear();
+        player.getInventory().setArmorContents(null);
 	}
 
 }

@@ -1,6 +1,7 @@
 package me.hulipvp.chambers.task;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -17,6 +18,7 @@ public class RespawnTask extends BukkitRunnable {
 	
 	private Profile profile;
 	private Player player;
+	private Location startingLocation;
 
 	@Override
 	public void run() {
@@ -28,6 +30,10 @@ public class RespawnTask extends BukkitRunnable {
 			this.player.sendMessage(ChatColor.RED + "Your team has gone raidable and you will not respawn.");
 			this.cancel();
 			return;
+		}
+		if (this.startingLocation.distance(this.player.getLocation()) > 40) {
+			this.player.teleport(this.startingLocation);
+			this.player.sendMessage(ChatColor.RED + "You cannot move more than 40 blocks from where you died.");
 		}
 		if (this.profile.getRespawnTime() > 0) {
 			this.profile.setRespawnTime(this.profile.getRespawnTime() - 1);

@@ -18,7 +18,7 @@ public class Profile {
 	private ProfileStatus profileStatus;
 	private ChatStatus chatStatus;
 	private Team team;
-	private int balance, respawnTime;
+	private int kills, deaths, balance, respawnTime;
 	private boolean hidingScoreboard, bypassMode;
 
 	public Profile(Player player, ProfileStatus profileStatus) {
@@ -26,6 +26,8 @@ public class Profile {
 		this.profileStatus = profileStatus;
 		this.chatStatus = ChatStatus.FACTION;
 		this.team = null;
+		this.kills = 0;
+		this.deaths = 0;
 		this.balance = 500;
 		this.respawnTime = 0;
 		this.hidingScoreboard = false;

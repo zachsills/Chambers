@@ -11,6 +11,7 @@ import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.profile.structure.ProfileStatus;
 import me.hulipvp.chambers.task.RespawnTask;
+import net.md_5.bungee.api.ChatColor;
 
 public class PlayerDeathListener implements Listener {
 	
@@ -19,12 +20,19 @@ public class PlayerDeathListener implements Listener {
 		Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(event.getEntity().getUniqueId());
 		if (profile.getTeam() != null) {
 			Player player = event.getEntity();
+			if (event.getEntity().getKiller() instanceof Player) {
+				Player killer = (Player) event.getEntity().getKiller();
+				Profile killerProfile = Chambers.getInstance().getProfileManager().getProfileByUuid(killer.getUniqueId());
+				killerProfile.setKills(killerProfile.getKills() + 1);
+				killerProfile.deposit(250);
+				killer.sendMessage(ChatColor.YELLOW + "You have earned " + ChatColor.GREEN + "$250" + ChatColor.YELLOW + " for killing " + profile.getTeam().getColor() + player.getName() + ChatColor.YELLOW + ".");
+			}
+			reset(player);
+			profile.setDeaths(profile.getDeaths() + 1);
 			if (profile.getTeam().isRaidable()) {
-				reset(player);
 				profile.setProfileStatus(ProfileStatus.SPECTATING);
 				return;
 			}
-			reset(player);
 			profile.setRespawnTime(30);
 			profile.setProfileStatus(ProfileStatus.RESPAWNING);
 			new RespawnTask(profile, player, player.getLocation()).runTaskAsynchronously(Chambers.getInstance());

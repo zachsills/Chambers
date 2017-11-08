@@ -17,6 +17,7 @@ import me.hulipvp.chambers.listener.listeners.EnderpearlListener;
 import me.hulipvp.chambers.listener.listeners.PlayerDeathListener;
 import me.hulipvp.chambers.listener.listeners.PlayerRespawnListener;
 import me.hulipvp.chambers.listener.listeners.ProfileListener;
+import me.hulipvp.chambers.listener.listeners.ProfileStatusListener;
 import me.hulipvp.chambers.team.listener.TeamBlockListener;
 import me.hulipvp.chambers.team.listener.TeamDamageListener;
 import me.hulipvp.chambers.team.listener.TeamDeathListener;
@@ -47,6 +48,7 @@ public class ListenerManager {
 				new PlayerDeathListener(),
 				new PlayerRespawnListener(),
 				new ProfileListener(),
+				new ProfileStatusListener(),
 				new EnderpearlListener()
 		).forEach(listener -> pluginManager.registerEvents(listener, Chambers.getInstance()));
 	}

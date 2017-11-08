@@ -36,7 +36,9 @@ public class GameProtectionListener implements Listener {
 	public void onPickup(PlayerPickupItemEvent event) {
 		Game game = Chambers.getInstance().getGameManager().getGame();
 		if (!game.hasStarted()) {
-			event.setCancelled(true);
+			if (!event.getPlayer().isOp()) {
+				event.setCancelled(true);
+			}
 		}
 	}
 
@@ -44,7 +46,9 @@ public class GameProtectionListener implements Listener {
 	public void onDrop(PlayerDropItemEvent event) {
 		Game game = Chambers.getInstance().getGameManager().getGame();
 		if (!game.hasStarted()) {
-			event.setCancelled(true);
+			if (!event.getPlayer().isOp()) {
+				event.setCancelled(true);
+			}
 		}
 	}
 

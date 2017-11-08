@@ -4,8 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -134,16 +132,16 @@ public class GameManager {
 	 * Remove all of the Mobs on the server
 	 */
 	public void clearAllMobs() {
-		for (World world : Bukkit.getServer().getWorlds()) {
-			for (Entity entity : world.getEntities()) {
+		Bukkit.getServer().getWorlds().forEach(world -> {
+			world.getEntities().forEach(entity -> {
 				if (!(entity instanceof Player)) {
 					entity.remove();
 				}
 				if (entity.getType() == EntityType.VILLAGER) {
 					entity.remove();
 				}
-			}
-		}
+			});
+		});
 	}
 
 }

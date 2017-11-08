@@ -1,5 +1,6 @@
 package me.hulipvp.chambers.claim.listener;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -8,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import me.hulipvp.chambers.Chambers;
+import me.hulipvp.chambers.event.movements.PlayerEnterClaimEvent;
 import me.hulipvp.chambers.game.structure.Game;
 import me.hulipvp.chambers.game.structure.GameStatus;
 import me.hulipvp.chambers.team.structure.Team;
@@ -27,6 +29,8 @@ public class ClaimMoveListener implements Listener {
 			Team toTeam = Chambers.getInstance().getClaimManager().getTeamAt(to);
 			Team fromTeam = Chambers.getInstance().getClaimManager().getTeamAt(from);
 			if (toTeam != fromTeam) {
+				Bukkit.getPluginManager().callEvent(new PlayerEnterClaimEvent(player, toTeam.getClaim()));
+				Bukkit.getPluginManager().callEvent(new PlayerEnterClaimEvent(player, fromTeam.getClaim()));
 				player.sendMessage(ChatColor.YELLOW + "Now leaving: " + fromTeam.getFormattedName());
 				player.sendMessage(ChatColor.YELLOW + "Now entering: " + toTeam.getFormattedName());
 			}

@@ -11,7 +11,6 @@ import me.hulipvp.chambers.koth.structure.Koth;
 
 public class GameTask extends BukkitRunnable {
 
-	// TODO: ADD CHECKS TO AUTO-START KOTH
 	@Override
 	public void run() {
 		Game game = Chambers.getInstance().getGameManager().getGame();
@@ -24,6 +23,7 @@ public class GameTask extends BukkitRunnable {
 		if (game.getTotalTime() == 30) {
 			Koth koth = new Koth("Castle", 480);
 			Chambers.getInstance().getKothManager().setKoth(koth);
+			new KothTask().runTaskTimerAsynchronously(Chambers.getInstance(), 0L, 20L);
 			Chambers.getInstance().getKothManager().broadcastMessage("The " + ChatColor.BLUE + koth.getName() + ChatColor.YELLOW + " can now be contested.");
 		}
 		if (game.getTotalTime() % 3 == 0 && game.getTotalTime() != 0) {

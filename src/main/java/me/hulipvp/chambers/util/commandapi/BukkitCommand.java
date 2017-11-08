@@ -64,8 +64,7 @@ public class BukkitCommand extends org.bukkit.command.Command {
 	}
 
 	@Override
-	public java.util.List<String> tabComplete(CommandSender sender, String alias, String[] args)
-			throws CommandException, IllegalArgumentException {
+	public java.util.List<String> tabComplete(CommandSender sender, String alias, String[] args) throws CommandException, IllegalArgumentException {
 		Validate.notNull(sender, "Sender cannot be null");
 		Validate.notNull(args, "Arguments cannot be null");
 		Validate.notNull(alias, "Alias cannot be null");

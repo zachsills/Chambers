@@ -1,4 +1,4 @@
-package me.hulipvp.chambers.koth;
+package me.hulipvp.chambers.koth.listener;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

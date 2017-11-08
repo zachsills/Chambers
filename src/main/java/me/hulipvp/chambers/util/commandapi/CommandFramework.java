@@ -152,8 +152,7 @@ public class CommandFramework implements CommandExecutor {
 			} else if (m.getAnnotation(Completer.class) != null) {
 				Completer comp = m.getAnnotation(Completer.class);
 				if (m.getParameterTypes().length > 1 || m.getParameterTypes().length == 0 || m.getParameterTypes()[0] != CommandArgs.class) {
-					System.out.println(
-							"Unable to register tab completer " + m.getName() + ". Unexpected method arguments");
+					System.out.println("Unable to register tab completer " + m.getName() + ". Unexpected method arguments");
 					continue;
 				}
 				if (m.getReturnType() != List.class) {

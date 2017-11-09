@@ -11,7 +11,7 @@ import me.hulipvp.chambers.profile.structure.Profile;
 
 public class ClaimProfileListener implements Listener {
 	
-	public void removeProfile(PlayerEvent event) {
+	public void removeClaimProfile(PlayerEvent event) {
 		Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(event.getPlayer().getUniqueId());
 		if (Chambers.getInstance().getClaimManager().isClaiming(profile)) {
 			Chambers.getInstance().getClaimManager().removeClaimProfile(profile);
@@ -20,12 +20,12 @@ public class ClaimProfileListener implements Listener {
 	
 	@EventHandler
 	public void onQuit(PlayerQuitEvent event) {
-		removeProfile(event);
+		removeClaimProfile(event);
 	}
 	
 	@EventHandler
 	public void onKick(PlayerKickEvent event) {
-		removeProfile(event);
+		removeClaimProfile(event);
 	}
 
 }

@@ -16,6 +16,12 @@ public class Koth {
 	private int time, maxCapTime;
 	private Queue<Profile> capQueue;
 	
+	/**
+	 * Constructs a new Koth instance
+	 * 
+	 * @param name - the name of the Koth
+	 * @param time - the initial capture time of the Koth
+	 */
 	public Koth(String name, int time) {
 		this.name = name;
 		this.time = time;

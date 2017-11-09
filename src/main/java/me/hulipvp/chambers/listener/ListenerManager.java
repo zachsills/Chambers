@@ -32,6 +32,9 @@ public class ListenerManager {
 
 	}
 
+	/**
+	 * Registers all of the Listeners on the server
+	 */
 	public void registerListeners() {
 		PluginManager pluginManager = Bukkit.getServer().getPluginManager();
 		Stream.of(

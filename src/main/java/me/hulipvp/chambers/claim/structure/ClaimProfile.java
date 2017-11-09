@@ -17,6 +17,11 @@ public class ClaimProfile {
 	private Location cornerOne, cornerTwo;
 	private Pillar pillarOne, pillarTwo;
 	
+	/**
+	 * Constructs a new {@link ClaimProfile}
+	 * 
+	 * @param profile - the Profile you wish to make a ClaimProfile for
+	 */
 	public ClaimProfile(Profile profile) {
 		this.uuid = profile.getId();
 		this.profile = profile;
@@ -26,12 +31,9 @@ public class ClaimProfile {
 		this.pillarTwo = null;
 	}
 	
-	public void updatePillars() {
-		if (this.cornerOne != null && this.cornerTwo != null) {
-			
-		}
-	}
-	
+	/**
+	 * Removes the pillar displays and then sets the pillars to null
+	 */
 	public void clearPillars() {
 		if (this.pillarOne != null) {
 			this.pillarOne.remove();

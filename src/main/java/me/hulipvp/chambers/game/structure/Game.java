@@ -23,6 +23,11 @@ public class Game {
 	private String mapName;
 	private Location spawnLocation;
 
+	/**
+	 * Constructs a new {@link Game}
+	 * 
+	 * @param status - the status of the Game, it should really only be {@link GameStatus#LOBBY}
+	 */
 	public Game(GameStatus status) {
 		this.status = status;
 		this.totalTime = 0;
@@ -34,6 +39,11 @@ public class Game {
 		this.spawnLocation = Chambers.getInstance().getDataFile().getString("SPAWN_LOCATION") == null ? Bukkit.getWorlds().get(0).getSpawnLocation() : LocationUtil.deserializeLocation(Chambers.getInstance().getDataFile().getString("SPAWN_LOCATION"));
 	}
 
+	/**
+	 * Check if the Game has started or not
+	 * 
+	 * @return boolean - <tt>true</tt> if the Game has started, otherwise <tt>false</tt>
+	 */
 	public boolean hasStarted() {
 		return this.status == GameStatus.STARTING || this.status == GameStatus.INGAME;
 	}

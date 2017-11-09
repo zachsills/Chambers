@@ -46,14 +46,29 @@ public class Team {
 		}
 	}
 	
+	/**
+	 * Get all of the Players that are online in the Team
+	 * 
+	 * @return List - a list of Player objects
+	 */
 	public List<Player> getOnlinePlayers() {
 		return this.members.stream().map(uuid -> Bukkit.getPlayer(uuid)).collect(Collectors.toList());
 	}
 
+	/**
+	 * Get the formatted name of the Team, obviously
+	 * 
+	 * @return String - the formatted name of the Team 
+	 */
 	public String getFormattedName() {
 		return this.type.getColor() + this.type.getName();
 	}
 
+	/**
+	 * Add a member to the Team
+	 * 
+	 * @param profile - the Profile of the member you wish to add
+	 */
 	public void addMember(Profile profile) {
 		if (profile.getTeam() != null) {
 			if (profile.getTeam() == this) {
@@ -66,27 +81,57 @@ public class Team {
 		this.members.add(profile.getId());
 	}
 	
+	/**
+	 * Remove a member from the Team
+	 * 
+	 * @param profile - the Profile of the member you wish to remove
+	 */
 	public void removeMember(Profile profile) {
 		profile.setTeam(null);
 		this.members.remove(profile.getId());
 	}
 
+	/**
+	 * Get the current amount of members in the Team
+	 * 
+	 * @return int - the amount of members in the Team
+	 */
 	public int getSize() {
 		return this.members.size();
 	}
 
+	/**
+	 * See if the Team is at the maximum amount of members
+	 * 
+	 * @return boolean - <tt>true</tt> if the team is full, otherwise <tt>false</tt>
+	 */
 	public boolean isFull() {
 		return this.members.size() >= 5;
 	}
 	
+	/**
+	 * See whether the Team is raidable or not
+	 * 
+	 * @return boolean - <tt>true</tt> if the Team is raidable, otherwise <tt>false</tt>
+	 */
 	public boolean isRaidable() {
-		return this.dtr <= 0;
+		return this.dtr <= 0.0;
 	}
 	
+	/**
+	 * See whether the Team is a player team or not
+	 * 
+	 * @return boolean - <tt>true</tt> if the Team is a player team, otherwise <tt>false</tt>
+	 */
 	public boolean isPlayerTeam() {
 		return this.type.isPlayerTeam();
 	}
 	
+	/**
+	 * Send a message to all of the online Players of the Team
+	 * 
+	 * @param message - the message you wish to send to the Team
+	 */
 	public void sendMessage(String message) {
 		this.getOnlinePlayers().stream().forEach(player -> player.sendMessage(message));
 	}

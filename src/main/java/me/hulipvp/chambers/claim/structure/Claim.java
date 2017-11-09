@@ -36,7 +36,7 @@ public class Claim {
 	 * the claim
 	 * <p>
 	 * It's just a faster way instead of doing
-	 * {@link isInsideClaim(player.getLocation)}, cuz I'm just that lazy
+	 * {@link Claim#isInsideClaim(player.getLocation)}, cuz I'm just that lazy
 	 * 
 	 * @param player - the Player in which you wish to see is inside the claim
 	 * @return boolean - Whether or not the player's location is inside the claim or not

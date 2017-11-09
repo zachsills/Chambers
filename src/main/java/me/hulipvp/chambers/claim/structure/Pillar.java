@@ -28,7 +28,7 @@ public class Pillar {
 	public void display() {
 		List<Integer> values = new ArrayList<>();
 		for (int i = 0; i <= 256; i++) {
-			Location location = new Location(this.getLocation().getWorld(), (double) this.location.getBlockX(), (double) i, (double) this.location.getBlockZ());
+			Location location = new Location(this.getLocation().getWorld(), this.location.getBlockX(), i, this.location.getBlockZ());
 			if (location.getBlock().getType() == Material.AIR && claimer != null) {
 				if (values.contains(location.getBlockY())) {
 					this.claimer.sendBlockChange(location, this.material, (byte) 0);

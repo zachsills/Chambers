@@ -23,8 +23,8 @@ public class ClaimManager {
 	private Set<ClaimProfile> claimers;
 
 	/**
-	 * Just initializes all of the private fields so they're not null Nothing
-	 * surprising Only one field so... heh
+	 * Just initializes all of the private fields so they're not null, Nothing
+	 * surprising
 	 */
 	public ClaimManager() {
 

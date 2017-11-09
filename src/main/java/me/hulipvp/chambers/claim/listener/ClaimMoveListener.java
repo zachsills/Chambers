@@ -13,6 +13,7 @@ import me.hulipvp.chambers.event.movements.PlayerEnterClaimEvent;
 import me.hulipvp.chambers.game.structure.Game;
 import me.hulipvp.chambers.game.structure.GameStatus;
 import me.hulipvp.chambers.team.structure.Team;
+import me.hulipvp.chambers.team.structure.TeamType;
 
 public class ClaimMoveListener implements Listener {
 	
@@ -31,6 +32,9 @@ public class ClaimMoveListener implements Listener {
 			if (toTeam != fromTeam) {
 				Bukkit.getPluginManager().callEvent(new PlayerEnterClaimEvent(player, toTeam.getClaim()));
 				Bukkit.getPluginManager().callEvent(new PlayerEnterClaimEvent(player, fromTeam.getClaim()));
+				if (toTeam.getType() == TeamType.KOTH_CAP || fromTeam.getType() == TeamType.KOTH_CAP) {
+					return;
+				}
 				player.sendMessage(ChatColor.YELLOW + "Now leaving: " + fromTeam.getFormattedName());
 				player.sendMessage(ChatColor.YELLOW + "Now entering: " + toTeam.getFormattedName());
 			}

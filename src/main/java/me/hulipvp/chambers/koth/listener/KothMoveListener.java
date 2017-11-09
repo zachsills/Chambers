@@ -1,5 +1,6 @@
 package me.hulipvp.chambers.koth.listener;
 
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
@@ -31,6 +32,10 @@ public class KothMoveListener implements Listener {
 			Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(event.getPlayer().getUniqueId());
 			if (koth.getCapper() != null && koth.getCapper() == profile) {
 				koth.setCapper(null);
+				if (koth.getTime() <= 180) {
+					Chambers.getInstance().getKothManager().broadcastMessage("The control of " + ChatColor.BLUE + koth.getName() + ChatColor.YELLOW + "has been lost.");
+				}
+				profile.sendMessage(Chambers.getInstance().getKothManager().getKothFormat() + "You have lost control of the KOTH.");
 			}
 			if (koth.getCapQueue().contains(profile)) {
 				koth.getCapQueue().remove(profile);

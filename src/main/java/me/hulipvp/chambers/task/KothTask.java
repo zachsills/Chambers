@@ -7,6 +7,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.koth.structure.Koth;
+import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.util.MathUtil;
 
 public class KothTask extends BukkitRunnable {
@@ -27,6 +28,12 @@ public class KothTask extends BukkitRunnable {
 				koth.setTime(koth.getTime() - 1);
 			} else {
 				koth.setTime(koth.getMaxCapTime());
+			}
+			if (koth.getCapper() == null && koth.getCapQueue().peek() != null) {
+				Profile profile = koth.getCapQueue().poll();
+				koth.setCapper(profile);
+				profile.sendMessage(Chambers.getInstance().getKothManager().getKothFormat() + "You have started to control " + ChatColor.BLUE + koth.getName() + ChatColor.YELLOW + ".");
+				profile.getTeam().sendMessage(Chambers.getInstance().getKothManager().getKothFormat() + "Your team has started to control " + ChatColor.BLUE + koth.getName() + ChatColor.YELLOW + ".");
 			}
 			adjustKothTime(koth);
 		}

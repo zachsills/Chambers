@@ -20,12 +20,21 @@ public class KothManager {
 	}
 	
 	/**
+	 * Get the format for KOTH messages
+	 * 
+	 * @return String - the String format the KOTH messages
+	 */
+	public String getKothFormat() {
+		return ChatColor.GOLD + "[King of the Hill] " + ChatColor.YELLOW.toString();
+	}
+	
+	/**
 	 * Broadcast a message in the KOTH message format
 	 * 
 	 * @param message - the message you wish to send in KOTH format
 	 */
 	public void broadcastMessage(String message) {
-		Bukkit.broadcastMessage(ChatColor.GOLD + "[King of the Hill] " + ChatColor.YELLOW + message);
+		Bukkit.broadcastMessage(getKothFormat() + message);
 	}
 
 }

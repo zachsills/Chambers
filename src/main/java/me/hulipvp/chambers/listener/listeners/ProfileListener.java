@@ -63,7 +63,7 @@ public class ProfileListener implements Listener {
 		event.setLeaveMessage(null);
 	}
 
-	public void removeProfile(PlayerEvent event) {
+	private void removeProfile(PlayerEvent event) {
 		Player player = event.getPlayer();
 		Game game = plugin.getGameManager().getGame();
 		Profile profile = plugin.getProfileManager().getProfileByUuid(player.getUniqueId());

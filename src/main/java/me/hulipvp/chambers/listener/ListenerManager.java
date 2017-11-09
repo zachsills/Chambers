@@ -12,6 +12,7 @@ import me.hulipvp.chambers.claim.listener.ClaimProfileListener;
 import me.hulipvp.chambers.game.listener.GameDamageListener;
 import me.hulipvp.chambers.game.listener.GameInteractListener;
 import me.hulipvp.chambers.game.listener.GameProtectionListener;
+import me.hulipvp.chambers.koth.listener.KothMoveListener;
 import me.hulipvp.chambers.listener.listeners.ChatListener;
 import me.hulipvp.chambers.listener.listeners.EnderpearlListener;
 import me.hulipvp.chambers.listener.listeners.PlayerDeathListener;
@@ -40,6 +41,7 @@ public class ListenerManager {
 				new GameDamageListener(),
 				new GameInteractListener(),
 				new GameProtectionListener(),
+				new KothMoveListener(),
 				new TeamBlockListener(),
 				new TeamDamageListener(),
 				new TeamDeathListener(),

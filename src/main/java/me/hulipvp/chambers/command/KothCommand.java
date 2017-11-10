@@ -12,9 +12,9 @@ public class KothCommand extends ChambersCommand {
 	public void onCommand(CommandArgs commandArgs) {
 		Koth koth = plugin.getKothManager().getKoth();
 		if (koth == null) {
-			commandArgs.getPlayer().sendMessage(plugin.getKothManager().getKothFormat() + "The " + ChatColor.UNDERLINE + plugin.getGameManager().getGame().getKothName() + ChatColor.RESET.toString() + ChatColor.YELLOW + " is not running.");
+			commandArgs.getPlayer().sendMessage(plugin.getKothManager().getKothFormat() + ChatColor.UNDERLINE + plugin.getGameManager().getGame().getKothName() + ChatColor.RESET.toString() + ChatColor.YELLOW + " is not running.");
 		} else {
-			commandArgs.getPlayer().sendMessage(plugin.getKothManager().getKothFormat() + "The " + ChatColor.UNDERLINE + plugin.getGameManager().getGame().getKothName() + ChatColor.RESET.toString() + ChatColor.YELLOW + " is able to be contested.");
+			commandArgs.getPlayer().sendMessage(plugin.getKothManager().getKothFormat() + ChatColor.UNDERLINE + plugin.getGameManager().getGame().getKothName() + ChatColor.RESET.toString() + ChatColor.YELLOW + " is able to be contested.");
 		}
 	}
 

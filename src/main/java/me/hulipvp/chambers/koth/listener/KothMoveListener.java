@@ -9,6 +9,7 @@ import me.hulipvp.chambers.event.movements.PlayerEnterClaimEvent;
 import me.hulipvp.chambers.event.movements.PlayerLeaveClaimEvent;
 import me.hulipvp.chambers.koth.structure.Koth;
 import me.hulipvp.chambers.profile.structure.Profile;
+import me.hulipvp.chambers.profile.structure.ProfileStatus;
 import me.hulipvp.chambers.team.structure.Team;
 import me.hulipvp.chambers.team.structure.TeamType;
 
@@ -23,6 +24,9 @@ public class KothMoveListener implements Listener {
 		if (team.getType() == TeamType.KOTH_CAP) {
 			Koth koth = Chambers.getInstance().getKothManager().getKoth();
 			Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(event.getPlayer().getUniqueId());
+			if (profile.getProfileStatus() != ProfileStatus.PLAYING) {
+				return;
+			}
 			koth.getCapQueue().add(profile);
 		}
 	}
@@ -36,6 +40,9 @@ public class KothMoveListener implements Listener {
 		if (team.getType() == TeamType.KOTH_CAP) {
 			Koth koth = Chambers.getInstance().getKothManager().getKoth();
 			Profile profile = Chambers.getInstance().getProfileManager().getProfileByUuid(event.getPlayer().getUniqueId());
+			if (profile.getProfileStatus() != ProfileStatus.PLAYING) {
+				return;
+			}
 			if (koth.getCapper() != null && koth.getCapper() == profile) {
 				koth.setCapper(null);
 				if (koth.getTime() <= 180) {

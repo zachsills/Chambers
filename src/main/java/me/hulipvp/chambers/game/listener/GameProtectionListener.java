@@ -4,6 +4,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
@@ -49,6 +50,14 @@ public class GameProtectionListener implements Listener {
 			if (!event.getPlayer().isOp()) {
 				event.setCancelled(true);
 			}
+		}
+	}
+
+	@EventHandler
+	public void onHunger(FoodLevelChangeEvent event) {
+		Game game = Chambers.getInstance().getGameManager().getGame();
+		if (!game.hasStarted()) {
+			event.setCancelled(true);
 		}
 	}
 

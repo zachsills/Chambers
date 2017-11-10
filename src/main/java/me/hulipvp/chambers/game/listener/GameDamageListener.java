@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.game.structure.Game;
@@ -36,5 +37,13 @@ public class GameDamageListener implements Listener {
 			}
 		}
 	}
-
+	
+	@EventHandler
+	public void onHunger(FoodLevelChangeEvent event) {
+		Game game = Chambers.getInstance().getGameManager().getGame();
+		if (game.getInvincibilityTime() > 0) {
+			event.setCancelled(true);
+		}
+	}
+	
 }

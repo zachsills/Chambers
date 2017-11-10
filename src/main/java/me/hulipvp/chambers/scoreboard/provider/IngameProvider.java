@@ -19,18 +19,22 @@ public class IngameProvider implements ScoreboardProvider {
 		return null;
 	}
 
-	// TODO: ADD KOTH TO SCOREBOARD
 	@Override
 	public List<String> getLines(Player player) {
 		List<String> lines = new ArrayList<>();
 
 		Profile profile = plugin.getProfileManager().getProfileByUuid(player.getUniqueId());
-		if (profile.getProfileStatus() == ProfileStatus.SPECTATING) {
+		switch (profile.getProfileStatus()) {
+		case SPECTATING: {
 			lines.add(Color.color("&7You are a spectator."));
-		} else if (profile.getProfileStatus() == ProfileStatus.RESPAWNING) {
+			break;
+		}
+		case RESPAWNING: {
 			lines.add(Color.color("&7You are respawning."));
 			lines.add(Color.color("&6&lRespawning in:&7 " + profile.getRespawnTime()));
-		} else if (profile.getProfileStatus() == ProfileStatus.PLAYING) {
+			break;
+		}
+		case PLAYING: {
 			lines.add(Color.color("&e&lTeam:&r " + profile.getTeam().getFormattedName()));
 			lines.add(Color.color("&4&lDTR:&c " + profile.getTeam().getDtr()));
 			lines.add(Color.color("&a&lBalance:&c $" + profile.getBalance()));
@@ -40,6 +44,8 @@ public class IngameProvider implements ScoreboardProvider {
 			if (EnderpearlListener.hasCooldown(player)) {
 				lines.add(Color.color("&5Enderpearl:&c " + String.valueOf(new DecimalFormat("0.0").format(EnderpearlListener.getMillisecondsLeft(player) / 1000.0))));
 			}
+			break;
+		}
 		}
 		lines.add(profile.getProfileStatus() == ProfileStatus.PLAYING ? 0 : 1, Color.color("&6&lGame Time:&c " + formatIntToTime(plugin.getGameManager().getGame().getTotalTime())));
 		if (plugin.getKothManager().getKoth() != null) {

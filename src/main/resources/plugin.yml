@@ -1,5 +1,5 @@
-name: Chambers
-main: me.hulipvp.chambers.Chambers
-version: 1.0.0
+name: ${project.artifactId}
+main: ${project.groupId}.${project.artifactId}
+version: ${project.version}
 author: HuliPvP
 description: My open-source version of Bunkers by MineHQ.

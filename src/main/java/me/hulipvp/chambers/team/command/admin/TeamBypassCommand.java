@@ -13,7 +13,7 @@ public class TeamBypassCommand extends TeamCommand {
 	public void onCommand(CommandArgs commandArgs) {
 		Profile profile = plugin.getProfileManager().getProfileByUuid(commandArgs.getPlayer().getUniqueId());
 		profile.setBypassMode(profile.isBypassMode() ? false : true);
-		profile.sendMessage(ChatColor.YELLOW + "Bypass mode has been " + (profile.isBypassMode() ? ChatColor.RED + "disabled" : ChatColor.GREEN + "enabled") + ChatColor.YELLOW + ".");
+		profile.sendMessage(ChatColor.YELLOW + "Bypass mode has been " + (profile.isBypassMode() ? ChatColor.GREEN + "enabled" : ChatColor.RED + "disabled") + ChatColor.YELLOW + ".");
 	}
 
 }

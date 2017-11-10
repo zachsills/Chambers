@@ -69,6 +69,17 @@ public class GameCommand extends ChambersCommand {
 			plugin.getDataFile().save();
 			plugin.getDataFile().load();
 			commandArgs.getSender().sendMessage(ChatColor.YELLOW + "The map name has been set to " + ChatColor.GREEN + mapName + ChatColor.YELLOW + ".");
+		} else if (arg.equalsIgnoreCase("setkothname")) {
+			if (commandArgs.length() != 2) {
+				commandArgs.getSender().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " setkothname <name>");
+				return;
+			}
+			String kothName = commandArgs.getArgs(1);
+			game.setKothName(kothName);
+			plugin.getDataFile().getConfiguration().set("KOTH_NAME", kothName);
+			plugin.getDataFile().save();
+			plugin.getDataFile().load();
+			commandArgs.getSender().sendMessage(ChatColor.YELLOW + "The Koth name has been set to " + ChatColor.GREEN + kothName + ChatColor.YELLOW + ".");
 		} else if (arg.equalsIgnoreCase("setlobbyspawn")) {
 			game.setSpawnLocation(commandArgs.getPlayer().getLocation());
 			plugin.getDataFile().getConfiguration().set("SPAWN_LOCATION", LocationUtil.serializeLocation(commandArgs.getPlayer().getLocation()));

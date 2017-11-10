@@ -5,10 +5,12 @@ import org.bukkit.entity.Player;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 import me.hulipvp.chambers.team.structure.Team;
 
 @AllArgsConstructor
 @Getter
+@Setter
 public class Claim {
 
 	private Location cornerOne, cornerTwo;
@@ -24,10 +26,10 @@ public class Claim {
 	 * @return boolean - Whether or not the provided Location is inside the claim or not
 	 */
 	public boolean isInsideClaim(Location location) {
-		return (location.getX() >= Math.min(cornerOne.getX(), cornerTwo.getX()))
-				&& (location.getZ() >= Math.min(cornerOne.getZ(), cornerTwo.getZ()))
-				&& (location.getX() <= Math.max(cornerOne.getX(), cornerTwo.getX()))
-				&& (location.getZ() <= Math.max(cornerOne.getZ(), cornerTwo.getZ()));
+		return (location.getBlockX() >= Math.min(cornerOne.getBlockX(), cornerTwo.getBlockX()))
+				&& (location.getBlockZ() >= Math.min(cornerOne.getBlockZ(), cornerTwo.getBlockZ()))
+				&& (location.getBlockX() <= Math.max(cornerOne.getBlockX(), cornerTwo.getBlockX()))
+				&& (location.getBlockZ() <= Math.max(cornerOne.getBlockZ(), cornerTwo.getBlockZ()));
 	}
 
 	/**

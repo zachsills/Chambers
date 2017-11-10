@@ -10,6 +10,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.event.movements.PlayerEnterClaimEvent;
+import me.hulipvp.chambers.event.movements.PlayerLeaveClaimEvent;
 import me.hulipvp.chambers.game.structure.Game;
 import me.hulipvp.chambers.game.structure.GameStatus;
 import me.hulipvp.chambers.team.structure.Team;
@@ -31,7 +32,7 @@ public class ClaimMoveListener implements Listener {
 			Team fromTeam = Chambers.getInstance().getClaimManager().getTeamAt(from);
 			if (toTeam != fromTeam) {
 				Bukkit.getPluginManager().callEvent(new PlayerEnterClaimEvent(player, toTeam.getClaim()));
-				Bukkit.getPluginManager().callEvent(new PlayerEnterClaimEvent(player, fromTeam.getClaim()));
+				Bukkit.getPluginManager().callEvent(new PlayerLeaveClaimEvent(player, fromTeam.getClaim()));
 				if (toTeam.getType() == TeamType.KOTH_CAP || fromTeam.getType() == TeamType.KOTH_CAP) {
 					return;
 				}

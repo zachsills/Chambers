@@ -61,7 +61,7 @@ public class Team {
 	 * @return String - the formatted name of the Team 
 	 */
 	public String getFormattedName() {
-		return this.type.getColor() + this.type.getName();
+		return this.type.name().contains("KOTH") ? Chambers.getInstance().getKothManager().getFormattedKothName() : this.type.getColor() + this.type.getName();
 	}
 
 	/**

@@ -16,6 +16,9 @@ public class KothMoveListener implements Listener {
 	
 	@EventHandler
 	public void onPlayerEnterClaim(PlayerEnterClaimEvent event) {
+		if (event.getClaim() == null) {
+			return;
+		}
 		Team team = event.getClaim().getOwner();
 		if (team.getType() == TeamType.KOTH_CAP) {
 			Koth koth = Chambers.getInstance().getKothManager().getKoth();
@@ -26,6 +29,9 @@ public class KothMoveListener implements Listener {
 	
 	@EventHandler
 	public void onPlayerLeaveClaim(PlayerLeaveClaimEvent event) {
+		if (event.getClaim() == null) {
+			return;
+		}
 		Team team = event.getClaim().getOwner();
 		if (team.getType() == TeamType.KOTH_CAP) {
 			Koth koth = Chambers.getInstance().getKothManager().getKoth();

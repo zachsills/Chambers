@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.koth.structure.Koth;
 import net.md_5.bungee.api.ChatColor;
 
@@ -17,6 +18,15 @@ public class KothManager {
 		
 		koth = null;
 		
+	}
+	
+	/**
+	 * Get the formatted name of the Koth, just easier to manage instead of getting the Koth name everytime
+	 * 
+	 * @return String - the formatted name of the Koth
+	 */
+	public String getFormattedKothName() {
+		return ChatColor.BLUE + Chambers.getInstance().getGameManager().getGame().getKothName() + ChatColor.GOLD + " KoTH";
 	}
 	
 	/**

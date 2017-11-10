@@ -20,7 +20,7 @@ public class Game {
 	private int totalTime, countdownTime, invincibilityTime;
 	private Set<String> offline;
 	private Team winner;
-	private String mapName;
+	private String mapName, kothName;
 	private Location spawnLocation;
 
 	/**
@@ -36,6 +36,7 @@ public class Game {
 		this.offline = new HashSet<>();
 		this.winner = null;
 		this.mapName = Chambers.getInstance().getDataFile().getString("MAP_NAME");
+		this.kothName = Chambers.getInstance().getDataFile().getString("KOTH_NAME");
 		this.spawnLocation = Chambers.getInstance().getDataFile().getString("SPAWN_LOCATION") == null ? Bukkit.getWorlds().get(0).getSpawnLocation() : LocationUtil.deserializeLocation(Chambers.getInstance().getDataFile().getString("SPAWN_LOCATION"));
 	}
 

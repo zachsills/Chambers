@@ -1,6 +1,6 @@
 package me.hulipvp.chambers.koth.structure;
 
-import java.util.PriorityQueue;
+import java.util.LinkedList;
 import java.util.Queue;
 
 import lombok.Getter;
@@ -27,7 +27,7 @@ public class Koth {
 		this.time = time;
 		this.maxCapTime = time;
 		this.capper = null;
-		this.capQueue = new PriorityQueue<>();
+		this.capQueue = new LinkedList<>();
 	}
 
 }

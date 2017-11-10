@@ -1,5 +1,6 @@
 package me.hulipvp.chambers.task;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.ChatColor;
@@ -15,6 +16,8 @@ public class KothTask extends BukkitRunnable {
 	private Map<Integer, Integer> times;
 	
 	public KothTask() {
+		times = new HashMap<>();
+		
 		times.put(300, 300);
 		times.put(1800, 240);
 		times.put(2700, 180);

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bukkit.ChatColor;
 
+import me.hulipvp.chambers.koth.structure.Koth;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.team.command.TeamCommand;
 import me.hulipvp.chambers.team.structure.Team;
@@ -36,8 +37,15 @@ public class TeamShowCommand extends TeamCommand {
 		List<String> lines = new ArrayList<>();
 		
 		if (!team.isPlayerTeam()) {
+			lines.add(team.getFormattedName());
 			if (team.getType().name().contains("KOTH")) {
+				Koth koth = plugin.getKothManager().getKoth();
 				lines.add("&eLocation:&7 0, 0");
+				lines.add("&eStatus:&7 " + (koth != null ? "Contestable" : "Not contestable"));
+				if (koth != null) {
+					lines.add("&eTime:&7 " + koth.getTime());
+					lines.add("&eMax time:&7 " + koth.getMaxCapTime());
+				}
 				lines.add(" ");
 				lines.add("&eCome to the center of the map to cap the KoTH.");
 			} else {

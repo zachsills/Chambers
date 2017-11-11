@@ -12,7 +12,7 @@ public class TeamSetDtrCommand extends TeamCommand {
 	
 	@Command(name = "faction.setdtr", description = "Set the DTR for a Team", aliases = { "f.setdtr", "t.setdtr", "s.setdtr", "team.setdtr", "squad.setdtr" }, usage = "/<command> <args>", requiresTeam = false, adminsOnly = true)
 	public void onCommand(CommandArgs commandArgs) {
-		if (commandArgs.length() != 1) {
+		if (commandArgs.length() != 2) {
 			commandArgs.getPlayer().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " <team> <amount>");
 			return;
 		}

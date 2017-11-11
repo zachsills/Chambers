@@ -22,6 +22,7 @@ public class TeamDamageListener implements Listener {
 			if (playerProfile.getTeam() == null || damagerProfile.getTeam() == null || playerProfile.getProfileStatus() != ProfileStatus.PLAYING || damagerProfile.getProfileStatus() != ProfileStatus.PLAYING) {
 				event.setCancelled(true);
 				damager.sendMessage(ChatColor.RED + "You cannot do this in your current state.");
+				return;
 			}
 			if (playerProfile.getTeam() == damagerProfile.getTeam()) {
 				event.setCancelled(true);

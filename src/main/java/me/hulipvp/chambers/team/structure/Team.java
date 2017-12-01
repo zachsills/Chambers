@@ -1,22 +1,21 @@
 package me.hulipvp.chambers.team.structure;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-
 import lombok.Getter;
 import lombok.Setter;
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.claim.structure.Claim;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.util.LocationUtil;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -52,7 +51,7 @@ public class Team {
 	 * @return List - a list of Player objects
 	 */
 	public List<Player> getOnlinePlayers() {
-		return this.members.stream().map(uuid -> Bukkit.getPlayer(uuid)).collect(Collectors.toList());
+		return this.members.stream().map(Bukkit::getPlayer).collect(Collectors.toList());
 	}
 
 	/**

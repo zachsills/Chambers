@@ -1,15 +1,16 @@
 package me.hulipvp.chambers;
 
+import me.hulipvp.chambers.command.ChambersCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import lombok.Getter;
 import me.hulipvp.chambers.claim.ClaimManager;
-import me.hulipvp.chambers.command.BalanceCommand;
-import me.hulipvp.chambers.command.GameCommand;
-import me.hulipvp.chambers.command.KothCommand;
-import me.hulipvp.chambers.command.PayCommand;
-import me.hulipvp.chambers.command.ToggleBoardCommand;
-import me.hulipvp.chambers.command.VillagerCommand;
+import me.hulipvp.chambers.command.commands.BalanceCommand;
+import me.hulipvp.chambers.command.commands.GameCommand;
+import me.hulipvp.chambers.command.commands.KothCommand;
+import me.hulipvp.chambers.command.commands.PayCommand;
+import me.hulipvp.chambers.command.commands.ToggleBoardCommand;
+import me.hulipvp.chambers.command.commands.VillagerCommand;
 import me.hulipvp.chambers.config.DataFile;
 import me.hulipvp.chambers.game.GameManager;
 import me.hulipvp.chambers.koth.KothManager;
@@ -107,6 +108,7 @@ public class Chambers extends JavaPlugin {
 	}
 	
 	private void registerAllCommands() {
+		new ChambersCommand();
 		new BalanceCommand();
 		new GameCommand();
 		new KothCommand();

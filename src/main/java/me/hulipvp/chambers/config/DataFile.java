@@ -1,15 +1,16 @@
 package me.hulipvp.chambers.config;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
+import me.hulipvp.chambers.util.Color;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * I'm too lazy to ask alex for permission to use this class, so I typed
@@ -133,9 +134,7 @@ public class DataFile {
 	 */
 	public List<String> getStringList(String path) {
 		if (configuration.contains(path)) {
-			List<String> strings = new ArrayList<>();
-			configuration.getStringList(path).stream().forEach(string -> strings.add(ChatColor.translateAlternateColorCodes('&', string)));
-			return strings;
+			return configuration.getStringList(path).stream().map(Color::color).collect(Collectors.toList());
 		}
 		return Arrays.asList("Invalid path.");
 	}

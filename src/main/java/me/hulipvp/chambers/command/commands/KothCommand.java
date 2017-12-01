@@ -1,7 +1,7 @@
-package me.hulipvp.chambers.command;
+package me.hulipvp.chambers.command.commands;
 
 import me.hulipvp.chambers.koth.structure.Koth;
-import me.hulipvp.chambers.util.commandapi.ChambersCommand;
+import me.hulipvp.chambers.command.ChambersCommand;
 import me.hulipvp.chambers.util.commandapi.Command;
 import me.hulipvp.chambers.util.commandapi.CommandArgs;
 import net.md_5.bungee.api.ChatColor;

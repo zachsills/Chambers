@@ -1,13 +1,12 @@
-package me.hulipvp.chambers.command;
+package me.hulipvp.chambers.command.commands;
 
-import java.util.Arrays;
-
-import org.bukkit.ChatColor;
-
+import me.hulipvp.chambers.command.ChambersCommand;
 import me.hulipvp.chambers.shop.structure.VillagerType;
-import me.hulipvp.chambers.util.commandapi.ChambersCommand;
 import me.hulipvp.chambers.util.commandapi.Command;
 import me.hulipvp.chambers.util.commandapi.CommandArgs;
+import org.bukkit.ChatColor;
+
+import java.util.Arrays;
 
 public class VillagerCommand extends ChambersCommand {
 	

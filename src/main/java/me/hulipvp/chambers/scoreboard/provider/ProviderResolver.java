@@ -1,19 +1,15 @@
 package me.hulipvp.chambers.scoreboard.provider;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-
 import me.hulipvp.chambers.Chambers;
 import me.hulipvp.chambers.game.structure.GameStatus;
 import me.hulipvp.chambers.profile.structure.Profile;
 import me.hulipvp.chambers.scoreboard.ScoreboardProvider;
 import me.hulipvp.chambers.util.Color;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ProviderResolver implements ScoreboardProvider {
 
@@ -52,11 +48,11 @@ public class ProviderResolver implements ScoreboardProvider {
 		}
 
 		if (!lines.isEmpty()) {
-			lines.add(0, Color.color("&7&m------------------"));
-			lines.add(Color.color("&7&m------------------"));
+			lines.add(0, "&7&m------------------");
+			lines.add("&7&m------------------");
 		}
 
-		return lines;
+		return lines.stream().map(Color::color).collect(Collectors.toList());
 	}
 
 }

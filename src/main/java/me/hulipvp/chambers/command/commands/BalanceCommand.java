@@ -1,11 +1,11 @@
-package me.hulipvp.chambers.command;
+package me.hulipvp.chambers.command.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import me.hulipvp.chambers.profile.structure.Profile;
-import me.hulipvp.chambers.util.commandapi.ChambersCommand;
+import me.hulipvp.chambers.command.ChambersCommand;
 import me.hulipvp.chambers.util.commandapi.Command;
 import me.hulipvp.chambers.util.commandapi.CommandArgs;
 

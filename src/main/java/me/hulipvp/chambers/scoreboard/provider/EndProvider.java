@@ -1,12 +1,10 @@
 package me.hulipvp.chambers.scoreboard.provider;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import me.hulipvp.chambers.scoreboard.ScoreboardProvider;
 import org.bukkit.entity.Player;
 
-import me.hulipvp.chambers.scoreboard.ScoreboardProvider;
-import me.hulipvp.chambers.util.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EndProvider implements ScoreboardProvider {
 
@@ -19,8 +17,8 @@ public class EndProvider implements ScoreboardProvider {
 	public List<String> getLines(Player player) {
 		List<String> lines = new ArrayList<>();
 
-		lines.add(Color.color("&6&lMap:&7 " + plugin.getGameManager().getGame().getMapName()));
-		lines.add(Color.color("&6&lWinner:&r " + (plugin.getGameManager().getGame().getWinner() == null ? "Forced Win" : plugin.getGameManager().getGame().getWinner().getFormattedName())));
+		lines.add("&6&lMap:&7 " + plugin.getGameManager().getGame().getMapName());
+		lines.add("&6&lWinner:&r " + (plugin.getGameManager().getGame().getWinner() == null ? "Forced Win" : plugin.getGameManager().getGame().getWinner().getFormattedName()));
 
 		return lines;
 	}

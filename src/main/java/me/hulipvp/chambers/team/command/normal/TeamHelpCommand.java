@@ -6,7 +6,7 @@ import me.hulipvp.chambers.util.commandapi.CommandArgs;
 
 public class TeamHelpCommand extends TeamCommand {
 
-	@Command(name = "faction.help", description = "Get help for the Team commands", aliases = { "f.help", "t.help", "s.help", "team.help", "squad.help" }, usage = "/<command> <args>", requiresTeam = false)
+	@Command(name = "faction.help", description = "Get help for the Team command", aliases = { "f.help", "t.help", "s.help", "team.help", "squad.help" }, usage = "/<command> <args>", requiresTeam = false)
 	public void onCommand(CommandArgs commandArgs) {
 		showHelp(commandArgs.getPlayer());
 	}

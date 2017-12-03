@@ -70,7 +70,7 @@ public class CommandFramework implements CommandExecutor {
 	}
 
 	/**
-	 * Handles commands. Used in the onCommand method in your JavaPlugin class
+	 * Handles command. Used in the onCommand method in your JavaPlugin class
 	 * 
 	 * @param sender
 	 *            The {@link org.bukkit.command.CommandSender} parsed from
@@ -135,7 +135,7 @@ public class CommandFramework implements CommandExecutor {
 	 * to Bukkit's registerEvents method.
 	 * 
 	 * @param obj
-	 *            The object to register the commands of
+	 *            The object to register the command of
 	 */
 	public void registerCommands(Object obj) {
 		for (Method m : obj.getClass().getMethods()) {
@@ -168,7 +168,7 @@ public class CommandFramework implements CommandExecutor {
 	}
 
 	/**
-	 * Registers all the commands under the plugin's help
+	 * Registers all the command under the plugin's help
 	 */
 	public void registerHelp() {
 		Set<HelpTopic> help = new TreeSet<HelpTopic>(HelpTopicComparator.helpTopicComparatorInstance());
@@ -179,7 +179,7 @@ public class CommandFramework implements CommandExecutor {
 				help.add(topic);
 			}
 		}
-		IndexHelpTopic topic = new IndexHelpTopic(plugin.getName(), "All commands for " + plugin.getName(), null, help, "Below is a list of all " + plugin.getName() + " commands:");
+		IndexHelpTopic topic = new IndexHelpTopic(plugin.getName(), "All command for " + plugin.getName(), null, help, "Below is a list of all " + plugin.getName() + " command:");
 		Bukkit.getServer().getHelpMap().addTopic(topic);
 	}
 

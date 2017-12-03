@@ -1,18 +1,13 @@
 package me.hulipvp.chambers;
 
-import me.hulipvp.chambers.command.ChambersCommand;
-import org.bukkit.plugin.java.JavaPlugin;
-
 import lombok.Getter;
 import me.hulipvp.chambers.claim.ClaimManager;
-import me.hulipvp.chambers.command.commands.BalanceCommand;
-import me.hulipvp.chambers.command.commands.GameCommand;
-import me.hulipvp.chambers.command.commands.KothCommand;
-import me.hulipvp.chambers.command.commands.PayCommand;
-import me.hulipvp.chambers.command.commands.ToggleBoardCommand;
-import me.hulipvp.chambers.command.commands.VillagerCommand;
+import me.hulipvp.chambers.command.ChambersCommand;
+import me.hulipvp.chambers.command.commands.*;
 import me.hulipvp.chambers.config.DataFile;
 import me.hulipvp.chambers.game.GameManager;
+import me.hulipvp.chambers.game.command.GameCommand;
+import me.hulipvp.chambers.game.command.general.*;
 import me.hulipvp.chambers.koth.KothManager;
 import me.hulipvp.chambers.listener.ListenerManager;
 import me.hulipvp.chambers.profile.ProfileManager;
@@ -21,19 +16,13 @@ import me.hulipvp.chambers.scoreboard.provider.ProviderResolver;
 import me.hulipvp.chambers.shop.VillagerManager;
 import me.hulipvp.chambers.team.TeamManager;
 import me.hulipvp.chambers.team.command.TeamCommand;
-import me.hulipvp.chambers.team.command.admin.TeamBypassCommand;
-import me.hulipvp.chambers.team.command.admin.TeamClaimCommand;
-import me.hulipvp.chambers.team.command.admin.TeamForceJoinCommand;
-import me.hulipvp.chambers.team.command.admin.TeamForceLeaveCommand;
-import me.hulipvp.chambers.team.command.admin.TeamForcePlaceCommand;
-import me.hulipvp.chambers.team.command.admin.TeamSetDtrCommand;
-import me.hulipvp.chambers.team.command.admin.TeamSetHomeCommand;
-import me.hulipvp.chambers.team.command.admin.TeamSetVillagerCommand;
+import me.hulipvp.chambers.team.command.admin.*;
 import me.hulipvp.chambers.team.command.normal.TeamChatCommand;
 import me.hulipvp.chambers.team.command.normal.TeamHelpCommand;
 import me.hulipvp.chambers.team.command.normal.TeamLocationCommand;
 import me.hulipvp.chambers.team.command.normal.TeamShowCommand;
 import me.hulipvp.chambers.util.commandapi.CommandFramework;
+import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Copyright (c) 2017 Zach Sills
@@ -111,6 +100,12 @@ public class Chambers extends JavaPlugin {
 		new ChambersCommand();
 		new BalanceCommand();
 		new GameCommand();
+		new GameStartCommand();
+		new GameStopCommand();
+		new GameSetCountdownCommand();
+		new GameSetKothNameCommand();
+		new GameSetLobbyCommand();
+		new GameSetMapNameCommand();
 		new KothCommand();
 		new PayCommand();
 		new ToggleBoardCommand();

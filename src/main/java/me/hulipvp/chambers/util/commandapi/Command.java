@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Command Framework - Command <br>
- * The command annotation used to designate methods as commands. All methods
+ * The command annotation used to designate methods as command. All methods
  * should have a single CommandArgs argument
  * 
  * @author minnymin3

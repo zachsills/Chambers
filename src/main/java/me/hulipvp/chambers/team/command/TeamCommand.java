@@ -24,7 +24,7 @@ public class TeamCommand {
 
 	public void showHelp(Player player) {
 		player.sendMessage(Color.color("&6&m-------------------------------------------------------------"));
-		player.sendMessage(Color.color("&d&lFaction Help&7 - &fInformation on how to use faction commands"));
+		player.sendMessage(Color.color("&d&lFaction Help&7 - &fInformation on how to use faction command"));
 		player.sendMessage(Color.color("&6&m-------------------------------------------------------------"));
 		player.sendMessage(Color.color("&9General Commands:"));
 		player.sendMessage(Color.color("&e/f home &7- Teleport to your faction home"));

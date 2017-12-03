@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 /**
  * Command Framework - BukkitCommand <br>
  * An implementation of Bukkit's Command class allowing for registering of
- * commands without plugin.yml
+ * command without plugin.yml
  * 
  * @author minnymin3
  * 

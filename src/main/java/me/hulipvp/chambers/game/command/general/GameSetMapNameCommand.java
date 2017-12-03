@@ -15,7 +15,7 @@ public class GameSetMapNameCommand extends GameCommand {
             commandArgs.getSender().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " <name>");
             return;
         }
-        String mapName = commandArgs.getArgs(1);
+        String mapName = commandArgs.getArgs(0);
         game.setMapName(mapName);
         plugin.getDataFile().getConfiguration().set("MAP_NAME", mapName);
         saveDataFile();

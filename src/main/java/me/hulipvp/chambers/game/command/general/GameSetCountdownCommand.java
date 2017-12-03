@@ -22,7 +22,7 @@ public class GameSetCountdownCommand extends GameCommand {
             commandArgs.getPlayer().sendMessage(ChatColor.RED + "The countdown has already started.");
             return;
         }
-        if (!MathUtil.isInt(commandArgs.getArgs(1))) {
+        if (!MathUtil.isInt(commandArgs.getArgs(0))) {
             commandArgs.getSender().sendMessage(ChatColor.RED + "Please enter a valid integer.");
             return;
         }

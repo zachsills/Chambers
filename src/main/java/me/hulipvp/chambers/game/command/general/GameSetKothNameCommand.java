@@ -15,7 +15,7 @@ public class GameSetKothNameCommand extends GameCommand {
             commandArgs.getSender().sendMessage(ChatColor.RED + "Usage: /" + commandArgs.getLabel() + " <name>");
             return;
         }
-        String kothName = commandArgs.getArgs(1);
+        String kothName = commandArgs.getArgs(0);
         game.setKothName(kothName);
         plugin.getDataFile().getConfiguration().set("KOTH_NAME", kothName);
         saveDataFile();
